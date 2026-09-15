@@ -210,6 +210,15 @@ section{padding:clamp(52px,7vw,90px) 0}
 .step h3{margin-bottom:8px}
 .step p{font-size:15.5px;color:var(--ink-soft);margin:0}
 
+/* katalogy */
+.katalogy{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
+.katalog{background:#fff;padding:26px 24px;text-decoration:none;display:block}
+.katalog:hover{box-shadow:inset 0 0 0 2px var(--red)}
+.katalog h3{margin-bottom:8px}
+.katalog p{font-size:15px;color:var(--ink-soft);margin:0}
+@media (max-width:980px){.katalogy{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.katalogy{grid-template-columns:1fr}}
+
 /* zboží */
 .goods{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
 .good{background:#fff;padding:20px;display:flex;flex-direction:column;text-decoration:none}

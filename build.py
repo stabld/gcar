@@ -10,8 +10,8 @@ Hlavička, patička a menu jsou definované jednou, tady. Obsah stránek
 je dole ve struktuře PAGES. Po každé změně spusť build.py znovu.
 """
 
+import hashlib
 import os
-import shutil
 from datetime import date
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -36,7 +36,9 @@ POBOCKY = [
         "ulice": "Hulínská 2351/298E",
         "psc": "767 01 Kroměříž",
         "poznamka": "areál bývalé masny",
-        "tel": ["+420602721994", "+420608501994"],
+        # 608 501 994 = hlavní telefon (potvrzeno patičkou e-shopu)
+        # 602 721 994 = FAX podle e-shopu, na gcar.cz uvedený jako telefon → OVĚŘIT
+        "tel": ["+420608501994"],
         "mail": "gcar@gcar.cz",
         "mapa": "https://frame.mapy.cz/s/hodukacale",
     },
@@ -79,6 +81,19 @@ KATEGORIE = [
 ]
 
 
+def asset(path):
+    """Přidá k adrese otisk obsahu: /assets/css/style.css?v=a1b2c3d4.
+    Bez toho by prohlížeč po změně souboru dál používal starou verzi
+    z cache — přesně na tom se web zasekl 15. 9. 2026."""
+    full = os.path.join(ROOT, path.lstrip("/"))
+    try:
+        with open(full, "rb") as f:
+            h = hashlib.md5(f.read()).hexdigest()[:8]
+        return "%s?v=%s" % (path, h)
+    except OSError:
+        return path
+
+
 def tel_link(t):
     """+420602721994 -> odkaz s hezky formátovaným číslem"""
     n = t.replace("+420", "")
@@ -107,7 +122,7 @@ def header(active):
 
 <div class="util">
   <div class="wrap">
-    <span>Prodej náhradních dílů · Kroměříž a Staré Město</span>
+    <span>Zajišťujeme rozvoz servisům a obchodům</span>
     <span class="sep">Po–Pá 8:00–17:00</span>
     <a href="mailto:gcar@gcar.cz">gcar@gcar.cz</a>
   </div>
@@ -214,8 +229,8 @@ def layout(title, desc, body, active, canonical):
 <link rel="icon" href="/assets/img/logo.png">
 <link rel="preload" href="/assets/fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/fonts.css">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="%s">
+<link rel="stylesheet" href="%s">
 </head>
 <body>
 %s
@@ -223,10 +238,12 @@ def layout(title, desc, body, active, canonical):
 %s
 </main>
 %s
-<script src="/assets/js/main.js" defer></script>
+<script src="%s" defer></script>
 </body>
 </html>
-""" % (title, desc, DOMAIN, canonical, title, desc, header(active), body, footer())
+""" % (title, desc, DOMAIN, canonical, title, desc,
+       asset("/assets/css/fonts.css"), asset("/assets/css/style.css"),
+       header(active), body, footer(), asset("/assets/js/main.js"))
 
 
 def page_head(h1, lede, crumbs=None):
@@ -297,36 +314,22 @@ DILY_CHIPS = ["Brzdy", "Spojky", "Tlumiče", "Filtry", "Řemeny", "Kladky", "Lo�
               "Výfuky", "Čepy", "Startéry", "Alternátory", "Karosářské díly",
               "Vybavení servisu", "Oleje", "Chladiče", "Poloosy"]
 
-# Doporučené zboží — odkazy do e-shopu.
-# Ceny tu ZÁMĚRNĚ nejsou: na starém gcar.cz byly zastaralé (stahovák pružin
-# 4 846 Kč vs. 2 900,80 Kč v e-shopu). Cena patří na jedno místo — do e-shopu.
-ZBOZI = [
-    ("ATH HEINL · ATH-150031", "Vyvažovačka kol ATH W 42 LED 2D", "64 800 Kč", "3049631",
-     ESHOP + "/katalog/detail-zbozi/vyvazovacka-kol-ath-w-42-led-2d/ath-heinl/ath-150031/3049631/"),
-    ("KS TOOLS · KST-BT153207", "Nářaďový vozík KS Tools, kompletně vybavený", "18 207 Kč", "4779125",
-     ESHOP + "/katalog/detail-zbozi/naradovy-vozik-ks-tools-perfektne/ks-tools/kst-bt153207/4779125/"),
-    ("THULE · THU-12185", "Nosič kol na tažné zařízení Thule VeloCompact, 3 kola", "13 990 Kč", "3898539",
-     ESHOP + "/katalog/detail-zbozi/nosic-kol-na-tz-thule-velocompact-3-kol/thule/thu-12185/3898539/"),
-    ("ENERGY · ENG-NE00016", "Stahovák pružin", "4 846 Kč", "222424",
-     ESHOP + "/katalog/detail-zbozi/stahovak-pruzin-skvely-pomer-cena-provedeni/energy/eng-ne00016/222424/"),
-    ("ENERGY · ENG-NE00118", "Sada kleští na stahovací pásky, 9 ks", "1 666 Kč", "949262",
-     ESHOP + "/katalog/detail-zbozi/sada-klesti-na-stahov-pasky-9ks/energy/eng-ne00118/949262/"),
-    ("ENERGY · ENG-NE00314", "Přísavky na manipulaci s okny, trojité", "270 Kč", "949651",
-     ESHOP + "/katalog/detail-zbozi/prisavky-na-manimulaci-s-okny-triangl/energy/eng-ne00314/949651/"),
+# Katalogy, které e-shop doopravdy má (z horního menu eshop.gcar.cz).
+# CHYBI: přímé URL jednotlivých katalogů — zatím vedou na hlavní stranu e-shopu.
+KATALOGY = [
+    ("AUTODÍLY", "Katalog náhradních dílů na osobní a užitkové vozy."),
+    ("VIN + ACI katalog", "Vyhledání dílu podle VIN kódu vozidla."),
+    ("Uni díly a dílna", "Univerzální díly, nářadí a vybavení dílny."),
+    ("Vybavení servisu", "Samostatný katalog technologií pro autoservisy."),
 ]
 
 
-def zbozi_grid():
-    out = ""
-    for kod, nazev, cena, img, url in ZBOZI:
-        out += """
-      <a class="good" href="%s">
-        <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=%s" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
-        <span class="code">%s</span>
+def katalogy_grid():
+    return "".join("""
+      <a class="katalog" href="__ESHOP__">
         <h3>%s</h3>
-        <span class="price"><span>Cena a dostupnost v e-shopu</span></span>
-      </a>""" % (url, img, kod, nazev)
-    return out
+        <p>%s</p>
+      </a>""" % (n, p) for n, p in KATALOGY)
 
 
 def branches_panel():
@@ -361,7 +364,7 @@ HOME = """<div class="hero">
   <div class="wrap">
     <div>
       <h1>Prodej náhradních dílů</h1>
-      <p class="lede">Zaměřujeme se na dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuci do autoservisů a obchodů.</p>
+      <p class="lede">Dovážíme a distribuujeme náhradní díly na osobní a užitkové vozy světových značek. Zajišťujeme rozvoz servisům a obchodům.</p>
 
       <form class="finder" id="hledani" data-base="__SEARCH__" role="search">
         <input name="q" type="search" placeholder="Hledat díl, značku nebo katalogové číslo" aria-label="Hledat v e-shopu" required>
@@ -382,7 +385,7 @@ HOME = """<div class="hero">
   <div class="wrap">
     <div><h2>Kdo jsme</h2></div>
     <div>
-      <p>Firma dováží a distribuuje náhradní díly pro osobní a užitkové vozy. Široký sortiment náhradních dílů od světových výrobců nás řadí k největším prodejcům v regionu. Jsme obchodním partnerem jedné z největších firem na evropském trhu.</p>
+      <p>Firma dováží a distribuuje náhradní díly na osobní a užitkové vozy světových značek. Zajišťujeme rozvoz servisům a obchodům. Široký sortiment náhradních dílů od světových výrobců nás řadí k největším prodejcům v regionu. Jsme obchodním partnerem jedné z největších firem na evropském trhu.</p>
       <p style="margin:0"><a class="btn btn-line" href="/o-nas/">Více o nás</a></p>
     </div>
   </div>
@@ -421,13 +424,16 @@ HOME = """<div class="hero">
   </div>
 </section>
 
-<section id="zbozi" class="delivery">
+<section id="katalogy" class="delivery">
   <div class="wrap">
     <div class="sec-head">
-      <div><h2>Doporučené zboží</h2></div>
+      <div>
+        <h2>Katalogy v e-shopu</h2>
+        <p class="lede">Ceny, skladová dostupnost i fotky jsou vždy v e-shopu — tam se to aktualizuje průběžně.</p>
+      </div>
       <a class="more" href="__ESHOP__">Do e-shopu</a>
     </div>
-    <div class="goods">__ZBOZI__</div>
+    <div class="katalogy">__KATALOGY__</div>
   </div>
 </section>
 
@@ -463,7 +469,7 @@ __KONTAKT__
 O_NAS = """<div class="split">
   <div class="prose">
     <p>Zaměřujeme se na dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuci do autoservisů a obchodů.</p>
-    <p>Firma dováží a distribuuje náhradní díly pro osobní a užitkové vozy. Široký sortiment náhradních dílů od světových výrobců nás řadí k největším prodejcům v regionu. Jsme obchodním partnerem jedné z největších firem na evropském trhu.</p>
+    <p>Firma dováží a distribuuje náhradní díly na osobní a užitkové vozy světových značek. Zajišťujeme rozvoz servisům a obchodům. Široký sortiment náhradních dílů od světových výrobců nás řadí k největším prodejcům v regionu. Jsme obchodním partnerem jedné z největších firem na evropském trhu.</p>
 
     <h2>Pobočky</h2>
     <p>
@@ -508,7 +514,7 @@ SORTIMENT = """<div class="prose" style="margin-bottom:36px">
 # --------------------------------------------------------------------------
 KAT_DILY = """<div class="split">
   <div class="prose">
-    <p>Originální i aftermarketové díly na osobní a užitkové vozy. Sortiment originálních dílů se dostává i na pulty aftermarketu — jen v jiné krabičce, než ji znáte ze značkového servisu.</p>
+    <p>Dodáváme jen to nejlepší, co na trhu existuje. Sortiment originálních náhradních dílů se samozřejmě dostává i na pulty aftermarketu — jen v jiné krabičce, než ji znáte ze značkového servisu.</p>
     <h2>Co vedeme</h2>
     <div class="chips">__CHIPS__</div>
   </div>
@@ -530,7 +536,7 @@ __ESHOPBOX__
 
 KAT_VYBAVENI = """<div class="split">
   <div class="prose">
-    <p>Vybavení pro autoservisy a dílny — nářadí, přípravky, zvedací technika, vybavení pneuservisu a dílenský nábytek.</p>
+    <p>Prakticky vše, co servis potřebuje. Od klíčů, přípravků, stahováků, dílenského nábytku po hevery! Vše najdete v našem e-shopu v záložce UNI DÍLY A DÍLNA a ještě víc v KATALOG VYBAVENÍ SERVISU.</p>
   </div>
   __ASIDE__
 </div>
@@ -758,7 +764,7 @@ def render(page):
         "Aktuální nabídku, ceny a skladovou dostupnost najdete v našem e-shopu."))
     body = body.replace("__CHIPS__", chips(DILY_CHIPS))
     body = body.replace("__ZNACKY__", znacky_row())
-    body = body.replace("__ZBOZI__", zbozi_grid())
+    body = body.replace("__KATALOGY__", katalogy_grid())
     body = body.replace("__BRANCHES__", branches_panel())
     body = body.replace("__KONTAKT__", kontakt_sekce())
     body = body.replace("__ASIDE__", aside_pomoc())
