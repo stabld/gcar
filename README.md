@@ -7,6 +7,8 @@ Statický web GCAR services, s.r.o. Bez frameworku, bez node_modules, bez build 
 ```
 build.py                  generátor — hlavička, patička, menu a obsah stránek
 assets/css/style.css      všechny styly
+assets/css/fonts.css      @font-face — generované, needitovat ručně
+assets/fonts/             písma hostovaná u nás (ne Google Fonts)
 assets/js/main.js         mobilní menu, živý stav otevírací doby, formulář
 assets/img/               logo (světlá i inverzní varianta)
 index.html                ⟵ generované, needitovat ručně

@@ -11,9 +11,9 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="cs_CZ">
 <link rel="icon" href="/assets/img/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
@@ -71,11 +71,12 @@
       <h1>Prodej náhradních dílů</h1>
       <p class="lede">Zaměřujeme se na dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuci do autoservisů a obchodů.</p>
 
-      <form class="finder" action="https://eshop.gcar.cz/cs/vyhledavani" method="get" role="search">
-        <input name="q" type="search" placeholder="Hledat díl, značku nebo katalogové číslo" aria-label="Hledat v e-shopu">
+      <form class="finder" id="hledani" data-base="https://eshop.gcar.cz/cs/hledani/5/-1/" role="search">
+        <input name="q" type="search" placeholder="Hledat díl, značku nebo katalogové číslo" aria-label="Hledat v e-shopu" required>
         <button type="submit">Hledat</button>
       </form>
-      <p class="finder-note">Hledání vede do našeho e-shopu. Nevíte si rady? <a href="tel:+420602721994">Zavolejte na 602&nbsp;721&nbsp;994</a>.</p>
+      <noscript><p class="finder-note"><a href="https://eshop.gcar.cz/cs">Přejít do e-shopu a hledat tam</a></p></noscript>
+      <p class="finder-note">Hledat můžete podle kódu, textu i vozidla — e-shop má i VIN katalog. Nevíte si rady? <a href="tel:+420602721994">Zavolejte na 602&nbsp;721&nbsp;994</a>.</p>
       <p class="hero-cta" style="margin:22px 0 0"><a class="btn btn-ghost" href="/o-nas/">Více o nás</a></p>
     </div>
 
@@ -157,38 +158,51 @@
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=3049631" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">ATH HEINL · ATH-150031</span>
         <h3>Vyvažovačka kol ATH W 42 LED 2D</h3>
-        <span class="price"><b>64 800 Kč</b></span>
+        <span class="price"><span>Cena a dostupnost v e-shopu</span></span>
       </a>
       <a class="good" href="https://eshop.gcar.cz/cs/katalog/detail-zbozi/naradovy-vozik-ks-tools-perfektne/ks-tools/kst-bt153207/4779125/">
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=4779125" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">KS TOOLS · KST-BT153207</span>
         <h3>Nářaďový vozík KS Tools, kompletně vybavený</h3>
-        <span class="price"><b>18 207 Kč</b></span>
+        <span class="price"><span>Cena a dostupnost v e-shopu</span></span>
       </a>
       <a class="good" href="https://eshop.gcar.cz/cs/katalog/detail-zbozi/nosic-kol-na-tz-thule-velocompact-3-kol/thule/thu-12185/3898539/">
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=3898539" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">THULE · THU-12185</span>
         <h3>Nosič kol na tažné zařízení Thule VeloCompact, 3 kola</h3>
-        <span class="price"><b>13 990 Kč</b></span>
+        <span class="price"><span>Cena a dostupnost v e-shopu</span></span>
       </a>
       <a class="good" href="https://eshop.gcar.cz/cs/katalog/detail-zbozi/stahovak-pruzin-skvely-pomer-cena-provedeni/energy/eng-ne00016/222424/">
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=222424" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">ENERGY · ENG-NE00016</span>
         <h3>Stahovák pružin</h3>
-        <span class="price"><b>4 846 Kč</b></span>
+        <span class="price"><span>Cena a dostupnost v e-shopu</span></span>
       </a>
       <a class="good" href="https://eshop.gcar.cz/cs/katalog/detail-zbozi/sada-klesti-na-stahov-pasky-9ks/energy/eng-ne00118/949262/">
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=949262" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">ENERGY · ENG-NE00118</span>
         <h3>Sada kleští na stahovací pásky, 9 ks</h3>
-        <span class="price"><b>1 666 Kč</b></span>
+        <span class="price"><span>Cena a dostupnost v e-shopu</span></span>
       </a>
       <a class="good" href="https://eshop.gcar.cz/cs/katalog/detail-zbozi/prisavky-na-manimulaci-s-okny-triangl/energy/eng-ne00314/949651/">
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=949651" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">ENERGY · ENG-NE00314</span>
         <h3>Přísavky na manipulaci s okny, trojité</h3>
-        <span class="price"><b>270 Kč</b></span>
+        <span class="price"><span>Cena a dostupnost v e-shopu</span></span>
       </a></div>
+  </div>
+</section>
+
+<section class="brands">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Značky, které u nás najdete</h2>
+        <p class="lede">Katalog dílů v e-shopu běží na databázi TecDoc — díl dohledáte podle vozu, VIN nebo katalogového čísla.</p>
+      </div>
+      <a class="more" href="https://eshop.gcar.cz/cs">Prohlédnout katalog</a>
+    </div>
+    <div class="brandrow"><span>CASTROL</span><span>TOTAL</span><span>ELF</span><span>BOLL</span><span>AMTRA</span><span>ATAS</span><span>ENERGY</span><span>KS TOOLS</span><span>ATH HEINL</span><span>THULE</span></div>
   </div>
 </section>
 

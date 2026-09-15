@@ -17,7 +17,7 @@ from datetime import date
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DOMAIN = "https://gcar.cz"
 ESHOP = "https://eshop.gcar.cz/cs"
-ESHOP_SEARCH = "https://eshop.gcar.cz/cs/vyhledavani"  # POZOR: ověřit skutečnou adresu
+ESHOP_SEARCH = "https://eshop.gcar.cz/cs/hledani/5/-1/"  # cestová URL: .../hledani/5/-1/{dotaz}
 SERVIS = "http://autoserviskromeriz.cz"
 
 # --------------------------------------------------------------------------
@@ -212,9 +212,9 @@ def layout(title, desc, body, active, canonical):
 <meta property="og:type" content="website">
 <meta property="og:locale" content="cs_CZ">
 <link rel="icon" href="/assets/img/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
@@ -297,8 +297,9 @@ DILY_CHIPS = ["Brzdy", "Spojky", "Tlumiče", "Filtry", "Řemeny", "Kladky", "Lo�
               "Výfuky", "Čepy", "Startéry", "Alternátory", "Karosářské díly",
               "Vybavení servisu", "Oleje", "Chladiče", "Poloosy"]
 
-# Doporučené zboží — přebírá se z e-shopu, ceny podle e-shopu.
-# CHYBI: jestli jsou ceny s DPH nebo bez — proto u nich zatím nic nepíšeme.
+# Doporučené zboží — odkazy do e-shopu.
+# Ceny tu ZÁMĚRNĚ nejsou: na starém gcar.cz byly zastaralé (stahovák pružin
+# 4 846 Kč vs. 2 900,80 Kč v e-shopu). Cena patří na jedno místo — do e-shopu.
 ZBOZI = [
     ("ATH HEINL · ATH-150031", "Vyvažovačka kol ATH W 42 LED 2D", "64 800 Kč", "3049631",
      ESHOP + "/katalog/detail-zbozi/vyvazovacka-kol-ath-w-42-led-2d/ath-heinl/ath-150031/3049631/"),
@@ -323,8 +324,8 @@ def zbozi_grid():
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=%s" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">%s</span>
         <h3>%s</h3>
-        <span class="price"><b>%s</b></span>
-      </a>""" % (url, img, kod, nazev, cena)
+        <span class="price"><span>Cena a dostupnost v e-shopu</span></span>
+      </a>""" % (url, img, kod, nazev)
     return out
 
 
@@ -362,11 +363,12 @@ HOME = """<div class="hero">
       <h1>Prodej náhradních dílů</h1>
       <p class="lede">Zaměřujeme se na dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuci do autoservisů a obchodů.</p>
 
-      <form class="finder" action="__SEARCH__" method="get" role="search">
-        <input name="q" type="search" placeholder="Hledat díl, značku nebo katalogové číslo" aria-label="Hledat v e-shopu">
+      <form class="finder" id="hledani" data-base="__SEARCH__" role="search">
+        <input name="q" type="search" placeholder="Hledat díl, značku nebo katalogové číslo" aria-label="Hledat v e-shopu" required>
         <button type="submit">Hledat</button>
       </form>
-      <p class="finder-note">Hledání vede do našeho e-shopu. Nevíte si rady? <a href="tel:__TEL__">Zavolejte na __TELF__</a>.</p>
+      <noscript><p class="finder-note"><a href="__ESHOP__">Přejít do e-shopu a hledat tam</a></p></noscript>
+      <p class="finder-note">Hledat můžete podle kódu, textu i vozidla — e-shop má i VIN katalog. Nevíte si rady? <a href="tel:__TEL__">Zavolejte na __TELF__</a>.</p>
       <p class="hero-cta" style="margin:22px 0 0"><a class="btn btn-ghost" href="/o-nas/">Více o nás</a></p>
     </div>
 
@@ -426,6 +428,19 @@ HOME = """<div class="hero">
       <a class="more" href="__ESHOP__">Do e-shopu</a>
     </div>
     <div class="goods">__ZBOZI__</div>
+  </div>
+</section>
+
+<section class="brands">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Značky, které u nás najdete</h2>
+        <p class="lede">Katalog dílů v e-shopu běží na databázi TecDoc — díl dohledáte podle vozu, VIN nebo katalogového čísla.</p>
+      </div>
+      <a class="more" href="__ESHOP__">Prohlédnout katalog</a>
+    </div>
+    <div class="brandrow">__ZNACKY__</div>
   </div>
 </section>
 
@@ -653,6 +668,16 @@ CTYRISTOCTYRI = """<div class="prose" style="text-align:center;margin:0 auto;pad
 
 
 # ==========================================================================
+# Značky doložené z e-shopu (patička + produktové karty).
+# CHYBI: úplný seznam a souhlas s použitím log — zatím jen text, ne loga.
+ZNACKY = ["CASTROL", "TOTAL", "ELF", "BOLL", "AMTRA", "ATAS",
+          "ENERGY", "KS TOOLS", "ATH HEINL", "THULE"]
+
+
+def znacky_row():
+    return "".join('<span>%s</span>' % z for z in ZNACKY)
+
+
 def chips(items):
     return "".join('<i class="chip">%s</i>' % i for i in items)
 
@@ -732,6 +757,7 @@ def render(page):
     body = body.replace("__ESHOPBOX__", eshop_box(
         "Aktuální nabídku, ceny a skladovou dostupnost najdete v našem e-shopu."))
     body = body.replace("__CHIPS__", chips(DILY_CHIPS))
+    body = body.replace("__ZNACKY__", znacky_row())
     body = body.replace("__ZBOZI__", zbozi_grid())
     body = body.replace("__BRANCHES__", branches_panel())
     body = body.replace("__KONTAKT__", kontakt_sekce())

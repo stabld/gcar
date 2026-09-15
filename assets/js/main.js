@@ -126,7 +126,22 @@
     });
   }
 
-  function init() { initMenu(); initHours(); initForm(); }
+  /* ---------- Vyhledávání v e-shopu ----------
+     E-shop používá cestovou adresu: /cs/hledani/5/-1/{dotaz}
+     (5 = režim hledání podle textu, -1 = všechny kategorie).   */
+  function initSearch() {
+    var f = document.getElementById('hledani');
+    if (!f) return;
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = f.querySelector('input[name="q"]');
+      var q = (input && input.value || '').trim();
+      if (!q) { if (input) input.focus(); return; }
+      window.location.href = f.getAttribute('data-base') + encodeURIComponent(q);
+    });
+  }
+
+  function init() { initMenu(); initHours(); initForm(); initSearch(); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
