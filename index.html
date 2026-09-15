@@ -3,315 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GCAR — náhradní díly pro osobní a užitkové vozy | Kroměříž, Staré Město</title>
-<meta name="description" content="Dovoz a distribuce náhradních dílů pro osobní a užitkové vozy. Rozvoz do autoservisů a obchodů na Kroměřížsku a Uherskohradišťsku.">
+<title>GCAR — prodej náhradních dílů | Kroměříž, Staré Město</title>
+<meta name="description" content="Dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuce do autoservisů a obchodů. Pobočky Kroměříž a Staré Město.">
+<link rel="canonical" href="https://gcar.cz/">
+<meta property="og:title" content="GCAR — prodej náhradních dílů | Kroměříž, Staré Město">
+<meta property="og:description" content="Dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuce do autoservisů a obchodů. Pobočky Kroměříž a Staré Město.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<link rel="icon" href="/assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  /* odebráno přímo z loga: navy #1A243D, červená #DB343E */
-  --ink:#1A243D;
-  --ink-deep:#121A2C;
-  --ink-soft:#3D4763;
-  --steel:#6B7593;
-  --zinc:#D4D9E3;
-  --zinc-light:#E7EAF1;
-  --paper:#F0F2F6;
-  --white:#FFFFFF;
-  --red:#DB343E;
-  --red-dark:#B32830;
-  --open:#1C7A4C;
-
-  --display:"Archivo","Arial Narrow",Arial,sans-serif;
-  --body:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,monospace;
-
-  --wrap:1220px;
-  --gut:clamp(18px,4vw,44px);
-}
-
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0;background:var(--paper);color:var(--ink);
-  font-family:var(--body);font-size:16.5px;line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--red);outline-offset:2px}
-
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
-
-h1,h2,h3,h4{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1.05}
-h2{font-size:clamp(28px,4vw,44px);font-weight:700}
-h3{font-size:clamp(19px,2.2vw,23px);font-weight:700;letter-spacing:-.01em;line-height:1.2}
-p{margin:0 0 1em}
-.lede{font-size:clamp(17px,1.9vw,20px);color:var(--ink-soft);max-width:62ch;line-height:1.5}
-
-/* ---------- utility bar ---------- */
-.util{background:var(--ink-deep);color:#A9B2CA;font-size:13.5px}
-.util .wrap{display:flex;gap:26px;align-items:center;min-height:38px;flex-wrap:wrap}
-.util a{text-decoration:none}
-.util a:hover{color:#fff}
-.util .sep{margin-left:auto}
-
-/* ---------- header ---------- */
-header{background:var(--white);border-bottom:1px solid var(--zinc);position:sticky;top:0;z-index:50}
-header .wrap{display:flex;align-items:center;gap:14px;min-height:76px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 0 auto}
-.brand img{width:148px;height:auto}
-.brand em{
-  font-style:normal;font-size:13px;color:var(--steel);font-weight:500;
-  padding-left:12px;border-left:1px solid var(--zinc);line-height:1.2;
-}
-@media (max-width:860px){.brand em{display:none}}
-nav{margin-left:auto;display:flex;gap:2px}
-nav a{
-  text-decoration:none;font-weight:500;font-size:15.5px;color:var(--ink-soft);
-  padding:9px 13px;border-radius:3px;
-}
-nav a:hover{color:var(--ink);background:var(--zinc-light)}
-nav a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
-
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  font-family:var(--body);font-weight:600;font-size:15.5px;
-  padding:12px 22px;border:1px solid transparent;border-radius:3px;
-  text-decoration:none;cursor:pointer;background:none;
-}
-.btn-red{background:var(--red);color:#fff}
-.btn-red:hover{background:var(--red-dark)}
-.btn-line{border-color:var(--ink);color:var(--ink)}
-.btn-line:hover{background:var(--ink);color:#fff}
-.btn-ghost{border-color:var(--zinc);background:#fff;color:var(--ink)}
-.btn-ghost:hover{border-color:var(--ink)}
-.btn-lg{padding:15px 28px;font-size:16.5px}
-.nav-cta{margin-left:14px}
-.burger{display:none;margin-left:auto;background:none;border:1px solid var(--zinc);border-radius:3px;padding:10px 12px;font:inherit;cursor:pointer}
-
-/* mobilní menu */
-.bars{display:block;width:20px}
-.bars i{display:block;height:2px;background:var(--ink);margin:4px 0;border-radius:2px;transition:transform .2s,opacity .2s}
-.burger[aria-expanded="true"] .bars i:nth-child(1){transform:translateY(6px) rotate(45deg)}
-.burger[aria-expanded="true"] .bars i:nth-child(2){opacity:0}
-.burger[aria-expanded="true"] .bars i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-.mobmenu{
-  position:sticky;top:76px;z-index:49;background:#fff;
-  border-bottom:1px solid var(--zinc);padding:10px var(--gut) 20px;
-}
-.mobmenu nav{display:block;margin:0 0 14px}
-.mobmenu nav a{
-  display:block;padding:14px 2px;font-size:17px;font-weight:500;
-  color:var(--ink);text-decoration:none;border-bottom:1px solid var(--zinc-light);border-radius:0;
-}
-.mobmenu nav a:hover{background:none}
-@media (min-width:761px){.mobmenu{display:none}}
-@media (prefers-reduced-motion:no-preference){
-  .mobmenu{animation:drop .22s ease-out both}
-  @keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
-}
-
-/* mobilní lišta pro volání */
-.callbar{
-  display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
-  background:var(--ink);border-top:1px solid #333E5C;
-  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-  gap:10px;
-}
-.callbar a{
-  flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
-  text-decoration:none;font-weight:600;font-size:16px;padding:14px 10px;border-radius:3px;
-}
-.callbar .c-km{background:var(--red);color:#fff}
-.callbar .c-uh{border:1px solid #4A5578;color:#fff}
-.callbar small{display:block;font-size:11.5px;font-weight:500;opacity:.75;letter-spacing:.02em}
-
-/* ---------- hero ---------- */
-.hero{background:var(--white);border-bottom:1px solid var(--zinc);overflow:hidden;position:relative}
-.hero::before{
-  content:"";position:absolute;right:-170px;top:-140px;width:520px;height:520px;
-  background:radial-gradient(circle at 50% 50%, rgba(26,36,61,.05) 0 68%, transparent 69%);
-  border-radius:50%;pointer-events:none;
-}
-.hero .wrap{display:grid;grid-template-columns:1.35fr .9fr;gap:clamp(30px,5vw,70px);padding-top:clamp(42px,6vw,76px);padding-bottom:clamp(42px,6vw,72px);align-items:start}
-.hero h1{
-  font-size:clamp(38px,6.1vw,70px);font-weight:800;letter-spacing:-.035em;
-  max-width:16ch;margin-bottom:22px;
-}
-.hero .lede{margin-bottom:30px}
-
-.finder{border:2px solid var(--ink);border-radius:4px;background:#fff;display:flex;overflow:hidden;max-width:560px}
-.finder input{
-  flex:1;border:0;padding:17px 18px;font:inherit;font-size:16.5px;min-width:0;background:transparent;
-}
-.finder input:focus{outline:none}
-.finder button{border:0;background:var(--red);color:#fff;font:inherit;font-weight:600;padding:0 26px;cursor:pointer;font-size:16px}
-.finder button:hover{background:var(--red-dark)}
-.finder-note{font-size:14px;color:var(--steel);margin:11px 0 0}
-.finder-note a{color:var(--ink);text-underline-offset:3px}
-
-/* pobočky panel */
-.branches{border:1px solid var(--zinc);background:var(--paper);border-radius:4px}
-.branch{padding:20px 22px;border-bottom:1px solid var(--zinc)}
-.branch:last-child{border-bottom:0}
-.branch-top{display:flex;align-items:center;gap:10px;margin-bottom:3px}
-.branch h3{font-size:19px}
-.dot{width:9px;height:9px;border-radius:50%;background:var(--steel);flex:0 0 auto}
-.dot.is-open{background:var(--open);box-shadow:0 0 0 3px rgba(28,122,76,.18)}
-.status{font-size:13.5px;font-weight:600;color:var(--steel);margin-left:auto}
-.status.is-open{color:var(--open)}
-.branch address{font-style:normal;font-size:14.5px;color:var(--ink-soft);margin:6px 0 12px}
-.branch .tels{display:flex;flex-wrap:wrap;gap:8px}
-.branch .tels a{
-  font-family:var(--mono);font-size:14px;text-decoration:none;
-  border:1px solid var(--zinc);background:#fff;border-radius:3px;padding:6px 11px;
-}
-.branch .tels a:hover{border-color:var(--ink)}
-.hours{padding:15px 22px;font-size:13.5px;color:var(--steel);background:var(--zinc-light);border-radius:0 0 3px 3px}
-.hours b{color:var(--ink);font-weight:600}
-
-/* ---------- pruh čísel ---------- */
-.strip{background:var(--ink);color:#fff}
-.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2E3855;border-left:1px solid #2E3855;border-right:1px solid #2E3855;padding:0}
-.stat{background:var(--ink);padding:28px clamp(16px,2.2vw,28px)}
-.stat b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(26px,3.3vw,38px);letter-spacing:-.03em;margin-bottom:4px}
-.stat span{font-size:14.5px;color:#9AA4C0;line-height:1.35;display:block}
-
-/* ---------- sekce ---------- */
-section{padding:clamp(52px,7vw,90px) 0}
-.sec-head{display:flex;align-items:flex-end;gap:24px;margin-bottom:34px;flex-wrap:wrap}
-.sec-head .lede{margin:14px 0 0}
-.sec-head .more{margin-left:auto;text-decoration:none;font-weight:600;font-size:15.5px;border-bottom:2px solid var(--red);padding-bottom:2px;white-space:nowrap}
-
-.about{background:var(--white);border-bottom:1px solid var(--zinc);padding-top:clamp(46px,6vw,74px);padding-bottom:clamp(46px,6vw,74px)}
-.about .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(26px,5vw,64px);align-items:start}
-.about h2{max-width:14ch}
-.about p{color:var(--ink-soft);font-size:17px;max-width:62ch}
-@media (max-width:860px){.about .wrap{grid-template-columns:1fr}}
-
-/* sortiment */
-.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
-.cat{background:#fff;padding:26px;text-decoration:none;display:flex;flex-direction:column;min-height:210px}
-.cat:hover{background:#fff;box-shadow:inset 0 0 0 2px var(--red)}
-.cat h3{margin-bottom:9px}
-.cat p{font-size:15px;color:var(--ink-soft);margin:0}
-.cat .tags{margin-top:auto;padding-top:16px;font-size:13.5px;color:var(--steel);line-height:1.5}
-.cat.is-wide{grid-column:span 2}
-.cat .parts{margin-top:auto;padding-top:16px;display:flex;flex-wrap:wrap;gap:6px}
-.cat .parts i{
-  font-style:normal;font-size:13.5px;border:1px solid var(--zinc);
-  border-radius:99px;padding:3px 11px;color:var(--ink-soft);
-}
-
-/* rozvoz */
-.delivery{background:var(--white);border-top:1px solid var(--zinc);border-bottom:1px solid var(--zinc)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);counter-reset:s}
-.step{position:relative;padding-top:22px;border-top:3px solid var(--ink)}
-.step:last-child{border-top-color:var(--red)}
-.step b{
-  font-family:var(--mono);font-size:13px;color:var(--steel);display:block;margin-bottom:10px;
-}
-.step h3{margin-bottom:8px}
-.step p{font-size:15.5px;color:var(--ink-soft);margin:0}
-
-/* zboží */
-.goods{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
-.good{background:#fff;padding:20px;display:flex;flex-direction:column;text-decoration:none}
-.good .ph{
-  aspect-ratio:4/3;background:var(--zinc-light);border-radius:3px;margin-bottom:16px;
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
-}
-.good .ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
-.good .ph span{font-family:var(--mono);font-size:12px;color:var(--steel)}
-.good .code{font-family:var(--mono);font-size:12.5px;color:var(--steel);margin-bottom:6px}
-.good h3{font-size:17px;line-height:1.3;margin-bottom:auto}
-.good .price{
-  margin-top:16px;padding-top:14px;border-top:1px solid var(--zinc-light);
-  display:flex;align-items:baseline;gap:8px;
-}
-.good .price b{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.02em}
-.good .price span{font-size:13px;color:var(--steel)}
-.good:hover h3{color:var(--red)}
-
-/* služby */
-.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.svc a{
-  background:#fff;border:1px solid var(--zinc);border-radius:4px;padding:22px;
-  text-decoration:none;display:block;
-}
-.svc a:hover{border-color:var(--ink)}
-.svc h3{font-size:18px;margin-bottom:7px}
-.svc p{font-size:14.5px;color:var(--ink-soft);margin:0}
-
-/* kontakt */
-.contact{background:var(--ink);color:#fff}
-.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px)}
-.contact h2{color:#fff;margin-bottom:16px}
-.contact .lede{color:#A3ACC6}
-.ccard{border:1px solid #333E5C;border-radius:4px;padding:24px;margin-bottom:16px}
-.ccard h3{color:#fff;margin-bottom:8px}
-.ccard address{font-style:normal;color:#A3ACC6;font-size:15px;margin-bottom:14px}
-.ccard .tels{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-.ccard .tels a{font-family:var(--mono);font-size:14.5px;text-decoration:none;border:1px solid #3B4666;border-radius:3px;padding:7px 12px;color:#fff}
-.ccard .tels a:hover{background:var(--red);border-color:var(--red)}
-.ccard .mail{color:#fff;font-size:15px;text-underline-offset:3px}
-
-/* footer */
-footer{background:var(--ink-deep);color:#7E88A5;font-size:14px;padding:26px 0}
-footer .wrap{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
-footer a{text-decoration:none}
-footer a:hover{color:#fff}
-footer .sep{margin-left:auto}
-
-/* ---------- responzivita ---------- */
-@media (max-width:980px){
-  .hero .wrap{grid-template-columns:1fr}
-  .strip .wrap{grid-template-columns:1fr 1fr}
-  .cats,.goods{grid-template-columns:1fr 1fr}
-  .cat.is-wide{grid-column:span 2}
-  .steps{grid-template-columns:1fr;gap:26px}
-  .svc{grid-template-columns:1fr 1fr}
-  .contact .wrap{grid-template-columns:1fr}
-}
-@media (max-width:760px){
-  body{padding-bottom:78px}
-  .callbar{display:flex}
-  nav{display:none}
-  .nav-cta{display:none}
-  .burger{display:block}
-  .util .wrap{min-height:34px;font-size:12.5px;gap:16px}
-  .cats,.goods,.svc{grid-template-columns:1fr}
-  .cat.is-wide{grid-column:span 1}
-  .strip .wrap{grid-template-columns:1fr 1fr}
-  .finder{flex-direction:column;border-radius:4px}
-  .finder button{padding:16px}
-  .branch .tels a{padding:10px 14px;font-size:15px}
-  .util .wrap{justify-content:space-between}
-  .util .sep{display:none}
-  .sec-head .more{margin-left:0}
-  footer .wrap{flex-direction:column;align-items:flex-start;gap:8px}
-  footer .sep{margin-left:0}
-}
-@media (prefers-reduced-motion:no-preference){
-  .hero h1,.hero .lede,.hero .finder,.hero .finder-note,.hero .branches{
-    animation:rise .55s cubic-bezier(.22,.8,.3,1) both;
-  }
-  .hero .lede{animation-delay:.07s}
-  .hero .finder{animation-delay:.13s}
-  .hero .finder-note{animation-delay:.17s}
-  .hero .branches{animation-delay:.2s}
-  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-}
-</style>
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
 
 <div class="util">
   <div class="wrap">
-    <span>Velkoobchod i prodej koncovým zákazníkům</span>
-    <span class="sep">Rozvoz servisům na Kroměřížsku a Uherskohradišťsku</span>
+    <span>Prodej náhradních dílů · Kroměříž a Staré Město</span>
+    <span class="sep">Po–Pá 8:00–17:00</span>
     <a href="mailto:gcar@gcar.cz">gcar@gcar.cz</a>
   </div>
 </div>
@@ -319,10 +30,10 @@ footer .sep{margin-left:auto}
 <header>
   <div class="wrap">
     <a class="brand" href="/" aria-label="GCAR — domů">
-      <img src="data:image/png;base64,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" alt="GCAR" width="200" height="65">
+      <img src="/assets/img/logo.png" alt="GCAR" width="200" height="65">
       <em>náhradní díly</em>
     </a>
-    <nav>
+    <nav class="main" aria-label="Hlavní navigace">
       <a href="/" aria-current="page">Domů</a>
       <a href="/o-nas/">O firmě</a>
       <a href="/sortiment/">Sortiment</a>
@@ -353,18 +64,19 @@ footer .sep{margin-left:auto}
   <a class="btn btn-red btn-lg" href="https://eshop.gcar.cz/cs" style="width:100%">E-shop</a>
 </div>
 
+<main id="obsah">
 <div class="hero">
   <div class="wrap">
     <div>
-      <h1>Díl, který potřebujete dnes, máme dnes.</h1>
-      <p class="lede">Dovážíme a distribuujeme náhradní díly pro osobní a užitkové vozy světových značek. Autoservisům a obchodům v regionu je rozvážíme vlastní dopravou.</p>
+      <h1>Prodej náhradních dílů</h1>
+      <p class="lede">Zaměřujeme se na dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuci do autoservisů a obchodů.</p>
 
-      <form class="finder" action="https://eshop.gcar.cz/cs/vyhledavani" method="get">
+      <form class="finder" action="https://eshop.gcar.cz/cs/vyhledavani" method="get" role="search">
         <input name="q" type="search" placeholder="Hledat díl, značku nebo katalogové číslo" aria-label="Hledat v e-shopu">
         <button type="submit">Hledat</button>
       </form>
-      <p class="finder-note">Hledáte podle VIN nebo si nejste jistí? <a href="tel:+420602721994">Zavolejte na 602&nbsp;721&nbsp;994</a> — najdeme to za vás.</p>
-      <p style="margin:22px 0 0"><a class="btn btn-ghost" href="#o-nas">Více o firmě</a></p>
+      <p class="finder-note">Hledání vede do našeho e-shopu. Nevíte si rady? <a href="tel:+420602721994">Zavolejte na 602&nbsp;721&nbsp;994</a>.</p>
+      <p class="hero-cta" style="margin:22px 0 0"><a class="btn btn-ghost" href="/o-nas/">Více o nás</a></p>
     </div>
 
     <div class="branches" id="pobocky">
@@ -375,10 +87,7 @@ footer .sep{margin-left:auto}
           <span class="status">—</span>
         </div>
         <address>Hulínská 2351/298E, 767 01 Kroměříž</address>
-        <div class="tels">
-          <a href="tel:+420602721994">602 721 994</a>
-          <a href="tel:+420608501994">608 501 994</a>
-        </div>
+        <div class="tels"><a href="tel:+420602721994">602 721 994</a><a href="tel:+420608501994">608 501 994</a></div>
       </div>
       <div class="branch" data-branch="uh">
         <div class="branch-top">
@@ -387,35 +96,19 @@ footer .sep{margin-left:auto}
           <span class="status">—</span>
         </div>
         <address>Brněnská 1395, 686 03 Staré Město</address>
-        <div class="tels">
-          <a href="tel:+420777141994">777 141 994</a>
-          <a href="tel:+420774721884">774 721 884</a>
-        </div>
+        <div class="tels"><a href="tel:+420777141994">777 141 994</a><a href="tel:+420774721884">774 721 884</a></div>
       </div>
-      <div class="hours">
-        <b>Po–Pá 8:00–17:00</b> · So po domluvě (obvykle 9:00–10:00) · Neděle a svátky zavřeno
-      </div>
+      <div class="hours"><b>Po–Pá 8:00–17:00</b> · So po domluvě (obvykle 9:00–10:00) · Neděle a svátky zavřeno</div>
     </div>
-  </div>
-</div>
-
-<div class="strip">
-  <div class="wrap">
-    <div class="stat"><b>2</b><span>pobočky — Kroměříž a Staré Město</span></div>
-    <div class="stat"><b>Vlastní</b><span>rozvoz do servisů a obchodů v regionu</span></div>
-    <div class="stat"><b>Originál i&nbsp;aftermarket</b><span>díly od značkových i nezávislých výrobců</span></div>
-    <div class="stat"><b>Vlastní servis</b><span>sortiment testujeme na vlastní dílně</span></div>
   </div>
 </div>
 
 <section class="about" id="o-nas">
   <div class="wrap">
+    <div><h2>Kdo jsme</h2></div>
     <div>
-      <h2>Jeden z největších prodejců dílů v regionu</h2>
-    </div>
-    <div>
-      <p>Dovážíme a distribuujeme náhradní díly na osobní a užitkové vozy světových značek a rozvážíme je servisům a obchodům. Šíře sortimentu od světových výrobců nás řadí k největším prodejcům v regionu a jsme obchodním partnerem jedné z největších firem na evropském trhu.</p>
-      <p style="margin:0"><a class="btn btn-line" href="/o-nas/">Více o firmě</a></p>
+      <p>Firma dováží a distribuuje náhradní díly pro osobní a užitkové vozy. Široký sortiment náhradních dílů od světových výrobců nás řadí k největším prodejcům v regionu. Jsme obchodním partnerem jedné z největších firem na evropském trhu.</p>
+      <p style="margin:0"><a class="btn btn-line" href="/o-nas/">Více o nás</a></p>
     </div>
   </div>
 </section>
@@ -424,150 +117,89 @@ footer .sep{margin-left:auto}
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <h2>Sortiment</h2>
-        <p class="lede">Prakticky vše, co servis potřebuje — od brzdových destiček po hever a dílenský nábytek.</p>
+        <h2>Co nabízíme</h2>
+        <p class="lede">Kompletní sortiment náhradních dílů na osobní vozy.</p>
       </div>
       <a class="more" href="/sortiment/">Celý sortiment</a>
     </div>
 
+    <div class="chips" style="margin-bottom:34px"><i class="chip">Brzdy</i><i class="chip">Spojky</i><i class="chip">Tlumiče</i><i class="chip">Filtry</i><i class="chip">Řemeny</i><i class="chip">Kladky</i><i class="chip">Ložiska</i><i class="chip">Výfuky</i><i class="chip">Čepy</i><i class="chip">Startéry</i><i class="chip">Alternátory</i><i class="chip">Karosářské díly</i><i class="chip">Vybavení servisu</i><i class="chip">Oleje</i><i class="chip">Chladiče</i><i class="chip">Poloosy</i></div>
+
     <div class="cats">
       <a class="cat is-wide" href="/sortiment/nahradni-dily/">
         <h3>Náhradní díly</h3>
-        <p>Originální i aftermarketové díly na osobní a užitkové vozy. Sortiment originálních dílů se dostává i na pulty aftermarketu — jen v jiné krabičce, než ji znáte ze značkového servisu.</p>
-        <div class="parts">
-          <i>Brzdy</i><i>Spojky</i><i>Tlumiče</i><i>Filtry</i><i>Řemeny</i><i>Kladky</i>
-          <i>Ložiska</i><i>Výfuky</i><i>Čepy</i><i>Startéry</i><i>Alternátory</i>
-          <i>Karosářské díly</i><i>Chladiče</i><i>Poloosy</i>
-        </div>
+        <p>Originální i aftermarketové díly na osobní a užitkové vozy.</p>
       </a>
       <a class="cat" href="/sortiment/pneumatiky/">
         <h3>Pneumatiky</h3>
-        <p>Nové pneumatiky na osobní i užitkové vozy a na motocykly.</p>
-        <div class="tags">Letní · Zimní · Celoroční · Disky</div>
       </a>
       <a class="cat" href="/sortiment/vybaveni-servisu/">
         <h3>Vybavení servisů</h3>
-        <p>Klíče, přípravky, stahováky, dílenský nábytek, hevery, zvedáky a vyvažovačky.</p>
-        <div class="tags">V e-shopu pod UNI DÍLY A DÍLNA a v katalogu vybavení servisu</div>
       </a>
       <a class="cat" href="/sortiment/chemie/">
         <h3>Chemie a oleje</h3>
-        <p>Motorové a převodové oleje, maziva, aditiva, provozní kapaliny a autokosmetika.</p>
-        <div class="tags">Vybíráme jen to, co nám samotným v dílně vydrží</div>
       </a>
       <a class="cat" href="/sortiment/ochranne-prostredky/">
         <h3>Ochranné prostředky</h3>
-        <p>Pracovní oblečení, boty, rukavice, masky a respirátory.</p>
-        <div class="tags">Pro celou dílnu, ne jen pro jednoho</div>
       </a>
     </div>
   </div>
 </section>
 
-<section class="delivery">
+<section id="zbozi" class="delivery">
   <div class="wrap">
     <div class="sec-head">
-      <div>
-        <h2>Jak probíhá objednávka ze servisu</h2>
-        <p class="lede">Nemusíte nic řešit e-mailem a čekat na odpověď. Zavolejte nebo objednejte v e-shopu a my se ozveme se skladovou dostupností.</p>
-      </div>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <b>KROK 1</b>
-        <h3>Objednáte</h3>
-        <p>E-shopem, telefonem nebo osobně na pobočce. Stačí značka a model vozu, VIN nebo katalogové číslo dílu.</p>
-      </div>
-      <div class="step">
-        <b>KROK 2</b>
-        <h3>Ověříme dostupnost</h3>
-        <p>Řekneme vám, co máme skladem a co dovezeme. Pokud díl neseženeme u jednoho dodavatele, hledáme dál.</p>
-      </div>
-      <div class="step">
-        <b>KROK 3</b>
-        <h3>Přivezeme</h3>
-        <p>Vlastním rozvozem k vám do servisu nebo obchodu. Odběr na pobočce je samozřejmě taky možný.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="zbozi">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <h2>Doporučujeme z e-shopu</h2>
-        <p class="lede">Vybavení, které se nám osvědčilo ve vlastní dílně.</p>
-      </div>
+      <div><h2>Doporučené zboží</h2></div>
       <a class="more" href="https://eshop.gcar.cz/cs">Do e-shopu</a>
     </div>
-
     <div class="goods">
       <a class="good" href="https://eshop.gcar.cz/cs/katalog/detail-zbozi/vyvazovacka-kol-ath-w-42-led-2d/ath-heinl/ath-150031/3049631/">
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=3049631" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">ATH HEINL · ATH-150031</span>
         <h3>Vyvažovačka kol ATH W 42 LED 2D</h3>
-        <span class="price"><b>64 800 Kč</b><span>bez DPH</span></span>
+        <span class="price"><b>64 800 Kč</b></span>
       </a>
       <a class="good" href="https://eshop.gcar.cz/cs/katalog/detail-zbozi/naradovy-vozik-ks-tools-perfektne/ks-tools/kst-bt153207/4779125/">
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=4779125" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">KS TOOLS · KST-BT153207</span>
         <h3>Nářaďový vozík KS Tools, kompletně vybavený</h3>
-        <span class="price"><b>18 207 Kč</b><span>bez DPH</span></span>
+        <span class="price"><b>18 207 Kč</b></span>
       </a>
       <a class="good" href="https://eshop.gcar.cz/cs/katalog/detail-zbozi/nosic-kol-na-tz-thule-velocompact-3-kol/thule/thu-12185/3898539/">
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=3898539" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">THULE · THU-12185</span>
         <h3>Nosič kol na tažné zařízení Thule VeloCompact, 3 kola</h3>
-        <span class="price"><b>13 990 Kč</b><span>bez DPH</span></span>
+        <span class="price"><b>13 990 Kč</b></span>
       </a>
       <a class="good" href="https://eshop.gcar.cz/cs/katalog/detail-zbozi/stahovak-pruzin-skvely-pomer-cena-provedeni/energy/eng-ne00016/222424/">
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=222424" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">ENERGY · ENG-NE00016</span>
         <h3>Stahovák pružin</h3>
-        <span class="price"><b>4 846 Kč</b><span>bez DPH</span></span>
+        <span class="price"><b>4 846 Kč</b></span>
       </a>
       <a class="good" href="https://eshop.gcar.cz/cs/katalog/detail-zbozi/sada-klesti-na-stahov-pasky-9ks/energy/eng-ne00118/949262/">
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=949262" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">ENERGY · ENG-NE00118</span>
         <h3>Sada kleští na stahovací pásky, 9 ks</h3>
-        <span class="price"><b>1 666 Kč</b><span>bez DPH</span></span>
+        <span class="price"><b>1 666 Kč</b></span>
       </a>
       <a class="good" href="https://eshop.gcar.cz/cs/katalog/detail-zbozi/prisavky-na-manimulaci-s-okny-triangl/energy/eng-ne00314/949651/">
         <span class="ph"><img src="https://eshop.gcar.cz/Image.ashx?type=3&amp;id=949651" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FOTO'}))"></span>
         <span class="code">ENERGY · ENG-NE00314</span>
         <h3>Přísavky na manipulaci s okny, trojité</h3>
-        <span class="price"><b>270 Kč</b><span>bez DPH</span></span>
-      </a>
-    </div>
+        <span class="price"><b>270 Kč</b></span>
+      </a></div>
   </div>
 </section>
 
-<section id="sluzby" style="padding-top:0">
+<section id="sluzby">
   <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <h2>Nejen díly</h2>
-        <p class="lede">Co u nás ještě pořídíte kromě zboží z pultu.</p>
-      </div>
-    </div>
+    <div class="sec-head"><div><h2>Další služby</h2></div></div>
     <div class="svc">
-      <a href="http://autoserviskromeriz.cz">
-        <h3>Autoservis</h3>
-        <p>Opravy osobních vozů a pickupů, karosářské práce, diagnostika, příprava a provedení STK a emisí.</p>
-      </a>
-      <a href="/pujcovna/">
-        <h3>Půjčovna</h3>
-        <p>Střešní boxy, nosiče, přívěsy a autodoplňky na víkend i na dovolenou.</p>
-      </a>
-      <a href="/vyprodej/">
-        <h3>Výprodej</h3>
-        <p>Skladové zbytky a doběhové položky za zlomek ceny. Vyplatí se koukat pravidelně.</p>
-      </a>
-      <a href="/sortiment/nahradni-dily/">
-        <h3>Autoskla a tažná zařízení</h3>
-        <p>Prodej i montáž čelních, bočních a zadních skel a tažných zařízení.</p>
-      </a>
+      <a href="http://autoserviskromeriz.cz"><h3>Autoservis</h3><p>Provozujeme autoservis v Kroměříži.</p></a>
+      <a href="/pujcovna/"><h3>Půjčovna</h3><p>Půjčovna autodoplňků.</p></a>
+      <a href="/vyprodej/"><h3>Výprodej</h3><p>Zboží za snížené ceny.</p></a>
+      <a href="/akce/"><h3>Akce</h3><p>Aktuální akční nabídky.</p></a>
     </div>
   </div>
 </section>
@@ -576,31 +208,28 @@ footer .sep{margin-left:auto}
   <div class="wrap">
     <div>
       <h2>Ozvěte se</h2>
-      <p class="lede">Nejrychlejší je telefon. Když nevíte, který díl potřebujete, dohledáme ho podle VIN nebo podle fotky.</p>
+      <p class="lede">Máme dvě pobočky — v Kroměříži a ve Starém Městě.</p>
       <p style="margin-top:22px"><a class="btn btn-red btn-lg" href="tel:+420602721994">Zavolat 602 721 994</a></p>
+      <p style="color:#7E88A5;font-size:14.5px;margin-top:18px">Po–Pá 8:00–17:00 · So po domluvě (obvykle 9:00–10:00) · Neděle a svátky zavřeno</p>
     </div>
     <div>
       <div class="ccard">
         <h3>Kroměříž</h3>
         <address>Hulínská 2351/298E, 767 01 Kroměříž<br>areál bývalé masny</address>
-        <div class="tels">
-          <a href="tel:+420602721994">602 721 994</a>
-          <a href="tel:+420608501994">608 501 994</a>
-        </div>
+        <div class="tels"><a href="tel:+420602721994">602 721 994</a><a href="tel:+420608501994">608 501 994</a></div>
         <a class="mail" href="mailto:gcar@gcar.cz">gcar@gcar.cz</a>
       </div>
       <div class="ccard">
         <h3>Staré Město</h3>
         <address>Brněnská 1395, 686 03 Staré Město</address>
-        <div class="tels">
-          <a href="tel:+420777141994">777 141 994</a>
-          <a href="tel:+420774721884">774 721 884</a>
-        </div>
+        <div class="tels"><a href="tel:+420777141994">777 141 994</a><a href="tel:+420774721884">774 721 884</a></div>
         <a class="mail" href="mailto:obchod.uh@gcar.cz">obchod.uh@gcar.cz</a>
       </div>
     </div>
   </div>
 </section>
+
+</main>
 
 <div class="callbar" aria-label="Rychlý kontakt">
   <a class="c-km" href="tel:+420602721994">Zavolat<small>Kroměříž</small></a>
@@ -609,60 +238,56 @@ footer .sep{margin-left:auto}
 
 <footer>
   <div class="wrap">
-    <span>GCAR services, s.r.o. · IČO 26946840 · DIČ CZ26946840</span>
-    <span class="sep"><a href="/kontakt/">Kontakt</a></span>
-    <a href="https://eshop.gcar.cz/cs">E-shop</a>
-    <span>© 2026 GCAR.cz</span>
+    <div class="fgrid">
+      <div>
+        <img src="/assets/img/logo-inverse.png" alt="GCAR">
+        <p style="margin:0">Dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuce do autoservisů a obchodů.</p>
+      </div>
+      <div>
+        <h4>Sortiment</h4>
+        <ul>
+        <li><a href="/sortiment/nahradni-dily/">Náhradní díly</a></li>
+        <li><a href="/sortiment/pneumatiky/">Pneumatiky</a></li>
+        <li><a href="/sortiment/vybaveni-servisu/">Vybavení servisů</a></li>
+        <li><a href="/sortiment/chemie/">Chemie a oleje</a></li>
+        <li><a href="/sortiment/ochranne-prostredky/">Ochranné prostředky</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Firma</h4>
+        <ul>
+          <li><a href="/o-nas/">O firmě</a></li>
+          <li><a href="/akce/">Akce</a></li>
+          <li><a href="/vyprodej/">Výprodej</a></li>
+          <li><a href="/pujcovna/">Půjčovna</a></li>
+          <li><a href="http://autoserviskromeriz.cz">Autoservis</a></li>
+          <li><a href="https://eshop.gcar.cz/cs">E-shop</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+      <div style="margin-bottom:18px">
+        <div style="color:#fff;font-weight:600;margin-bottom:4px">Kroměříž</div>
+        <div>Hulínská 2351/298E, 767 01 Kroměříž</div>
+        <div style="margin-top:6px"><a href="tel:+420602721994">602 721 994</a> · <a href="tel:+420608501994">608 501 994</a></div>
+        <div><a href="mailto:gcar@gcar.cz">gcar@gcar.cz</a></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <div style="color:#fff;font-weight:600;margin-bottom:4px">Staré Město</div>
+        <div>Brněnská 1395, 686 03 Staré Město</div>
+        <div style="margin-top:6px"><a href="tel:+420777141994">777 141 994</a> · <a href="tel:+420774721884">774 721 884</a></div>
+        <div><a href="mailto:obchod.uh@gcar.cz">obchod.uh@gcar.cz</a></div>
+      </div>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>GCAR services, s.r.o. · IČO 26946840 · DIČ CZ26946840</span>
+      <span class="sep"><a href="/kontakt/">Kontakt</a></span>
+      <span>© 2026 GCAR.cz</span>
+    </div>
   </div>
 </footer>
 
-<script>
-// Mobilní menu
-(function(){
-  var b = document.getElementById('burger'), m = document.getElementById('mobmenu');
-  if(!b || !m) return;
-  function set(open){
-    b.setAttribute('aria-expanded', open ? 'true' : 'false');
-    b.setAttribute('aria-label', open ? 'Zavřít menu' : 'Otevřít menu');
-    m.hidden = !open;
-  }
-  b.addEventListener('click', function(){ set(m.hidden); });
-  m.addEventListener('click', function(e){ if(e.target.tagName === 'A') set(false); });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && !m.hidden){ set(false); b.focus(); }
-  });
-  // při přechodu na desktop panel zavřít
-  matchMedia('(min-width:761px)').addEventListener('change', function(e){ if(e.matches) set(false); });
-})();
-
-// Živý stav otevírací doby pro obě pobočky
-(function(){
-  function open(now){
-    var d = now.getDay(), m = now.getHours()*60 + now.getMinutes();
-    if(d >= 1 && d <= 5) return m >= 480 && m < 1020;   // Po–Pá 8:00–17:00
-    if(d === 6) return m >= 540 && m < 600;             // So 9:00–10:00
-    return false;
-  }
-  function nextText(now){
-    var d = now.getDay(), m = now.getHours()*60 + now.getMinutes();
-    if(d>=1 && d<=5 && m < 480) return 'Otevřeme v 8:00';
-    if(d>=1 && d<=4) return 'Otevřeme zítra v 8:00';
-    if(d===5) return 'Otevřeme v sobotu, po domluvě';
-    if(d===6) return m < 540 ? 'Otevřeme v 9:00' : 'Otevřeme v pondělí v 8:00';
-    return 'Otevřeme v pondělí v 8:00';
-  }
-  function render(){
-    var now = new Date(), isOpen = open(now);
-    document.querySelectorAll('[data-branch]').forEach(function(el){
-      var dot = el.querySelector('.dot'), st = el.querySelector('.status');
-      dot.classList.toggle('is-open', isOpen);
-      st.classList.toggle('is-open', isOpen);
-      st.textContent = isOpen ? 'Teď otevřeno' : nextText(now);
-    });
-  }
-  render();
-  setInterval(render, 60000);
-})();
-</script>
+<script src="/assets/js/main.js" defer></script>
 </body>
 </html>
