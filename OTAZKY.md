@@ -12,10 +12,10 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 
 | # | Tvrzení | Otázka |
 |---|---|---|
-| A1 | „Vlastní rozvoz do servisů" | Rozvážíte vlastními auty, nebo posíláte přepravní službou? Web říká jen „distribuce do autoservisů a obchodů". |
+| A1 | ~~Vlastní rozvoz~~ | **POTVRZENO majitelem** — vozí vlastními auty. Na webu je to teď v horní liště i v pruhu s fakty. |
 | A2 | „Rozvoz na Kroměřížsku a Uherskohradišťsku" | Jaký je skutečný dojezd? Kam všude jezdíte? |
 | A3 | „Objednejte do X hodin a máte to týž den" | Existuje nějaký deadline pro objednávku na stejný den? Jak často rozvoz jezdí? |
-| A4 | „Sortiment testujeme ve vlastní dílně" | Je autoservis (autoserviskromeriz.cz) vaše firma, nebo jen partner? |
+| A4 | Autoservis | **PRAVDĚPODOBNĚ VYŘEŠENO** — katalogy (ekatalog.cz, firmy.cz) vedou autoservis, pneuservis i montáže LPG/CNG pod stejným IČO **26946840**, tedy pod GCAR services, s.r.o. Nechat potvrdit. |
 | A5 | „Prodej i montáž autoskel a tažných zařízení" | Montujete, nebo jen prodáváte? |
 | A6 | „Přezutí a vyvážení pneumatik u nás" | Děláte pneuservis? |
 | A10 | ~~„Najdeme díl podle VIN"~~ | **OVĚŘENO** — e-shop má „VIN + ACI katalog" a vyhledávání podle KÓD / TEXT / VOZIDLO. Můžeme to na webu tvrdit. |
@@ -48,9 +48,9 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 
 | # | Co | Otázka |
 |---|---|---|
-| C9 | **Dva různé e-maily** | gcar.cz uvádí `gcar@gcar.cz`, e-shop `info@gcar.cz`. Který je hlavní? Kam mají chodit poptávky z webu? |
-| C10 | **Číslo 602 721 994** | Na gcar.cz je uvedené jako hlavní telefon, v e-shopu jako **FAX**. Co platí? Nechci, aby zákazník volal na fax. |
-| C11 | **Adresa v e-shopu je jiná** | E-shop: „Hulínská 2351/28E", gcar.cz: „Hulínská 2351/298E". Jedno z nich je překlep. |
+| C9 | ~~Dva různé e-maily~~ | **ZODPOVĚZENO 16. 9. 2026** — hlavní je `gcar@gcar.cz`. (`info@gcar.cz` v e-shopu zůstává, na web nedáváme.) |
+| C10 | ~~602 721 994 telefon nebo fax?~~ | **ZODPOVĚZENO** — je to **telefon**. Patička e-shopu ho označuje jako fax chybně; stojí za to ji opravit. |
+| C11 | ~~Adresa~~ | **ZODPOVĚZENO** — správně je **Hulínská 2351/28E**. Na starém gcar.cz je překlep (298E) — opravit i tam, než se web vypne. |
 | C12 | **Právní stránky chybí** | E-shop má Obchodní podmínky, Reklamační řád, Ochranu osobních údajů a Cookies. Nový prezentační web nemá nic. **Pošli mi URL těch stránek z e-shopu** a odkážu na ně z patičky. |
 | C13 | ~~Fonty z Google~~ | **VYŘEŠENO** — písma se hostují z `/assets/fonts/`, web už nikam ven nesahá. |
 | C14 | **Newsletter** | E-shop sbírá e-maily na akční nabídky. Má být přihlášení i na webu? |
@@ -63,9 +63,34 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 | C3 | **Logo v SVG** | Mám jen PNG 200×65. Na retina displeji je měkké. Potřebuju i inverzní variantu pro tmavé pozadí (teď ji generuju přebarvením pixelů, což není ideální). |
 | C4 | **Odkazy na mapy** obou poboček | Na mapy.cz najít pobočku → Sdílet → Vložit na web. Styl `.maps` v CSS je hotový, chybí jen odkazy. |
 | C5 | **Kontaktní formulář nikam neodesílá** | Otevře poštovní klienta přes `mailto`. Na ostro potřebuje endpoint (Formspree nebo serverless funkce). Na který e-mail mají poptávky chodit? |
-| C6 | **Otevírací doba — rozpor** | Na gcar.cz je Po–Pá 8:00–17:00, na Portálu řidiče 7:00–17:30. Co platí? Je doba stejná na obou pobočkách? |
+| C6 | ~~Otevírací doba~~ | **ČÁSTEČNĚ** — majitel potvrdil **8:00–17:00**. Portál řidiče má 7:00–17:30 chybně, nechat opravit. **VYŘEŠENO** — Firmy.cz má rozepsáno Po–Pá 8:00–17:00, **So 9:00–10:00**, Ne zavřeno. Na webu upraveno. |
 | C7 | **Sociální sítě** | Na současném webu jsou v patičce tři ikony s prázdným odkazem (`href="#"`). Máte Facebook/Instagram, nebo je vypustit? |
 | C8 | **Texty podstránek** | gcar.cz blokuje automatické stahování (robots.txt), takže jsem podstránky nikdy neviděl. Zkopíruj mi prosím text z `/o-nas/`, `/sortiment/*`, `/akce/`, `/vyprodej/`, `/pujcovna/`. |
+
+---
+
+## E. Nové zjištění: firma dělá víc, než co je na webu
+
+> **POZOR:** Na webu už je nová stránka **/sluzby/** s autoservisem, pneuservisem
+> a montážemi LPG/CNG. Ten text je poskládaný z veřejných katalogů, **ne od
+> firmy**. Než web pustíme ven, musí ho majitel přečíst slovo po slovu —
+> zvlášť tvrzení o náhradním vozidle po dobu montáže a o rozsahu servisu
+> klimatizací a geometrie. (Splátky na montáž LPG už byly odstraněny —
+> nenabízejí se.)
+
+Z veřejných katalogů (firmy.cz, ekatalog.cz, zivefirmy.cz) vychází, že pod
+IČO **26946840** běží toho podstatně víc, než co gcar.cz zmiňuje. Ověřit
+u majitele a rozhodnout, co z toho na web patří.
+
+| # | Co | Otázka |
+|---|---|---|
+| E1 | **Montáže LPG a CNG — UŽ JE NA WEBU, POTVRDIT TEXT** | Samostatný web **lpg-kromeriz.cz**, montáže, přestavby, revize, servis a diagnostika LPG/CNG, LPG na splátky, roční revize, výměny nádrží, náhradní vozidlo po dobu montáže. Na gcar.cz o tom není ani slovo. Má to tam být, nebo to má zůstat oddělené? |
+| E2 | **Pneuservis — UŽ JE NA WEBU, POTVRDIT TEXT** | Katalogy uvádějí „autoservis s pneuservisem", měření geometrie, servis klimatizací. Tím padá moje pochybnost, jestli přezouváte — asi ano. Potvrdit. |
+| E3 | **Pevná linka 573 334 052** | Na webu není. Má tam být? |
+| E4 | **Firma vznikla v roce 2004** | Na webu bylo teď „Od roku 2004" — potvrdit, ať tam nemáme špatný rok. |
+| E5 | **Jednatel Vladimír Hauk** | Je to majitel, se kterým se řeší tento web? |
+| E6 | ~~Adresa ve Starém Městě~~ | **POTVRZENO** — **Brněnská 1395**. Údaj „Za Špicí 1798" na ekatalog.cz je špatně, nechat opravit. |
+| E7 | **Záznamy na Firmy.cz** | Firma tam má **několik samostatných zápisů** („GCAR services", „LPG - GCAR", „Prodej náhradních dílů - GCAR", „GCAR"), každý s jinými údaji a jinou otevírací dobou. Stojí za to je pročistit — pro místní vyhledávání to má větší dopad než půlka webu. |
 
 ---
 

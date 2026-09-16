@@ -19,6 +19,7 @@ DOMAIN = "https://gcar.cz"
 ESHOP = "https://eshop.gcar.cz/cs"
 ESHOP_SEARCH = "https://eshop.gcar.cz/cs/hledani/5/-1/"  # cestová URL: .../hledani/5/-1/{dotaz}
 SERVIS = "http://autoserviskromeriz.cz"
+LPG = "https://www.lpg-kromeriz.cz"
 
 # --------------------------------------------------------------------------
 # Firemní údaje — jediné místo, kde jsou. Změna telefonu se promítne všude.
@@ -33,18 +34,20 @@ POBOCKY = [
     {
         "key": "km",
         "nazev": "Kroměříž",
-        "ulice": "Hulínská 2351/298E",
+        # Potvrzeno majitelem: 28E (ne 298E, jak uvádí starý gcar.cz)
+        "ulice": "Hulínská 2351/28E",
         "psc": "767 01 Kroměříž",
         "poznamka": "areál bývalé masny",
-        # 608 501 994 = hlavní telefon (potvrzeno patičkou e-shopu)
-        # 602 721 994 = FAX podle e-shopu, na gcar.cz uvedený jako telefon → OVĚŘIT
-        "tel": ["+420608501994"],
+        # Potvrzeno majitelem 16. 9. 2026: 602 721 994 je telefon (ne fax),
+        # přestože patička e-shopu ho uvádí jako fax. Hlavní číslo na web.
+        "tel": ["+420602721994", "+420608501994"],
         "mail": "gcar@gcar.cz",
         "mapa": "https://frame.mapy.cz/s/hodukacale",
     },
     {
         "key": "uh",
         "nazev": "Staré Město",
+        # Potvrzeno: Brněnská 1395 (ne "Za Špicí 1798", jak uvádí ekatalog.cz)
         "ulice": "Brněnská 1395",
         "psc": "686 03 Staré Město",
         "poznamka": "",
@@ -54,7 +57,7 @@ POBOCKY = [
     },
 ]
 
-OTEVIRACI_DOBA = "Po–Pá 8:00–17:00 · So po domluvě (obvykle 9:00–10:00) · Neděle a svátky zavřeno"
+OTEVIRACI_DOBA = "Po–Pá 8:00–17:00 · So 9:00–10:00 · Neděle a svátky zavřeno"
 
 NAV = [
     ("/", "Domů", "index"),
@@ -63,7 +66,7 @@ NAV = [
     ("/akce/", "Akce", "akce"),
     ("/vyprodej/", "Výprodej", "vyprodej"),
     ("/pujcovna/", "Půjčovna", "pujcovna"),
-    (SERVIS, "Servis", "servis"),
+    ("/sluzby/", "Služby", "sluzby"),
     ("/kontakt/", "Kontakt", "kontakt"),
 ]
 
@@ -122,7 +125,7 @@ def header(active):
 
 <div class="util">
   <div class="wrap">
-    <span>Zajišťujeme rozvoz servisům a obchodům</span>
+    <span>Rozvoz servisům a obchodům vlastními vozy</span>
     <span class="sep">Po–Pá 8:00–17:00</span>
     <a href="mailto:gcar@gcar.cz">gcar@gcar.cz</a>
   </div>
@@ -194,6 +197,7 @@ def footer():
           <li><a href="/akce/">Akce</a></li>
           <li><a href="/vyprodej/">Výprodej</a></li>
           <li><a href="/pujcovna/">Půjčovna</a></li>
+          <li><a href="/sluzby/">Služby</a></li>
           <li><a href="%s">Autoservis</a></li>
           <li><a href="%s">E-shop</a></li>
         </ul>
@@ -364,7 +368,7 @@ HOME = """<div class="hero">
   <div class="wrap">
     <div>
       <h1>Prodej náhradních dílů</h1>
-      <p class="lede">Dovážíme a distribuujeme náhradní díly na osobní a užitkové vozy světových značek. Zajišťujeme rozvoz servisům a obchodům.</p>
+      <p class="lede">Dovážíme a distribuujeme náhradní díly na osobní a užitkové vozy světových značek. Servisům a obchodům je rozvážíme vlastními vozy.</p>
 
       <form class="finder" id="hledani" data-base="__SEARCH__" role="search">
         <input name="q" type="search" placeholder="Hledat díl, značku nebo katalogové číslo" aria-label="Hledat v e-shopu" required>
@@ -376,8 +380,17 @@ HOME = """<div class="hero">
     </div>
 
     <div class="branches" id="pobocky">__BRANCHES__
-      <div class="hours"><b>Po–Pá 8:00–17:00</b> · So po domluvě (obvykle 9:00–10:00) · Neděle a svátky zavřeno</div>
+      <div class="hours"><b>Po–Pá 8:00–17:00</b> · So 9:00–10:00 · Neděle a svátky zavřeno</div>
     </div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="stat"><b>Vlastní rozvoz</b><span>díly vozíme servisům a obchodům sami, ne přepravcem</span></div>
+    <div class="stat"><b>2 pobočky</b><span>Kroměříž a Staré Město</span></div>
+    <div class="stat"><b>TecDoc</b><span>díl dohledáte podle vozu, VIN i katalogového čísla</span></div>
+    <div class="stat"><b>Od roku 2004</b><span>GCAR services, s.r.o.</span></div>
   </div>
 </div>
 
@@ -452,12 +465,18 @@ HOME = """<div class="hero">
 
 <section id="sluzby">
   <div class="wrap">
-    <div class="sec-head"><div><h2>Další služby</h2></div></div>
+    <div class="sec-head">
+      <div>
+        <h2>Nejen prodej dílů</h2>
+        <p class="lede">Pod GCAR services, s.r.o. běží i vlastní autoservis a montáže plynových pohonů.</p>
+      </div>
+      <a class="more" href="/sluzby/">Všechny služby</a>
+    </div>
     <div class="svc">
-      <a href="__SERVIS__"><h3>Autoservis</h3><p>Provozujeme autoservis v Kroměříži.</p></a>
+      <a href="/sluzby/"><h3>Autoservis a pneuservis</h3><p>Opravy vozů, pneuservis, servis klimatizací a měření geometrie.</p></a>
+      <a href="/sluzby/"><h3>LPG a CNG</h3><p>Montáže, přestavby, revize a servis plynových pohonů.</p></a>
       <a href="/pujcovna/"><h3>Půjčovna</h3><p>Půjčovna autodoplňků.</p></a>
       <a href="/vyprodej/"><h3>Výprodej</h3><p>Zboží za snížené ceny.</p></a>
-      <a href="/akce/"><h3>Akce</h3><p>Aktuální akční nabídky.</p></a>
     </div>
   </div>
 </section>
@@ -562,6 +581,29 @@ KAT_OOPP = """<div class="split">
 </div>
 
 __ESHOPBOX__
+"""
+
+# --------------------------------------------------------------------------
+# CHYBI: potvrzení od majitele. Rozsah služeb je poskládaný z veřejných
+# katalogů (firmy.cz, ekatalog.cz) pod IČO 26946840, ne z gcar.cz.
+SLUZBY = """<div class="split">
+  <div class="prose">
+    <p>Pod firmou GCAR services, s.r.o. neběží jen prodej náhradních dílů. V Kroměříži provozujeme vlastní autoservis a specializujeme se na plynové pohony.</p>
+
+    <h2>Autoservis a pneuservis</h2>
+    <p>Opravy osobních vozů, pneuservis, servis klimatizací, měření geometrie a diagnostika. Díly, které do vozu montujeme, máme z vlastního skladu — nečeká se na dodání.</p>
+    <p><a class="btn btn-line" href="__SERVIS__">Přejít na autoserviskromeriz.cz</a></p>
+
+    <h2>Montáže LPG a CNG</h2>
+    <p>Montáže a přestavby na LPG a CNG, pravidelné roční revize, servis a diagnostika plynových systémů, výměny tlakových nádrží a seřízení vozů. Systémy od světových výrobců. Na dobu přestavby zapůjčíme náhradní vozidlo.</p>
+    <p><a class="btn btn-line" href="__LPG__">Přejít na lpg-kromeriz.cz</a></p>
+
+    <h2>Půjčovna autodoplňků</h2>
+    <p>Střešní boxy, nosiče a přívěsy na víkend i na dovolenou.</p>
+    <p><a class="btn btn-line" href="/pujcovna/">Půjčovna</a></p>
+  </div>
+  __ASIDE__
+</div>
 """
 
 # --------------------------------------------------------------------------
@@ -739,6 +781,12 @@ for slug, nazev, _ in KATEGORIE:
     add("sortiment/%s/index.html" % slug, title, desc, body, "sortiment",
         page_head(h1, lede, [("/sortiment/", "Sortiment"), (None, nazev)]))
 
+add("sluzby/index.html", "Služby — autoservis, pneuservis, LPG a CNG | GCAR",
+    "Autoservis a pneuservis v Kroměříži, montáže a revize LPG a CNG, servis klimatizací, měření geometrie a půjčovna autodoplňků.",
+    SLUZBY, "sluzby",
+    page_head("Služby", "Kromě prodeje dílů provozujeme vlastní autoservis a montáže plynových pohonů.",
+              [(None, "Služby")]))
+
 add("akce/index.html", "Akce | GCAR", "Aktuální akční nabídky GCAR.",
     AKCE, "akce", page_head("Akce", "Aktuální akční nabídky.", [(None, "Akce")]))
 
@@ -771,6 +819,7 @@ def render(page):
     body = body.replace("__SEARCH__", ESHOP_SEARCH)
     body = body.replace("__ESHOP__", ESHOP)
     body = body.replace("__SERVIS__", SERVIS)
+    body = body.replace("__LPG__", LPG)
     body = body.replace("__TELF__", fmt_tel(POBOCKY[0]["tel"][0]).replace(" ", "&nbsp;"))
     body = body.replace("__TEL__", POBOCKY[0]["tel"][0])
 

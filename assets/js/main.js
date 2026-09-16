@@ -37,7 +37,7 @@
     3: [480, 1020],
     4: [480, 1020],
     5: [480, 1020],  // pátek
-    6: [540, 600]    // sobota    9:00–10:00 (po domluvě)
+    6: [540, 600]    // sobota    9:00–10:00 (potvrzeno firmy.cz)
   };
 
   function isOpen(now) {
