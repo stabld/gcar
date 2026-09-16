@@ -396,7 +396,7 @@ HOME = """<div class="hero">
       <a class="pillar" href="/autoservis/">
         <b>02</b>
         <h2>Autoservis</h2>
-        <p>Oleje, brzdy, převodovky, pneumatiky a 3D geometrie, klimatizace, sezónní prohlídky. Díly bereme z vlastního skladu, takže se na ně nečeká.</p>
+        <p>Oleje, brzdy, převodovky, pneumatiky a 3D geometrie, klimatizace, karosářské a elektrikářské práce. Ceník máme zveřejněný.</p>
         <span class="go">Co v servisu uděláme</span>
       </a>
       <a class="pillar" href="/lpg/">
@@ -619,13 +619,20 @@ AUTOSERVIS = """<div class="split">
   <div><h4>Pneumatiky a 3D geometrie</h4><p>Správný vzorek a geometrie zlepšují jízdní vlastnosti.</p></div>
   <div><h4>Klimatizace a dezinfekce</h4><p>Udržujte klimatizaci čistou. Čistý vzduch bez bakterií.</p></div>
   <div><h4>Sezónní prohlídky</h4><p>Udržujte auto v kondici pravidelnými letními a zimními kontrolami.</p></div>
+  <div><h4>Diagnostika a zjištění závady</h4><p>Než něco vyměníme, zjistíme, co je opravdu špatně.</p></div>
+  <div><h4>Karosářské a elektrikářské práce</h4><p>Od plechu po kabeláž.</p></div>
+  <div><h4>Montáž tažného zařízení</h4><p>Klasická elektroinstalace i check control.</p></div>
 </div>
 
 <div class="split">
   <div class="prose">
-    <h2>Objednání a ceník</h2>
-    <p>Termín si domluvte telefonicky. Ceník servisních prací i podrobnosti k jednotlivým službám najdete na webu servisu.</p>
-    <p><a class="btn btn-line" href="__SERVIS__">Ceník a podrobnosti na autoserviskromeriz.cz</a></p>
+    <h2>Ceník máme zveřejněný</h2>
+    <p>Nemusíte volat, abyste se dozvěděli, kolik co stojí. Kompletní ceník servisních prací — mechanika, pneuservis, klimatizace, provozní kapaliny i tažná zařízení — je na webu servisu. Ceny jsou uvedené s DPH.</p>
+    <p>Na provedené práce platí zákonná záruka 6 měsíců.</p>
+    <p><a class="btn btn-red" href="__SERVIS__">Zobrazit ceník servisních prací</a></p>
+
+    <h2>Objednání</h2>
+    <p>Termín si domluvte telefonicky. Řekněte nám značku, model a rok výroby vozu a o co jde — poradíme, co bude potřeba.</p>
   </div>
   __ASIDE__
 </div>

@@ -16,7 +16,7 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 | A2 | „Rozvoz na Kroměřížsku a Uherskohradišťsku" | Jaký je skutečný dojezd? Kam všude jezdíte? |
 | A3 | „Objednejte do X hodin a máte to týž den" | Existuje nějaký deadline pro objednávku na stejný den? Jak často rozvoz jezdí? |
 | A4 | Autoservis | **PRAVDĚPODOBNĚ VYŘEŠENO** — katalogy (ekatalog.cz, firmy.cz) vedou autoservis, pneuservis i montáže LPG/CNG pod stejným IČO **26946840**, tedy pod GCAR services, s.r.o. Nechat potvrdit. |
-| A5 | „Prodej i montáž autoskel a tažných zařízení" | Montujete, nebo jen prodáváte? |
+| A5 | Autoskla a tažná zařízení | **ČÁSTEČNĚ** — tažná zařízení **montujete**, je to v ceníku servisu (klasická elektroinstalace i check control). **Autoskla zůstávají neověřená** — v ceníku ani v nabídce servisu nejsou. Montujete je? Nebo jen prodáváte? Nebo vůbec? |
 | A6 | „Přezutí a vyvážení pneumatik u nás" | Děláte pneuservis? |
 | A10 | ~~„Najdeme díl podle VIN"~~ | **OVĚŘENO** — e-shop má „VIN + ACI katalog" a vyhledávání podle KÓD / TEXT / VOZIDLO. Můžeme to na webu tvrdit. |
 | A7 | Podmínky půjčovny (kauce, doklad totožnosti, rezervace) | Jak to u vás doopravdy chodí? |
@@ -98,7 +98,8 @@ u majitele a rozhodnout, co z toho na web patří.
 | E3 | **Pevná linka 573 334 052** | Na webu není. Má tam být? |
 | E4 | **Firma vznikla v roce 2004** | Na webu bylo teď „Od roku 2004" — potvrdit, ať tam nemáme špatný rok. |
 | E5 | **Jednatel Vladimír Hauk** | Je to majitel, se kterým se řeší tento web? |
-| E9 | **Ceník servisních prací** | Autoservis má na webu ceník. Má být dostupný i z gcar.cz, nebo stačí odkaz? |
+| E9 | ~~Ceník servisních prací~~ | **VYŘEŠENO** — na gcar.cz ceník **nekopírujeme** (číslo na dvou místech časem lhát začne, viz zastaralé ceny na starém webu). Na /autoservis/ je výrazný odkaz na ceník servisu. |
+| E10 | **Ceník obsahuje víc, než co je v nabídce** | Z ceníku vyplynuly služby, které v seznamu na webu servisu chybí: karosářské a elektrikářské práce, zjištění závady, montáž tažného zařízení, plnění klimatizace R134A i R1234YF, čištění ozonem, zjištění úniku vodíkovou metodou. Doplnil jsem je na /autoservis/ — potvrdit, že je děláte pořád. |
 | E8 | **Mají se weby sloučit?** | Teď jsou tři: gcar.cz, autoserviskromeriz.cz, lpg-kromeriz.cz. gcar.cz na zbylé dva odkazuje. Má to tak zůstat, nebo mají obsah těch dvou postupně přejít pod gcar.cz a domény se jen přesměrovat? Tři weby znamenají trojí údržbu a rozdrobené pozice ve vyhledávání. |
 | E6 | ~~Adresa ve Starém Městě~~ | **POTVRZENO** — **Brněnská 1395**. Údaj „Za Špicí 1798" na ekatalog.cz je špatně, nechat opravit. |
 | E7 | **Záznamy na Firmy.cz** | Firma tam má **několik samostatných zápisů** („GCAR services", „LPG - GCAR", „Prodej náhradních dílů - GCAR", „GCAR"), každý s jinými údaji a jinou otevírací dobou. Stojí za to je pročistit — pro místní vyhledávání to má větší dopad než půlka webu. |
