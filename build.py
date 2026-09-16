@@ -396,7 +396,7 @@ HOME = """<div class="hero">
       <a class="pillar" href="/autoservis/">
         <b>02</b>
         <h2>Autoservis</h2>
-        <p>Opravy osobních vozů, pneuservis, diagnostika. Díly bereme z vlastního skladu, takže se na ně nečeká.</p>
+        <p>Oleje, brzdy, převodovky, pneumatiky a 3D geometrie, klimatizace, sezónní prohlídky. Díly bereme z vlastního skladu, takže se na ně nečeká.</p>
         <span class="go">Co v servisu uděláme</span>
       </a>
       <a class="pillar" href="/lpg/">
@@ -604,22 +604,28 @@ __ESHOPBOX__
 # --------------------------------------------------------------------------
 # CHYBI: potvrzení od majitele. Rozsah služeb je poskládaný z veřejných
 # katalogů (firmy.cz, ekatalog.cz) pod IČO 26946840, ne z gcar.cz.
+# Služby převzaté z autoserviskromeriz.cz (vlastní web servisu, stejná firma).
 AUTOSERVIS = """<div class="split">
   <div class="prose">
-    <p>Autoservis provozujeme v Kroměříži pod stejnou firmou jako prodejnu dílů. To má pro vás jeden praktický důsledek: díly, které do vozu montujeme, máme na vlastním skladě a nečeká se na dodavatele.</p>
+    <p>Nabízíme kompletní služby autoservisu, abyste se na cestách cítili bezpečněji. Servis provozujeme v Kroměříži pod stejnou firmou jako prodejnu dílů — díly, které do vozu montujeme, máme na vlastním skladě a nečeká se na dodavatele.</p>
+  </div>
+  <div></div>
+</div>
 
-    <h2>Co v servisu uděláme</h2>
-    <ul>
-      <li>Opravy a údržba osobních vozů</li>
-      <li>Pneuservis — přezutí, vyvážení, opravy pneumatik</li>
-      <li>Diagnostika</li>
-      <li>Servis klimatizací</li>
-      <li>Měření geometrie</li>
-    </ul>
+<div class="list-grid">
+  <div><h4>Výměna oleje</h4><p>Častější výměna oleje prodlužuje životnost motoru.</p></div>
+  <div><h4>Brzdy</h4><p>Destičky, kotouče, kapaliny — brzdy řešíme celé, ne jen to, co je vidět.</p></div>
+  <div><h4>Opravy převodovek</h4><p>Manuální i automatické, včetně výměny olejů.</p></div>
+  <div><h4>Pneumatiky a 3D geometrie</h4><p>Správný vzorek a geometrie zlepšují jízdní vlastnosti.</p></div>
+  <div><h4>Klimatizace a dezinfekce</h4><p>Udržujte klimatizaci čistou. Čistý vzduch bez bakterií.</p></div>
+  <div><h4>Sezónní prohlídky</h4><p>Udržujte auto v kondici pravidelnými letními a zimními kontrolami.</p></div>
+</div>
 
-    <h2>Objednání</h2>
-    <p>Termín si domluvte telefonicky. Podrobnosti o servisu najdete na jeho vlastním webu.</p>
-    <p><a class="btn btn-line" href="__SERVIS__">Přejít na autoserviskromeriz.cz</a></p>
+<div class="split">
+  <div class="prose">
+    <h2>Objednání a ceník</h2>
+    <p>Termín si domluvte telefonicky. Ceník servisních prací i podrobnosti k jednotlivým službám najdete na webu servisu.</p>
+    <p><a class="btn btn-line" href="__SERVIS__">Ceník a podrobnosti na autoserviskromeriz.cz</a></p>
   </div>
   __ASIDE__
 </div>
@@ -823,9 +829,9 @@ for slug, nazev, _ in KATEGORIE:
         page_head(h1, lede, [("/sortiment/", "Sortiment"), (None, nazev)]))
 
 add("autoservis/index.html", "Autoservis a pneuservis Kroměříž | GCAR",
-    "Autoservis v Kroměříži — opravy osobních vozů, pneuservis, diagnostika, servis klimatizací a měření geometrie. Díly z vlastního skladu.",
+    "Autoservis v Kroměříži — výměny oleje, brzdy, opravy převodovek, pneumatiky a 3D geometrie, servis klimatizací a sezónní prohlídky.",
     AUTOSERVIS, "autoservis",
-    page_head("Autoservis", "Opravy, pneuservis a diagnostika v Kroměříži — s díly z vlastního skladu.",
+    page_head("Autoservis", "Kompletní služby autoservisu, abyste se na cestách cítili bezpečněji.",
               [(None, "Autoservis")]))
 
 add("lpg/index.html", "Montáže LPG a CNG Kroměříž | GCAR",
