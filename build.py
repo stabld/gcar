@@ -61,11 +61,11 @@ OTEVIRACI_DOBA = "Po–Pá 8:00–17:00 · So 9:00–10:00 · Neděle a svátky 
 
 NAV = [
     ("/", "Domů", "index"),
+    ("/o-nas/", "O nás", "o-nas"),
     ("/sortiment/", "Autodíly", "sortiment"),
     ("/autoservis/", "Autoservis", "autoservis"),
     ("/lpg/", "LPG a CNG", "lpg"),
     ("/pujcovna/", "Půjčovna", "pujcovna"),
-    ("/o-nas/", "O nás", "o-nas"),
     ("/kontakt/", "Kontakt", "kontakt"),
 ]
 
