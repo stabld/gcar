@@ -216,6 +216,56 @@ def footer():
        pobocky_html, FIRMA["nazev"], FIRMA["ico"], FIRMA["dic"], date.today().year)
 
 
+def schema_org():
+    """Strukturovaná data — díky nim Google zobrazí adresu, otevírací dobu
+    a telefon přímo ve výsledcích vyhledávání. Pro místní firmu je to
+    nejcennější technická věc na celém webu."""
+    import json
+    pobocky = []
+    for p in POBOCKY:
+        pobocky.append({
+            "@type": "AutoPartsStore",
+            "name": "GCAR " + p["nazev"],
+            "image": DOMAIN + "/assets/img/share.png",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": p["ulice"],
+                "addressLocality": p["psc"].split(" ", 2)[-1],
+                "postalCode": " ".join(p["psc"].split(" ")[:2]),
+                "addressCountry": "CZ",
+            },
+            "telephone": p["tel"][0],
+            "email": p["mail"],
+            "url": DOMAIN + "/kontakt/",
+            "openingHoursSpecification": [
+                {"@type": "OpeningHoursSpecification",
+                 "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                 "opens": "08:00", "closes": "17:00"},
+                {"@type": "OpeningHoursSpecification",
+                 "dayOfWeek": "Saturday", "opens": "09:00", "closes": "10:00"},
+            ],
+        })
+
+    data = {
+        "@context": "https://schema.org",
+        "@graph": [{
+            "@type": "Organization",
+            "@id": DOMAIN + "/#organizace",
+            "name": FIRMA["nazev"],
+            "alternateName": "GCAR",
+            "url": DOMAIN,
+            "logo": DOMAIN + "/assets/img/logo.png",
+            "email": POBOCKY[0]["mail"],
+            "telephone": POBOCKY[0]["tel"][0],
+            "vatID": FIRMA["dic"],
+            "taxID": FIRMA["ico"],
+            "sameAs": [ESHOP, SERVIS, LPG],
+        }] + pobocky,
+    }
+    return ('<script type="application/ld+json">%s</script>'
+            % json.dumps(data, ensure_ascii=False, separators=(",", ":")))
+
+
 def layout(title, desc, body, active, canonical):
     return """<!DOCTYPE html>
 <html lang="cs">
@@ -229,7 +279,16 @@ def layout(title, desc, body, active, canonical):
 <meta property="og:description" content="%s">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="cs_CZ">
+<meta property="og:url" content="%s%s">
+<meta property="og:site_name" content="GCAR">
+<meta property="og:image" content="%s/assets/img/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1A243D">
 <link rel="icon" href="/assets/img/logo.png">
+<link rel="apple-touch-icon" href="/assets/img/share.png">
+%s
 <link rel="preload" href="/assets/fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="%s">
@@ -245,6 +304,7 @@ def layout(title, desc, body, active, canonical):
 </body>
 </html>
 """ % (title, desc, DOMAIN, canonical, title, desc,
+       DOMAIN, canonical, DOMAIN, schema_org(),
        asset("/assets/css/fonts.css"), asset("/assets/css/style.css"),
        header(active), body, footer(), asset("/assets/js/main.js"))
 

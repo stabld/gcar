@@ -58,6 +58,7 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 
 | # | Co | Stav |
 |---|---|---|
+| C0 | **Doménu gcar.cz drží AUTOMOBILA s.r.o., ne GCAR services** | Podle WHOIS je držitelem domény **VIA-AUTOMOBILA / AUTOMOBILA s.r.o.** Je to sesterská firma, nebo starý stav? Právně to znamená, že GCAR svou doménu nedrží a nemůže s ní sám nakládat. Doporučuju převést držitele na GCAR services, s.r.o. |
 | C1 | ~~URL vyhledávání~~ | **VYŘEŠENO** — `/cs/hledani/5/-1/{dotaz}`. Vyhledávací pole na webu je napojené. |
 | C2 | ~~Ceny s DPH nebo bez?~~ | **ZODPOVĚZENO** — e-shop ukazuje obojí, hlavní cena bez DPH, pod ní s DPH. |
 | C3 | **Logo v SVG** | Mám jen PNG 200×65. Na retina displeji je měkké. Potřebuju i inverzní variantu pro tmavé pozadí (teď ji generuju přebarvením pixelů, což není ideální). |
@@ -113,3 +114,68 @@ u majitele a rozhodnout, co z toho na web patří.
 | D1 | Sekce **„Proč s námi? 01–04"** | Čtyři obecné fráze bez jediného konkrétního údaje. Nikoho nepřesvědčí. Nahradit fakty z bodů A1–A3 a B1–B4. |
 | D2 | `© 2020` v patičce | Působí jako opuštěný web. Teď se doplňuje automaticky. |
 | D3 | Ikony sociálních sítí vedoucí na `#` | Viz C7. |
+
+
+---
+
+## F. Doména a nasazení — co víme z WHOIS (16. 9. 2026)
+
+| Údaj | Hodnota |
+|---|---|
+| Registrována od | 7. 10. 2000 |
+| Expirace | 9. 10. 2028 |
+| **Držitel** | **AUTOMOBILA s.r.o.** — ne GCAR services! Viz C0 |
+| Registrátor | INTERNET CZ, a.s. (Forpsi) |
+| Jmenné servery | ns.forpsi.cz / .it / .net |
+| Technický kontakt | **ViaMedia s.r.o.** — sem se žádá o změnu DNS |
+| DNSSEC | **zapnutý** (klíč RSA/SHA-512) |
+| Poslední změna | 18. 9. 2020 |
+
+### Postup nasazení — a jedna věc, která se nesmí udělat
+
+**NIKDY neměnit jmenné servery na Vercel.** Doména má zapnutý DNSSEC. Kdyby
+se NS přehodily a DS záznam zůstal v registru, doména přestane fungovat
+úplně — web, **e-mail i eshop.gcar.cz**. Servery ji budou aktivně odmítat,
+ne jen „nenačítat".
+
+Správný postup je u Forpsi změnit **jen dva záznamy v existující zóně**:
+
+1. `A` záznam pro `gcar.cz` (@) → IP, kterou zobrazí Vercel
+2. `CNAME` pro `www` → adresa, kterou zobrazí Vercel
+3. **MX záznamy nechat beze změny** (jinak přestane chodit pošta)
+4. **Záznam pro `eshop` nechat beze změny** (jinak spadne e-shop)
+
+Zóna zůstane stejná, DNSSEC zůstane platný.
+
+### Co je potřeba sehnat
+- Přístup do Forpsi, nebo kontakt na ViaMedia s.r.o., aby ty dva záznamy změnili
+- Rozhodnutí: běžet na Vercelu (pak výše uvedené), nebo nahrát web na stávající hosting přes FTP (pak se DNS nemění vůbec)
+
+
+---
+
+## G. Co na webu ještě chybí k "hotovo" (stav 16. 9. 2026)
+
+### Hotovo
+- [x] Strukturovaná data (JSON-LD) — Google uvidí adresu, otevírací dobu a telefon obou poboček
+- [x] Náhledový obrázek pro sdílení na sítích (1200×630)
+- [x] Vlastní hostování písem, žádný Google Fonts
+- [x] Responzivní layout, mobilní menu, lišta pro volání
+- [x] Cache-busting, sitemap.xml, robots.txt, chybová stránka 404
+- [x] Živý stav otevírací doby
+
+### Chybí a čeká na podklady
+- [ ] **Fotky** — web nemá jedinou vlastní fotografii
+- [ ] **Logo ve vektoru** (SVG) + inverzní varianta od grafika
+- [ ] **Mapy** obou poboček
+- [ ] **Texty podstránek** z původního gcar.cz
+- [ ] **Čísla o rozvozu** — dojezd, četnost, deadline pro dodání týž den
+- [ ] **Loga dodavatelských značek** (teď jen textový výpis)
+- [ ] **Odkazy na obchodní podmínky a ochranu osobních údajů**
+- [ ] **Sociální sítě** — existují účty?
+
+### Chybí a je to rozhodnutí, ne podklad
+- [ ] **Měření návštěvnosti.** Bez něj se nedozvíte, jestli nový web funguje líp než starý. Doporučuju Plausible nebo Simple Analytics — na rozdíl od Google Analytics nesbírají osobní údaje, takže nepotřebují cookie lištu. Google Analytics by znamenal souhlas s cookies a otravné okno pro každého návštěvníka.
+- [ ] **Google Search Console** — po nasazení zaregistrovat a poslat sitemap.xml
+- [ ] **Firemní profil na Googlu** — vyplněný profil má na to, kolik lidí firmu najde, větší vliv než většina změn na webu
+- [ ] **Kontaktní formulář zatím nikam neodesílá** (otevře poštovního klienta) — potřebuje endpoint
