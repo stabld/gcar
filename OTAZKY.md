@@ -71,7 +71,12 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 
 ## E. Nové zjištění: firma dělá víc, než co je na webu
 
-> **POZOR:** Na webu už je nová stránka **/sluzby/** s autoservisem, pneuservisem
+> **ZMĚNA KONCEPCE (16. 9. 2026):** GCAR není prodejna dílů se službami navrch —
+> je to střecha nad vším: autodíly, autoservis i LPG/CNG. Web je proto
+> přestavěný na tři rovnocenné pilíře na první obrazovce a servis i LPG
+> mají vlastní stránky **/autoservis/** a **/lpg/**.
+>
+> **POZOR:** Text těch stránek s autoservisem, pneuservisem
 > a montážemi LPG/CNG. Ten text je poskládaný z veřejných katalogů, **ne od
 > firmy**. Než web pustíme ven, musí ho majitel přečíst slovo po slovu —
 > zvlášť tvrzení o náhradním vozidle po dobu montáže a o rozsahu servisu
@@ -89,6 +94,7 @@ u majitele a rozhodnout, co z toho na web patří.
 | E3 | **Pevná linka 573 334 052** | Na webu není. Má tam být? |
 | E4 | **Firma vznikla v roce 2004** | Na webu bylo teď „Od roku 2004" — potvrdit, ať tam nemáme špatný rok. |
 | E5 | **Jednatel Vladimír Hauk** | Je to majitel, se kterým se řeší tento web? |
+| E8 | **Mají se weby sloučit?** | Teď jsou tři: gcar.cz, autoserviskromeriz.cz, lpg-kromeriz.cz. gcar.cz na zbylé dva odkazuje. Má to tak zůstat, nebo mají obsah těch dvou postupně přejít pod gcar.cz a domény se jen přesměrovat? Tři weby znamenají trojí údržbu a rozdrobené pozice ve vyhledávání. |
 | E6 | ~~Adresa ve Starém Městě~~ | **POTVRZENO** — **Brněnská 1395**. Údaj „Za Špicí 1798" na ekatalog.cz je špatně, nechat opravit. |
 | E7 | **Záznamy na Firmy.cz** | Firma tam má **několik samostatných zápisů** („GCAR services", „LPG - GCAR", „Prodej náhradních dílů - GCAR", „GCAR"), každý s jinými údaji a jinou otevírací dobou. Stojí za to je pročistit — pro místní vyhledávání to má větší dopad než půlka webu. |
 

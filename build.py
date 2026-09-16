@@ -61,12 +61,11 @@ OTEVIRACI_DOBA = "Po–Pá 8:00–17:00 · So 9:00–10:00 · Neděle a svátky 
 
 NAV = [
     ("/", "Domů", "index"),
-    ("/o-nas/", "O firmě", "o-nas"),
-    ("/sortiment/", "Sortiment", "sortiment"),
-    ("/akce/", "Akce", "akce"),
-    ("/vyprodej/", "Výprodej", "vyprodej"),
+    ("/sortiment/", "Autodíly", "sortiment"),
+    ("/autoservis/", "Autoservis", "autoservis"),
+    ("/lpg/", "LPG a CNG", "lpg"),
     ("/pujcovna/", "Půjčovna", "pujcovna"),
-    ("/sluzby/", "Služby", "sluzby"),
+    ("/o-nas/", "O nás", "o-nas"),
     ("/kontakt/", "Kontakt", "kontakt"),
 ]
 
@@ -125,7 +124,7 @@ def header(active):
 
 <div class="util">
   <div class="wrap">
-    <span>Rozvoz servisům a obchodům vlastními vozy</span>
+    <span>Autodíly · Autoservis · LPG a CNG</span>
     <span class="sep">Po–Pá 8:00–17:00</span>
     <a href="mailto:gcar@gcar.cz">gcar@gcar.cz</a>
   </div>
@@ -197,8 +196,8 @@ def footer():
           <li><a href="/akce/">Akce</a></li>
           <li><a href="/vyprodej/">Výprodej</a></li>
           <li><a href="/pujcovna/">Půjčovna</a></li>
-          <li><a href="/sluzby/">Služby</a></li>
-          <li><a href="%s">Autoservis</a></li>
+          <li><a href="/autoservis/">Autoservis</a></li>
+          <li><a href="/lpg/">LPG a CNG</a></li>
           <li><a href="%s">E-shop</a></li>
         </ul>
       </div>
@@ -213,7 +212,7 @@ def footer():
     </div>
   </div>
 </footer>
-""" % (POBOCKY[0]["tel"][0], POBOCKY[1]["tel"][0], kat_html, SERVIS, ESHOP,
+""" % (POBOCKY[0]["tel"][0], POBOCKY[1]["tel"][0], kat_html, ESHOP,
        pobocky_html, FIRMA["nazev"], FIRMA["ico"], FIRMA["dic"], date.today().year)
 
 
@@ -367,8 +366,8 @@ def eshop_box(text, popisek="Zobrazit v e-shopu"):
 HOME = """<div class="hero">
   <div class="wrap">
     <div>
-      <h1>Prodej náhradních dílů</h1>
-      <p class="lede">Dovážíme a distribuujeme náhradní díly na osobní a užitkové vozy světových značek. Servisům a obchodům je rozvážíme vlastními vozy.</p>
+      <h1>Všechno kolem auta na jednom místě</h1>
+      <p class="lede">GCAR je prodej náhradních dílů, autoservis s pneuservisem i montáže plynových pohonů. Díly dovážíme a distribuujeme, servisům a obchodům je rozvážíme vlastními vozy.</p>
 
       <form class="finder" id="hledani" data-base="__SEARCH__" role="search">
         <input name="q" type="search" placeholder="Hledat díl, značku nebo katalogové číslo" aria-label="Hledat v e-shopu" required>
@@ -384,6 +383,31 @@ HOME = """<div class="hero">
     </div>
   </div>
 </div>
+
+<section class="pillars">
+  <div class="wrap">
+    <div class="pillar-grid">
+      <a class="pillar" href="/sortiment/">
+        <b>01</b>
+        <h2>Autodíly</h2>
+        <p>Náhradní díly na osobní a užitkové vozy, pneumatiky, oleje, chemie, nářadí a vybavení servisů. Prodej na pultě, v e-shopu i rozvozem k vám.</p>
+        <span class="go">Sortiment a e-shop</span>
+      </a>
+      <a class="pillar" href="/autoservis/">
+        <b>02</b>
+        <h2>Autoservis</h2>
+        <p>Opravy osobních vozů, pneuservis, diagnostika. Díly bereme z vlastního skladu, takže se na ně nečeká.</p>
+        <span class="go">Co v servisu uděláme</span>
+      </a>
+      <a class="pillar" href="/lpg/">
+        <b>03</b>
+        <h2>LPG a CNG</h2>
+        <p>Montáže a přestavby na plynový pohon, pravidelné revize, servis a diagnostika, výměny nádrží.</p>
+        <span class="go">Přestavba na plyn</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <div class="strip">
   <div class="wrap">
@@ -465,18 +489,12 @@ HOME = """<div class="hero">
 
 <section id="sluzby">
   <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <h2>Nejen prodej dílů</h2>
-        <p class="lede">Pod GCAR services, s.r.o. běží i vlastní autoservis a montáže plynových pohonů.</p>
-      </div>
-      <a class="more" href="/sluzby/">Všechny služby</a>
-    </div>
+    <div class="sec-head"><div><h2>A ještě</h2></div></div>
     <div class="svc">
-      <a href="/sluzby/"><h3>Autoservis a pneuservis</h3><p>Opravy vozů, pneuservis, servis klimatizací a měření geometrie.</p></a>
-      <a href="/sluzby/"><h3>LPG a CNG</h3><p>Montáže, přestavby, revize a servis plynových pohonů.</p></a>
-      <a href="/pujcovna/"><h3>Půjčovna</h3><p>Půjčovna autodoplňků.</p></a>
+      <a href="/pujcovna/"><h3>Půjčovna</h3><p>Střešní boxy, nosiče a přívěsy na víkend i na dovolenou.</p></a>
+      <a href="/akce/"><h3>Akce</h3><p>Aktuální akční nabídky v e-shopu.</p></a>
       <a href="/vyprodej/"><h3>Výprodej</h3><p>Zboží za snížené ceny.</p></a>
+      <a href="/o-nas/"><h3>O nás</h3><p>Kdo jsme a kde nás najdete.</p></a>
     </div>
   </div>
 </section>
@@ -586,21 +604,44 @@ __ESHOPBOX__
 # --------------------------------------------------------------------------
 # CHYBI: potvrzení od majitele. Rozsah služeb je poskládaný z veřejných
 # katalogů (firmy.cz, ekatalog.cz) pod IČO 26946840, ne z gcar.cz.
-SLUZBY = """<div class="split">
+AUTOSERVIS = """<div class="split">
   <div class="prose">
-    <p>Pod firmou GCAR services, s.r.o. neběží jen prodej náhradních dílů. V Kroměříži provozujeme vlastní autoservis a specializujeme se na plynové pohony.</p>
+    <p>Autoservis provozujeme v Kroměříži pod stejnou firmou jako prodejnu dílů. To má pro vás jeden praktický důsledek: díly, které do vozu montujeme, máme na vlastním skladě a nečeká se na dodavatele.</p>
 
-    <h2>Autoservis a pneuservis</h2>
-    <p>Opravy osobních vozů, pneuservis, servis klimatizací, měření geometrie a diagnostika. Díly, které do vozu montujeme, máme z vlastního skladu — nečeká se na dodání.</p>
+    <h2>Co v servisu uděláme</h2>
+    <ul>
+      <li>Opravy a údržba osobních vozů</li>
+      <li>Pneuservis — přezutí, vyvážení, opravy pneumatik</li>
+      <li>Diagnostika</li>
+      <li>Servis klimatizací</li>
+      <li>Měření geometrie</li>
+    </ul>
+
+    <h2>Objednání</h2>
+    <p>Termín si domluvte telefonicky. Podrobnosti o servisu najdete na jeho vlastním webu.</p>
     <p><a class="btn btn-line" href="__SERVIS__">Přejít na autoserviskromeriz.cz</a></p>
+  </div>
+  __ASIDE__
+</div>
+"""
 
-    <h2>Montáže LPG a CNG</h2>
-    <p>Montáže a přestavby na LPG a CNG, pravidelné roční revize, servis a diagnostika plynových systémů, výměny tlakových nádrží a seřízení vozů. Systémy od světových výrobců. Na dobu přestavby zapůjčíme náhradní vozidlo.</p>
+LPG_STRANKA = """<div class="split">
+  <div class="prose">
+    <p>Montáže a přestavby vozů na LPG a CNG děláme v Kroměříži. Používáme systémy od světových výrobců a staráme se i o následný servis a povinné revize.</p>
+
+    <h2>Co zajišťujeme</h2>
+    <ul>
+      <li>Montáže a přestavby na LPG a CNG</li>
+      <li>Pravidelné roční revize</li>
+      <li>Servis a diagnostika plynových systémů</li>
+      <li>Výměny tlakových nádrží</li>
+      <li>Seřízení vozů na plyn</li>
+      <li>Náhradní vozidlo na dobu přestavby</li>
+    </ul>
+
+    <h2>Máte zájem o přestavbu?</h2>
+    <p>Zavolejte a řekněte nám značku, model a rok výroby vozu. Řekneme vám, jestli je přestavba možná, co obnáší a kolik bude stát.</p>
     <p><a class="btn btn-line" href="__LPG__">Přejít na lpg-kromeriz.cz</a></p>
-
-    <h2>Půjčovna autodoplňků</h2>
-    <p>Střešní boxy, nosiče a přívěsy na víkend i na dovolenou.</p>
-    <p><a class="btn btn-line" href="/pujcovna/">Půjčovna</a></p>
   </div>
   __ASIDE__
 </div>
@@ -781,11 +822,17 @@ for slug, nazev, _ in KATEGORIE:
     add("sortiment/%s/index.html" % slug, title, desc, body, "sortiment",
         page_head(h1, lede, [("/sortiment/", "Sortiment"), (None, nazev)]))
 
-add("sluzby/index.html", "Služby — autoservis, pneuservis, LPG a CNG | GCAR",
-    "Autoservis a pneuservis v Kroměříži, montáže a revize LPG a CNG, servis klimatizací, měření geometrie a půjčovna autodoplňků.",
-    SLUZBY, "sluzby",
-    page_head("Služby", "Kromě prodeje dílů provozujeme vlastní autoservis a montáže plynových pohonů.",
-              [(None, "Služby")]))
+add("autoservis/index.html", "Autoservis a pneuservis Kroměříž | GCAR",
+    "Autoservis v Kroměříži — opravy osobních vozů, pneuservis, diagnostika, servis klimatizací a měření geometrie. Díly z vlastního skladu.",
+    AUTOSERVIS, "autoservis",
+    page_head("Autoservis", "Opravy, pneuservis a diagnostika v Kroměříži — s díly z vlastního skladu.",
+              [(None, "Autoservis")]))
+
+add("lpg/index.html", "Montáže LPG a CNG Kroměříž | GCAR",
+    "Montáže a přestavby vozů na LPG a CNG v Kroměříži, pravidelné revize, servis plynových systémů a výměny nádrží.",
+    LPG_STRANKA, "lpg",
+    page_head("LPG a CNG", "Montáže a přestavby na plynový pohon, revize a servis.",
+              [(None, "LPG a CNG")]))
 
 add("akce/index.html", "Akce | GCAR", "Aktuální akční nabídky GCAR.",
     AKCE, "akce", page_head("Akce", "Aktuální akční nabídky.", [(None, "Akce")]))

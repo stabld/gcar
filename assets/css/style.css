@@ -170,6 +170,28 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
 .crumbs a:hover{color:#fff}
 .crumbs span{margin:0 8px;opacity:.5}
 
+/* ---------- tři pilíře ---------- */
+.pillars{background:var(--white);border-bottom:1px solid var(--zinc);padding:0}
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--zinc);
+  border-left:1px solid var(--zinc);border-right:1px solid var(--zinc)}
+.pillar{
+  background:#fff;padding:clamp(28px,3.4vw,42px) clamp(22px,2.6vw,34px);
+  text-decoration:none;display:flex;flex-direction:column;position:relative;
+}
+.pillar b{
+  font-family:var(--mono);font-size:13px;color:var(--red);
+  display:block;margin-bottom:16px;letter-spacing:.08em;
+}
+.pillar h2{font-size:clamp(24px,2.8vw,32px);margin-bottom:12px}
+.pillar p{font-size:15.5px;color:var(--ink-soft);margin:0 0 22px}
+.pillar .go{
+  margin-top:auto;font-weight:600;font-size:15.5px;color:var(--ink);
+  border-bottom:2px solid var(--red);padding-bottom:3px;align-self:flex-start;
+}
+.pillar:hover{background:var(--paper)}
+.pillar:hover h2{color:var(--red)}
+@media (max-width:900px){.pillar-grid{grid-template-columns:1fr}}
+
 /* ---------- pruh čísel ---------- */
 .strip{background:var(--ink);color:#fff}
 .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2E3855;border-left:1px solid #2E3855;border-right:1px solid #2E3855;padding:0}
