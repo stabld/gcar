@@ -584,14 +584,18 @@ __KONTAKT__
 # --------------------------------------------------------------------------
 O_NAS = """<div class="split">
   <div class="prose">
-    <p>Zaměřujeme se na dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuci do autoservisů a obchodů.</p>
-    <p>Firma dováží a distribuuje náhradní díly na osobní a užitkové vozy světových značek. Zajišťujeme rozvoz servisům a obchodům. Široký sortiment náhradních dílů od světových výrobců nás řadí k největším prodejcům v regionu. Jsme obchodním partnerem jedné z největších firem na evropském trhu.</p>
+    <p>Firma dováží a distribuuje náhradní díly na osobní a užitkové vozy světových značek. Zajišťujeme rozvoz servisům a obchodům. Široký sortiment náhradních dílů od světových výrobců nás řadí k největším prodejcům v regionu a jsme obchodním partnerem jedné z největších firem na evropském trhu.</p>
 
-    <h2>Pobočky</h2>
+    <h2>Všechno kolem auta pod jednou firmou</h2>
+    <p>GCAR není jen prodejna dílů. Pod stejnou firmou běží i <a href="/autoservis/">autoservis s pneuservisem</a> a <a href="/lpg/">montáže plynových pohonů</a>. Pro zákazníka to znamená, že díl, opravu i přestavbu na LPG vyřídí na jednom místě a s jedním telefonním číslem.</p>
+    <p>Pro servis to znamená ještě něco navíc: nářadí, chemii a vybavení, které prodáváme, denně používáme ve vlastní dílně.</p>
+
+    <h2>Kde nás najdete</h2>
     <p>
-      <strong>Kroměříž</strong> — Hulínská 2351/298E, 767 01 Kroměříž<br>
+      <strong>Kroměříž</strong> — Hulínská 2351/28E, 767 01 Kroměříž, areál bývalé masny<br>
       <strong>Staré Město</strong> — Brněnská 1395, 686 03 Staré Město
     </p>
+    <p>Otevřeno máme v pracovní dny 8:00–17:00 a v sobotu 9:00–10:00. Podrobné kontakty na obě pobočky jsou na <a href="/kontakt/">stránce Kontakt</a>.</p>
 
     <h2>Fakturační údaje</h2>
     <p>
@@ -642,7 +646,25 @@ __ESHOPBOX__
 
 KAT_PNEU = """<div class="split">
   <div class="prose">
-    <p>Pneumatiky na osobní a užitkové vozy i na motocykly.</p>
+    <p>Pneumatiky na osobní a užitkové vozy i na motocykly — letní, zimní i celoroční.</p>
+
+    <h2>Jaký rozměr potřebujete</h2>
+    <p>Rozměr je vypsaný na boku stávající pneumatiky, například <span style="font-family:var(--mono);white-space:nowrap">205/55 R16 91V</span>. Čte se takto:</p>
+    <ul>
+      <li><strong>205</strong> — šířka v milimetrech</li>
+      <li><strong>55</strong> — výška boční stěny v procentech šířky</li>
+      <li><strong>R16</strong> — průměr ráfku v palcích</li>
+      <li><strong>91</strong> — index nosnosti (kolik kilogramů pneumatika unese)</li>
+      <li><strong>V</strong> — rychlostní index (do jaké rychlosti je určená)</li>
+    </ul>
+    <p>Index nosnosti ani rychlosti nesmí být nižší, než uvádí technický průkaz vozu. Vyšší být může.</p>
+
+    <h2>Zimní, letní, nebo celoroční</h2>
+    <p>V Česku jsou <strong>zimní pneumatiky povinné od 1. listopadu do 31. března</strong>, pokud je na silnici souvislá vrstva sněhu, led nebo námraza — anebo se to dá vzhledem k počasí předpokládat. Zákon zároveň vyžaduje u zimních pneumatik <strong>minimální hloubku dezénu 4 mm</strong>, u letních 1,6 mm.</p>
+    <p>Celoroční pneumatika je kompromis. Dává smysl při malém nájezdu a jízdě hlavně po městě. Kdo jezdí hodně po dálnici nebo pravidelně do kopců v zimě, vyjde líp se dvěma sadami.</p>
+
+    <h2>Když si nejste jistí</h2>
+    <p>Zavolejte a řekněte nám rozměr z boku pneumatiky, značku a model vozu a jak s autem jezdíte — město, dálnice, tahání přívěsu. Doporučíme konkrétní modely v několika cenových hladinách a vysvětlíme, v čem se liší.</p>
   </div>
   __ASIDE__
 </div>
@@ -663,6 +685,21 @@ __ESHOPBOX__
 KAT_CHEMIE = """<div class="split">
   <div class="prose">
     <p>Motorové a převodové oleje, maziva, provozní kapaliny a autochemie.</p>
+
+    <h2>U oleje nerozhoduje jen viskozita</h2>
+    <p>Označení jako <span style="font-family:var(--mono)">5W-30</span> říká, jak olej teče za studena a za provozní teploty. Samo o sobě ale nestačí. Důležitější je <strong>schválení výrobce vozu</strong> — například VW 504.00/507.00, MB 229.51, BMW Longlife-04 nebo PSA B71 2290.</p>
+    <p>Rozdíl není kosmetický. Olej bez správného schválení může u motoru s filtrem pevných částic filtr postupně zanést popelem, i když viskozita sedí. Oprava pak stojí násobně víc než ta správná nádoba oleje.</p>
+
+    <h2>Co se mění a jak často</h2>
+    <ul>
+      <li><strong>Motorový olej</strong> — podle servisního intervalu vozu, u krátkých jízd po městě raději dřív.</li>
+      <li><strong>Brzdová kapalina</strong> — obvykle po dvou letech. Postupně na sebe váže vlhkost, tím klesá bod varu a při prudkém brzdění může brzda „změknout".</li>
+      <li><strong>Chladicí kapalina</strong> — řídí se typem (G11, G12, G12+, G13). Míchat je dohromady se nemá, u některých kombinací se sráží.</li>
+      <li><strong>Převodový olej</strong> — u manuálních převodovek podle nájezdu, u automatů podle předpisu výrobce.</li>
+    </ul>
+
+    <h2>Poradíme se specifikací</h2>
+    <p>Řekněte nám značku, model, rok výroby a motorizaci — nebo rovnou VIN — a vybereme olej, který do vozu patří. Vedeme i aditiva, maziva, montážní spreje a autokosmetiku.</p>
   </div>
   __ASIDE__
 </div>
@@ -672,7 +709,19 @@ __ESHOPBOX__
 
 KAT_OOPP = """<div class="split">
   <div class="prose">
-    <p>Ochranné pracovní prostředky — oděvy, obuv, rukavice, masky a respirátory.</p>
+    <p>Ochranné pracovní prostředky — oděvy, obuv, rukavice, masky a respirátory. Pro autoservisy i pro provozy mimo automobilový obor.</p>
+
+    <h2>Podle čeho vybírat</h2>
+    <p>U ochranných pomůcek nejde o značku, ale o normu. Ta je vyražená přímo na výrobku a říká, co pomůcka skutečně vydrží.</p>
+    <ul>
+      <li><strong>Obuv — EN ISO 20345.</strong> Třída <span style="font-family:var(--mono)">S1</span> má ochrannou špici a antistatickou podešev, <span style="font-family:var(--mono)">S2</span> navíc odolává vodě, <span style="font-family:var(--mono)">S3</span> má ještě podešev odolnou proti propíchnutí. Do dílny obvykle stačí S1P nebo S3.</li>
+      <li><strong>Rukavice — EN 388.</strong> Čtyři až pět znaků za piktogramem udává odolnost proti oděru, proříznutí, roztržení a propíchnutí. Čím vyšší číslo, tím lepší. Na manipulaci s plechem se hodí vyšší odolnost proti proříznutí.</li>
+      <li><strong>Ochrana zraku — EN 166.</strong> Brýle a štíty. Při broušení je potřeba odolnost proti nárazu, při práci s chemií těsnicí brýle.</li>
+      <li><strong>Ochrana dýchání.</strong> <span style="font-family:var(--mono)">FFP2</span> a <span style="font-family:var(--mono)">FFP3</span> na prach a částice, masky s výměnnými filtry na výpary a rozpouštědla — typ filtru se volí podle látky.</li>
+    </ul>
+
+    <h2>Pro firmy</h2>
+    <p>Potřebujete vystrojit celou dílnu nebo pravidelně doplňovat spotřební pomůcky — rukavice, respirátory, čisticí pasty? Ozvěte se a domluvíme se na pravidelném odběru.</p>
   </div>
   __ASIDE__
 </div>
@@ -742,7 +791,14 @@ LPG_STRANKA = """<div class="split">
 # --------------------------------------------------------------------------
 AKCE = """<div class="split">
   <div class="prose">
-    <p>Aktuální akční nabídky najdete v našem e-shopu, kde jsou vždy platné ceny a skladová dostupnost.</p>
+    <p>Akční nabídky a sezónní ceny vedeme v e-shopu. Má to důvod: ceny i skladová dostupnost se mění průběžně a na jednom místě jsou vždy platné. Kdybychom je přepisovali i sem, dřív nebo později by se jedno z těch dvou míst rozešlo s realitou.</p>
+
+    <h2>Kdy se vyplatí sledovat</h2>
+    <ul>
+      <li><strong>Před sezónou.</strong> Zimní i letní pneumatiky bývají nejvýhodnější dřív, než po nich sáhnou všichni ostatní.</li>
+      <li><strong>Při akcích dodavatelů.</strong> Výrobci olejů, chemie a nářadí vypisují akce v vlnách — když zrovna běží, promítá se to do ceny.</li>
+      <li><strong>Když se uvolní skladové zásoby.</strong> To už ale patří spíš do <a href="/vyprodej/">výprodeje</a>.</li>
+    </ul>
   </div>
   __ASIDE__
 </div>
@@ -752,7 +808,18 @@ __ESHOPBOX__
 
 VYPRODEJ = """<div class="split">
   <div class="prose">
-    <p>Zboží za snížené ceny. Aktuální výprodejovou nabídku najdete v e-shopu.</p>
+    <p>Zboží za snížené ceny. Nejde o vadné ani použité kusy — jsou to skladové zbytky, doběhové položky a zboží z ukončených řad.</p>
+
+    <h2>Proč bývá zlevněné</h2>
+    <ul>
+      <li><strong>Doběh řady.</strong> Výrobce model nahradil novým, i když ten starý funguje stejně dobře.</li>
+      <li><strong>Zbytek ze skladu.</strong> Zůstal poslední kus nebo dva a už se nebude doobjednávat.</li>
+      <li><strong>Změna obalu nebo značení.</strong> Obsah zůstává stejný.</li>
+    </ul>
+
+    <h2>Co z toho plyne</h2>
+    <p>Množství je omezené tím, co zbylo — co se prodá, už nedoplníme. Vyplatí se proto koukat pravidelně, nabídka se mění podle toho, co se zrovna uvolní.</p>
+    <p>Část výprodejového zboží, zvlášť jednotlivé kusy nářadí a vybavení dílny, leží na pobočce a nemusí být v e-shopu vidět. Když hledáte něco konkrétního, zavolejte.</p>
   </div>
   __ASIDE__
 </div>
@@ -762,7 +829,17 @@ __ESHOPBOX__
 
 PUJCOVNA = """<div class="split">
   <div class="prose">
-    <p>Provozujeme půjčovnu autodoplňků. Dostupnost na konkrétní termín a podmínky výpůjčky vám sdělíme telefonicky.</p>
+    <p>Nemá smysl kupovat střešní box, když ho použijete dvakrát do roka. Provozujeme půjčovnu autodoplňků — na víkend, na dovolenou i na jednu jízdu.</p>
+
+    <h2>Co si připravit, než zavoláte</h2>
+    <ul>
+      <li><strong>Značku a model vozu.</strong> Nosiče a příčníky se liší podle typu střechy — hladká střecha, podélníky, hagusy. Podle vozu vybereme, co na něj sedí.</li>
+      <li><strong>Termín.</strong> V létě a o prázdninách bývá vybavení půjčené i týdny dopředu, rezervace se vyplatí.</li>
+      <li><strong>K čemu to potřebujete.</strong> Jiný box na dva lidi na víkend, jiný na rodinu na dva týdny k moři.</li>
+    </ul>
+
+    <h2>Ceny a podmínky</h2>
+    <p>Dostupnost na konkrétní termín, cenu i podmínky výpůjčky vám řekneme po telefonu — závisí na délce zápůjčky a typu vybavení.</p>
   </div>
   __ASIDE__
 </div>

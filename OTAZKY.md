@@ -66,7 +66,8 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 | C5 | **Kontaktní formulář nikam neodesílá** | Otevře poštovní klienta přes `mailto`. Na ostro potřebuje endpoint (Formspree nebo serverless funkce). Na který e-mail mají poptávky chodit? |
 | C6 | ~~Otevírací doba~~ | **ČÁSTEČNĚ** — majitel potvrdil **8:00–17:00**. Portál řidiče má 7:00–17:30 chybně, nechat opravit. **VYŘEŠENO** — Firmy.cz má rozepsáno Po–Pá 8:00–17:00, **So 9:00–10:00**, Ne zavřeno. Na webu upraveno. |
 | C7 | **Sociální sítě** | Na současném webu jsou v patičce tři ikony s prázdným odkazem (`href="#"`). Máte Facebook/Instagram, nebo je vypustit? |
-| C8 | **Texty podstránek** | gcar.cz blokuje automatické stahování (robots.txt), takže jsem podstránky nikdy neviděl. Zkopíruj mi prosím text z `/o-nas/`, `/sortiment/*`, `/akce/`, `/vyprodej/`, `/pujcovna/`. |
+| C8a | ~~Texty podstránek — doplněno odborným obsahem~~ | **Pneumatiky, chemie a oleje, ochranné prostředky, akce, výprodej, o nás a půjčovna mají teď plný text.** Je to ale **odborný obsah o oboru**, ne o firmě: jak se čte rozměr pneumatiky, proč u oleje rozhoduje schválení výrobce, co znamenají normy EN u rukavic a obuvi, kdy jsou zimní gumy povinné. **Nic z toho neslibuje, co má GCAR skladem nebo jak rychle to dodá.** Přesto to nechte majitele přečíst — kdyby s něčím nesouhlasil, přepíšeme. |
+| C8 | **Původní texty podstránek** | gcar.cz blokuje automatické stahování (robots.txt), takže jsem podstránky nikdy neviděl. Zkopíruj mi prosím text z `/o-nas/`, `/sortiment/*`, `/akce/`, `/vyprodej/`, `/pujcovna/`. |
 
 ---
 
@@ -168,7 +169,7 @@ Zóna zůstane stejná, DNSSEC zůstane platný.
 - [ ] **Fotky** — web nemá jedinou vlastní fotografii
 - [ ] **Logo ve vektoru** (SVG) + inverzní varianta od grafika
 - [ ] **Mapy** obou poboček
-- [ ] **Texty podstránek** z původního gcar.cz
+- [x] ~~Texty podstránek~~ — napsané, ale jako odborný obsah o oboru (viz C8a). Původní znění z gcar.cz stále nemám.
 - [ ] **Čísla o rozvozu** — dojezd, četnost, deadline pro dodání týž den
 - [ ] **Loga dodavatelských značek** (teď jen textový výpis)
 - [ ] **Odkazy na obchodní podmínky a ochranu osobních údajů**
