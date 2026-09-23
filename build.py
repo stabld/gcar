@@ -133,12 +133,22 @@ def header(active):
 <header>
   <div class="wrap">
     <a class="brand" href="/" aria-label="GCAR — domů">
-      <img src="/assets/img/logo.png" alt="GCAR" width="200" height="65">
+      <img class="logo-light" src="/assets/img/logo.png" alt="GCAR" width="200" height="65">
+      <img class="logo-dark" src="/assets/img/logo-inverse.png" alt="" width="200" height="65" aria-hidden="true">
       <em>náhradní díly</em>
     </a>
     <nav class="main" aria-label="Hlavní navigace">%s
     </nav>
     <a class="btn btn-red nav-cta" href="%s">E-shop</a>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Přepnout noční režim">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2.2v2.4M12 19.4v2.4M2.2 12h2.4M19.4 12h2.4M5.1 5.1l1.7 1.7M17.2 17.2l1.7 1.7M18.9 5.1l-1.7 1.7M6.8 17.2l-1.7 1.7"/>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8z"/>
+      </svg>
+    </button>
     <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="mobmenu">
       <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
     </button>
@@ -158,7 +168,7 @@ def footer():
     for p in POBOCKY:
         pobocky_html += """
       <div style="margin-bottom:18px">
-        <div style="color:#fff;font-weight:600;margin-bottom:4px">%s</div>
+        <div style="color:var(--band-text);font-weight:600;margin-bottom:4px">%s</div>
         <div>%s, %s</div>
         <div style="margin-top:6px">%s</div>
         <div><a href="mailto:%s">%s</a></div>
@@ -286,6 +296,13 @@ def layout(title, desc, body, active, canonical):
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1A243D">
+<script>
+/* Nastaví režim dřív, než se stránka vykreslí — jinak by při načtení
+   probliklo světlé pozadí. Proto je tenhle skript v hlavičce a ne v main.js. */
+(function(){try{var t=localStorage.getItem("gcar-theme");
+if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";}
+document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/img/favicon-48.png" sizes="48x48" type="image/png">
@@ -348,7 +365,7 @@ def kontakt_sekce():
       <h2>Ozvěte se</h2>
       <p class="lede">Máme dvě pobočky — v Kroměříži a ve Starém Městě.</p>
       <p style="margin-top:22px"><a class="btn btn-red btn-lg" href="tel:%s">Zavolat %s</a></p>
-      <p style="color:#7E88A5;font-size:14.5px;margin-top:18px">%s</p>
+      <p style="color:var(--band-muted);font-size:14.5px;margin-top:18px">%s</p>
     </div>
     <div>%s
     </div>
@@ -758,7 +775,7 @@ def kontakt_body():
     for p in POBOCKY:
         pozn = "<br>" + p["poznamka"] if p["poznamka"] else ""
         cards += """
-    <div class="ccard" style="border-color:var(--zinc);background:#fff;color:var(--ink)">
+    <div class="ccard" style="border-color:var(--zinc);background:var(--white);color:var(--ink)">
       <h3 style="color:var(--ink)">%s</h3>
       <address style="color:var(--ink-soft)">%s, %s%s</address>
       <div class="tels" style="margin-bottom:12px">%s</div>

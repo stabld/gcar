@@ -4,17 +4,33 @@
    ========================================================================== */
 
 :root{
-  --ink:#1A243D;
-  --ink-deep:#121A2C;
-  --ink-soft:#3D4763;
-  --steel:#6B7593;
-  --zinc:#D4D9E3;
-  --zinc-light:#E7EAF1;
-  --paper:#F0F2F6;
-  --white:#FFFFFF;
+  color-scheme:light;
+
+  /* text */
+  --ink:#1A243D;          /* hlavní text */
+  --ink-soft:#3D4763;     /* druhotný text */
+  --steel:#6B7593;        /* tlumený text */
+
+  /* plochy */
+  --paper:#F0F2F6;        /* pozadí stránky */
+  --white:#FFFFFF;        /* karty a panely */
+  --zinc:#D4D9E3;         /* linky a rámečky */
+  --zinc-light:#E7EAF1;   /* jemná výplň */
+
+  /* tmavé pruhy (hlavička podstránky, kontakt, patička) —
+     v obou režimech tmavé, proto vlastní sada proměnných */
+  --band:#1A243D;
+  --band-deep:#121A2C;
+  --band-text:#FFFFFF;
+  --band-soft:#A3ACC6;
+  --band-muted:#7E88A5;
+  --band-line:#333E5C;
+
+  /* značka */
   --red:#DB343E;
   --red-dark:#B32830;
-  --open:#1C7A4C;
+  --open:#3FA76F;
+  --gear-invert:0;        /* ozubené kolo na pozadí hera */
 
   --display:"Archivo","Arial Narrow",Arial,sans-serif;
   --body:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
@@ -22,6 +38,31 @@
 
   --wrap:1220px;
   --gut:clamp(18px,4vw,44px);
+}
+
+:root[data-theme="dark"]{
+  color-scheme:dark;
+
+  --ink:#E7EBF3;
+  --ink-soft:#AEB7CB;
+  --steel:#8791A8;
+
+  --paper:#0F1420;
+  --white:#171E2D;
+  --zinc:#2B3345;
+  --zinc-light:#1E2637;
+
+  --band:#151D2D;
+  --band-deep:#0B101A;
+  --band-text:#F2F5FA;
+  --band-soft:#98A3BC;
+  --band-muted:#79839B;
+  --band-line:#2B3446;
+
+  --red:#F04A54;
+  --red-dark:#D93A44;
+  --open:#4FBF83;
+  --gear-invert:1;
 }
 
 *{box-sizing:border-box}
@@ -59,6 +100,9 @@ header{background:var(--white);border-bottom:1px solid var(--zinc);position:stic
 header .wrap{display:flex;align-items:center;gap:14px;min-height:76px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 0 auto}
 .brand img{width:148px;height:auto}
+.brand .logo-dark{display:none}
+:root[data-theme="dark"] .brand .logo-light{display:none}
+:root[data-theme="dark"] .brand .logo-dark{display:block}
 .brand em{
   font-style:normal;font-size:13px;color:var(--steel);font-weight:500;
   padding-left:12px;border-left:1px solid var(--zinc);line-height:1.2;
@@ -81,14 +125,26 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
 .btn-red{background:var(--red);color:#fff}
 .btn-red:hover{background:var(--red-dark)}
 .btn-line{border-color:var(--ink);color:var(--ink)}
-.btn-line:hover{background:var(--ink);color:#fff}
-.btn-ghost{border-color:var(--zinc);background:#fff;color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--paper)}
+.btn-ghost{border-color:var(--zinc);background:var(--white);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--ink)}
-.btn-light{border-color:#4A5578;color:#fff}
-.btn-light:hover{background:#fff;color:var(--ink);border-color:#fff}
+.btn-light{border-color:var(--band-line);color:var(--band-text)}
+.btn-light:hover{background:var(--band-text);color:var(--band);border-color:var(--band-text)}
 .btn-lg{padding:15px 28px;font-size:16.5px}
 .nav-cta{margin-left:14px}
-.burger{display:none;margin-left:auto;background:none;border:1px solid var(--zinc);border-radius:3px;padding:12px;cursor:pointer}
+.theme-toggle{
+  margin-left:12px;background:none;border:1px solid var(--zinc);border-radius:3px;
+  width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;
+  cursor:pointer;color:var(--ink);flex:0 0 auto;padding:0;
+}
+.theme-toggle:hover{border-color:var(--ink)}
+.theme-toggle svg{width:19px;height:19px;display:block}
+.theme-toggle .moon{display:none}
+:root[data-theme="dark"] .theme-toggle .sun{display:none}
+:root[data-theme="dark"] .theme-toggle .moon{display:block}
+@media (max-width:980px){.theme-toggle{margin-left:auto}}
+
+.burger{display:none;margin-left:8px;background:none;border:1px solid var(--zinc);border-radius:3px;padding:12px;cursor:pointer}
 
 /* mobilní menu */
 .bars{display:block;width:20px}
@@ -97,7 +153,7 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
 .burger[aria-expanded="true"] .bars i:nth-child(2){opacity:0}
 .burger[aria-expanded="true"] .bars i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 .mobmenu{
-  position:sticky;top:76px;z-index:49;background:#fff;
+  position:sticky;top:76px;z-index:49;background:var(--white);
   border-bottom:1px solid var(--zinc);padding:10px var(--gut) 20px;
 }
 .mobmenu nav{display:block;margin:0 0 14px}
@@ -114,7 +170,7 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
 /* mobilní lišta pro volání */
 .callbar{
   display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
-  background:var(--ink);border-top:1px solid #333E5C;
+  background:var(--band);border-top:1px solid var(--band-line);
   padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:10px;
 }
 .callbar a{
@@ -122,7 +178,7 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
   text-decoration:none;font-weight:600;font-size:16px;padding:11px 10px;border-radius:3px;
 }
 .callbar .c-km{background:var(--red);color:#fff}
-.callbar .c-uh{border:1px solid #4A5578;color:#fff}
+.callbar .c-uh{border:1px solid var(--band-line);color:var(--band-text)}
 .callbar small{font-size:11.5px;font-weight:500;opacity:.8;letter-spacing:.02em}
 
 /* ---------- hero (homepage) ---------- */
@@ -132,7 +188,7 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
 .hero::before{
   content:"";position:absolute;right:-150px;top:-130px;width:520px;height:520px;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M202.0 120.0 L201.3 130.9 L217.8 141.0 L204.0 174.2 L185.2 169.7 L178.0 178.0 L169.7 185.2 L174.2 204.0 L141.0 217.8 L130.9 201.3 L120.0 202.0 L109.1 201.3 L99.0 217.8 L65.8 204.0 L70.3 185.2 L62.0 178.0 L54.8 169.7 L36.0 174.2 L22.2 141.0 L38.7 130.9 L38.0 120.0 L38.7 109.1 L22.2 99.0 L36.0 65.8 L54.8 70.3 L62.0 62.0 L70.3 54.8 L65.8 36.0 L99.0 22.2 L109.1 38.7 L120.0 38.0 L130.9 38.7 L141.0 22.2 L174.2 36.0 L169.7 54.8 L178.0 62.0 L185.2 70.3 L204.0 65.8 L217.8 99.0 L201.3 109.1 Z M120 68.0 a52.0 52.0 0 1 0 0.1 0 Z'/%3E%3C/svg%3E") no-repeat center/contain;
-  opacity:.055;pointer-events:none;
+  opacity:.055;pointer-events:none;filter:invert(var(--gear-invert));
 }
 @media (prefers-reduced-motion:no-preference){
   .hero::before{animation:gear 120s linear infinite}
@@ -143,7 +199,7 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
 .hero h1{font-size:clamp(38px,6.1vw,70px);font-weight:800;letter-spacing:-.035em;max-width:16ch;margin-bottom:22px}
 .hero .lede{margin-bottom:30px}
 
-.finder{border:2px solid var(--ink);border-radius:4px;background:#fff;display:flex;overflow:hidden;max-width:560px}
+.finder{border:2px solid var(--ink);border-radius:4px;background:var(--white);display:flex;overflow:hidden;max-width:560px}
 .finder input{flex:1;border:0;padding:17px 18px;font:inherit;font-size:16.5px;min-width:0;background:transparent}
 .finder input:focus{outline:none}
 .finder button{border:0;background:var(--red);color:#fff;font:inherit;font-weight:600;padding:0 26px;cursor:pointer;font-size:16px}
@@ -163,16 +219,16 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
 .status.is-open{color:var(--open)}
 .branch address{font-style:normal;font-size:14.5px;color:var(--ink-soft);margin:6px 0 12px}
 .tels{display:flex;flex-wrap:wrap;gap:8px}
-.tels a{font-family:var(--mono);font-size:14px;text-decoration:none;border:1px solid var(--zinc);background:#fff;border-radius:3px;padding:6px 11px}
+.tels a{font-family:var(--mono);font-size:14px;text-decoration:none;border:1px solid var(--zinc);background:var(--white);border-radius:3px;padding:6px 11px}
 .tels a:hover{border-color:var(--ink)}
 .hours{padding:15px 22px;font-size:13.5px;color:var(--steel);background:var(--zinc-light);border-radius:0 0 3px 3px}
 .hours b{color:var(--ink);font-weight:600}
 
 /* ---------- hlavička podstránky ---------- */
-.page-head{background:var(--ink);color:#fff;padding:clamp(34px,5vw,60px) 0 clamp(38px,5vw,64px)}
+.page-head{background:var(--band);color:var(--band-text);padding:clamp(34px,5vw,60px) 0 clamp(38px,5vw,64px)}
 .page-head h1{font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-.035em;max-width:18ch;margin-bottom:16px}
-.page-head .lede{color:#A3ACC6;max-width:60ch}
-.crumbs{font-size:13.5px;color:#7E88A5;margin-bottom:18px}
+.page-head .lede{color:var(--band-soft);max-width:60ch}
+.crumbs{font-size:13.5px;color:var(--band-muted);margin-bottom:18px}
 .crumbs a{text-decoration:none}
 .crumbs a:hover{color:#fff}
 .crumbs span{margin:0 8px;opacity:.5}
@@ -182,7 +238,7 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
 .pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--zinc);
   border-left:1px solid var(--zinc);border-right:1px solid var(--zinc)}
 .pillar{
-  background:#fff;padding:clamp(28px,3.4vw,42px) clamp(22px,2.6vw,34px);
+  background:var(--white);padding:clamp(28px,3.4vw,42px) clamp(22px,2.6vw,34px);
   text-decoration:none;display:flex;flex-direction:column;position:relative;
 }
 .pillar b{
@@ -200,11 +256,11 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
 @media (max-width:900px){.pillar-grid{grid-template-columns:1fr}}
 
 /* ---------- pruh čísel ---------- */
-.strip{background:var(--ink);color:#fff}
-.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2E3855;border-left:1px solid #2E3855;border-right:1px solid #2E3855;padding:0}
-.stat{background:var(--ink);padding:28px clamp(16px,2.2vw,28px)}
+.strip{background:var(--band);color:var(--band-text)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--band-line);border-left:1px solid var(--band-line);border-right:1px solid var(--band-line);padding:0}
+.stat{background:var(--band);padding:28px clamp(16px,2.2vw,28px)}
 .stat b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(24px,3.1vw,36px);letter-spacing:-.03em;margin-bottom:4px}
-.stat span{font-size:14.5px;color:#9AA4C0;line-height:1.35;display:block}
+.stat span{font-size:14.5px;color:var(--band-soft);line-height:1.35;display:block}
 
 /* ---------- sekce ---------- */
 section{padding:clamp(52px,7vw,90px) 0}
@@ -221,14 +277,14 @@ section{padding:clamp(52px,7vw,90px) 0}
 
 /* sortiment */
 .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
-.cat{background:#fff;padding:26px;text-decoration:none;display:flex;flex-direction:column;min-height:210px}
+.cat{background:var(--white);padding:26px;text-decoration:none;display:flex;flex-direction:column;min-height:210px}
 .cat:hover{box-shadow:inset 0 0 0 2px var(--red)}
 .cat h3{margin-bottom:9px}
 .cat p{font-size:15px;color:var(--ink-soft);margin:0}
 .cat .tags{margin-top:auto;padding-top:16px;font-size:13.5px;color:var(--steel);line-height:1.5}
 .cat.is-wide{grid-column:span 2}
 .cat .parts{margin-top:auto;padding-top:16px;display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-style:normal;font-size:13.5px;border:1px solid var(--zinc);border-radius:99px;padding:3px 11px;color:var(--ink-soft);background:#fff}
+.chip{font-style:normal;font-size:13.5px;border:1px solid var(--zinc);border-radius:99px;padding:3px 11px;color:var(--ink-soft);background:var(--white)}
 
 /* rozvoz */
 .delivery{background:var(--white);border-top:1px solid var(--zinc);border-bottom:1px solid var(--zinc)}
@@ -241,7 +297,7 @@ section{padding:clamp(52px,7vw,90px) 0}
 
 /* katalogy */
 .katalogy{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
-.katalog{background:#fff;padding:26px 24px;text-decoration:none;display:block}
+.katalog{background:var(--white);padding:26px 24px;text-decoration:none;display:block}
 .katalog:hover{box-shadow:inset 0 0 0 2px var(--red)}
 .katalog h3{margin-bottom:8px}
 .katalog p{font-size:15px;color:var(--ink-soft);margin:0}
@@ -250,7 +306,7 @@ section{padding:clamp(52px,7vw,90px) 0}
 
 /* zboží */
 .goods{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
-.good{background:#fff;padding:20px;display:flex;flex-direction:column;text-decoration:none}
+.good{background:var(--white);padding:20px;display:flex;flex-direction:column;text-decoration:none}
 .good .ph{aspect-ratio:4/3;background:var(--zinc-light);border-radius:3px;margin-bottom:16px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .good .ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
 .good .ph span{font-family:var(--mono);font-size:12px;color:var(--steel)}
@@ -265,14 +321,14 @@ section{padding:clamp(52px,7vw,90px) 0}
 .brands{background:var(--white);border-top:1px solid var(--zinc);border-bottom:1px solid var(--zinc)}
 .brandrow{display:flex;flex-wrap:wrap;gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
 .brandrow span{
-  flex:1 1 150px;background:#fff;padding:22px 16px;text-align:center;
+  flex:1 1 150px;background:var(--white);padding:22px 16px;text-align:center;
   font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.06em;
   color:var(--steel);display:flex;align-items:center;justify-content:center;
 }
 
 /* služby */
 .svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.svc a{background:#fff;border:1px solid var(--zinc);border-radius:4px;padding:22px;text-decoration:none;display:block}
+.svc a{background:var(--white);border:1px solid var(--zinc);border-radius:4px;padding:22px;text-decoration:none;display:block}
 .svc a:hover{border-color:var(--ink)}
 .svc h3{font-size:18px;margin-bottom:7px}
 .svc p{font-size:14.5px;color:var(--ink-soft);margin:0}
@@ -290,7 +346,7 @@ section{padding:clamp(52px,7vw,90px) 0}
 .split{display:grid;grid-template-columns:1.4fr .85fr;gap:clamp(28px,5vw,64px);align-items:start}
 @media (max-width:900px){.split{grid-template-columns:1fr}}
 
-.aside-card{background:#fff;border:1px solid var(--zinc);border-radius:4px;padding:24px;position:sticky;top:100px}
+.aside-card{background:var(--white);border:1px solid var(--zinc);border-radius:4px;padding:24px;position:sticky;top:100px}
 .aside-card h3{margin-bottom:12px}
 .aside-card p{font-size:15px;color:var(--ink-soft)}
 .aside-card .btn{width:100%;margin-top:6px}
@@ -298,7 +354,7 @@ section{padding:clamp(52px,7vw,90px) 0}
 
 /* dvousloupcový seznam položek */
 .list-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--zinc);border:1px solid var(--zinc);margin:0 0 32px}
-.list-grid div{background:#fff;padding:18px 20px}
+.list-grid div{background:var(--white);padding:18px 20px}
 .list-grid h4{margin-bottom:6px}
 .list-grid p{font-size:15px;color:var(--ink-soft);margin:0}
 @media (max-width:900px){.list-grid{grid-template-columns:1fr 1fr}}
@@ -308,31 +364,31 @@ section{padding:clamp(52px,7vw,90px) 0}
 
 /* upozornění / prázdný stav */
 .note{
-  background:#fff;border:1px solid var(--zinc);border-left:3px solid var(--red);
+  background:var(--white);border:1px solid var(--zinc);border-left:3px solid var(--red);
   border-radius:3px;padding:20px 24px;margin:0 0 28px;
 }
 .note p:last-child{margin:0}
 .note p{font-size:15.5px;color:var(--ink-soft)}
 
 /* ---------- kontakt ---------- */
-.contact{background:var(--ink);color:#fff}
+.contact{background:var(--band);color:var(--band-text)}
 .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px)}
-.contact h2{color:#fff;margin-bottom:16px}
-.contact .lede{color:#A3ACC6}
-.ccard{border:1px solid #333E5C;border-radius:4px;padding:24px;margin-bottom:16px}
-.ccard h3{color:#fff;margin-bottom:8px}
-.ccard address{font-style:normal;color:#A3ACC6;font-size:15px;margin-bottom:14px}
+.contact h2{color:var(--band-text);margin-bottom:16px}
+.contact .lede{color:var(--band-soft)}
+.ccard{border:1px solid var(--band-line);border-radius:4px;padding:24px;margin-bottom:16px}
+.ccard h3{color:var(--band-text);margin-bottom:8px}
+.ccard address{font-style:normal;color:var(--band-soft);font-size:15px;margin-bottom:14px}
 .ccard .tels{margin-bottom:12px}
-.ccard .tels a{border:1px solid #3B4666;background:transparent;color:#fff;font-size:14.5px;padding:7px 12px}
+.ccard .tels a{border:1px solid var(--band-line);background:transparent;color:var(--band-text);font-size:14.5px;padding:7px 12px}
 .ccard .tels a:hover{background:var(--red);border-color:var(--red)}
-.ccard .mail{color:#fff;font-size:15px;text-underline-offset:3px}
+.ccard .mail{color:var(--band-text);font-size:15px;text-underline-offset:3px}
 
 .maps{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
 .maps iframe{width:100%;height:300px;border:1px solid var(--zinc);border-radius:4px;display:block}
 @media (max-width:860px){.maps{grid-template-columns:1fr}}
 
 /* formulář */
-.form{background:#fff;border:1px solid var(--zinc);border-radius:4px;padding:clamp(22px,3vw,32px)}
+.form{background:var(--white);border:1px solid var(--zinc);border-radius:4px;padding:clamp(22px,3vw,32px)}
 .form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media (max-width:620px){.form .row{grid-template-columns:1fr}}
 .field{margin-bottom:16px}
@@ -347,12 +403,12 @@ section{padding:clamp(52px,7vw,90px) 0}
 .hp{position:absolute;left:-9999px}
 
 /* ---------- footer ---------- */
-footer{background:var(--ink-deep);color:#7E88A5;font-size:14.5px;padding:44px 0 26px}
+footer{background:var(--band-deep);color:var(--band-muted);font-size:14.5px;padding:44px 0 26px}
 footer a{text-decoration:none}
 footer a:hover{color:#fff}
-.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:clamp(22px,3vw,40px);padding-bottom:32px;border-bottom:1px solid #242E48}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:clamp(22px,3vw,40px);padding-bottom:32px;border-bottom:1px solid var(--band-line)}
 .fgrid img{width:140px;margin-bottom:14px}
-.fgrid h4{color:#fff;font-size:15px;margin-bottom:12px;letter-spacing:.01em}
+.fgrid h4{color:var(--band-text);font-size:15px;margin-bottom:12px;letter-spacing:.01em}
 .fgrid ul{list-style:none;margin:0;padding:0}
 .fgrid li{margin-bottom:8px}
 .fbottom{display:flex;gap:18px;flex-wrap:wrap;align-items:center;padding-top:22px;font-size:13.5px}
@@ -403,6 +459,6 @@ footer a:hover{color:#fff}
 
 @media print{
   .util,.burger,.mobmenu,.callbar,.finder,nav.main{display:none !important}
-  body{background:#fff;padding:0}
+  body{background:var(--white);padding:0}
   header{position:static}
 }

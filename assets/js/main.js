@@ -141,7 +141,41 @@
     });
   }
 
-  function init() { initMenu(); initHours(); initForm(); initSearch(); }
+  /* ---------- Přepínač denního a nočního režimu ----------
+     Výchozí stav bere z nastavení systému. Jakmile ho člověk přepne,
+     volba se uloží a systém už ji nepřebíjí.                        */
+  function initTheme() {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    var root = document.documentElement;
+
+    function apply(t) {
+      root.setAttribute('data-theme', t);
+      btn.setAttribute('aria-label', t === 'dark' ? 'Přepnout na denní režim' : 'Přepnout na noční režim');
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', t === 'dark' ? '#0B101A' : '#1A243D');
+    }
+
+    apply(root.getAttribute('data-theme') || 'light');
+
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem('gcar-theme', next); } catch (e) {}
+    });
+
+    // dokud si člověk nevybral sám, sleduj nastavení systému
+    var mq = window.matchMedia('(prefers-color-scheme:dark)');
+    var follow = function (e) {
+      var saved = null;
+      try { saved = localStorage.getItem('gcar-theme'); } catch (err) {}
+      if (saved !== 'dark' && saved !== 'light') apply(e.matches ? 'dark' : 'light');
+    };
+    if (mq.addEventListener) mq.addEventListener('change', follow);
+    else if (mq.addListener) mq.addListener(follow);
+  }
+
+  function init() { initTheme(); initMenu(); initHours(); initForm(); initSearch(); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
