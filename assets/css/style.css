@@ -9,7 +9,7 @@
   /* text */
   --ink:#1A243D;          /* hlavní text */
   --ink-soft:#3D4763;     /* druhotný text */
-  --steel:#6B7593;        /* tlumený text */
+  --steel:#5C6480;        /* tlumený text */
 
   /* plochy */
   --paper:#F0F2F6;        /* pozadí stránky */
@@ -23,12 +23,16 @@
   --band-deep:#121A2C;
   --band-text:#FFFFFF;
   --band-soft:#A3ACC6;
-  --band-muted:#7E88A5;
+  --band-muted:#8892AE;
   --band-line:#333E5C;
 
   /* značka */
   --red:#DB343E;
   --red-dark:#B32830;
+  /* Plná červená tlačítka mají bílý text, proto musí zůstat dost tmavá
+     i v nočním režimu — světlejší odstín by kontrast srazil pod normu. */
+  --red-solid:#DB343E;
+  --red-solid-dark:#B32830;
   --open:#3FA76F;
   --gear-invert:0;        /* ozubené kolo na pozadí hera */
 
@@ -56,11 +60,13 @@
   --band-deep:#0B101A;
   --band-text:#F2F5FA;
   --band-soft:#98A3BC;
-  --band-muted:#79839B;
+  --band-muted:#8590A9;
   --band-line:#2B3446;
 
   --red:#F04A54;
   --red-dark:#D93A44;
+  --red-solid:#DB343E;
+  --red-solid-dark:#B32830;
   --open:#4FBF83;
   --gear-invert:1;
 }
@@ -78,7 +84,7 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--red);outline-offset:2px}
 
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
-.skip{position:absolute;left:-9999px;top:0;background:var(--red);color:#fff;padding:12px 18px;z-index:100}
+.skip{position:absolute;left:-9999px;top:0;background:var(--red-solid);color:#fff;padding:12px 18px;z-index:100}
 .skip:focus{left:8px;top:8px}
 
 h1,h2,h3,h4{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1.05}
@@ -89,10 +95,10 @@ p{margin:0 0 1em}
 .lede{font-size:clamp(17px,1.9vw,20px);color:var(--ink-soft);max-width:62ch;line-height:1.5}
 
 /* ---------- utility bar ---------- */
-.util{background:var(--ink-deep);color:#A9B2CA;font-size:13.5px}
+.util{background:var(--band-deep);color:var(--band-soft);font-size:13.5px}
 .util .wrap{display:flex;gap:26px;align-items:center;min-height:38px;flex-wrap:wrap}
 .util a{text-decoration:none}
-.util a:hover{color:#fff}
+.util a:hover{color:var(--band-text)}
 .util .sep{margin-left:auto}
 
 /* ---------- header ---------- */
@@ -122,8 +128,8 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
   padding:12px 22px;border:1px solid transparent;border-radius:3px;
   text-decoration:none;cursor:pointer;background:none;
 }
-.btn-red{background:var(--red);color:#fff}
-.btn-red:hover{background:var(--red-dark)}
+.btn-red{background:var(--red-solid);color:#fff}
+.btn-red:hover{background:var(--red-solid-dark)}
 .btn-line{border-color:var(--ink);color:var(--ink)}
 .btn-line:hover{background:var(--ink);color:var(--paper)}
 .btn-ghost{border-color:var(--zinc);background:var(--white);color:var(--ink)}
@@ -177,7 +183,7 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
   flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-decoration:none;font-weight:600;font-size:16px;padding:11px 10px;border-radius:3px;
 }
-.callbar .c-km{background:var(--red);color:#fff}
+.callbar .c-km{background:var(--red-solid);color:#fff}
 .callbar .c-uh{border:1px solid var(--band-line);color:var(--band-text)}
 .callbar small{font-size:11.5px;font-weight:500;opacity:.8;letter-spacing:.02em}
 
@@ -202,8 +208,8 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
 .finder{border:2px solid var(--ink);border-radius:4px;background:var(--white);display:flex;overflow:hidden;max-width:560px}
 .finder input{flex:1;border:0;padding:17px 18px;font:inherit;font-size:16.5px;min-width:0;background:transparent}
 .finder input:focus{outline:none}
-.finder button{border:0;background:var(--red);color:#fff;font:inherit;font-weight:600;padding:0 26px;cursor:pointer;font-size:16px}
-.finder button:hover{background:var(--red-dark)}
+.finder button{border:0;background:var(--red-solid);color:#fff;font:inherit;font-weight:600;padding:0 26px;cursor:pointer;font-size:16px}
+.finder button:hover{background:var(--red-solid-dark)}
 .finder-note{font-size:14px;color:var(--steel);margin:11px 0 0}
 .finder-note a{color:var(--ink);text-underline-offset:3px}
 
@@ -464,8 +470,17 @@ section{padding:clamp(52px,7vw,90px) 0}
 .ccard address{font-style:normal;color:var(--band-soft);font-size:15px;margin-bottom:14px}
 .ccard .tels{margin-bottom:12px}
 .ccard .tels a{border:1px solid var(--band-line);background:transparent;color:var(--band-text);font-size:14.5px;padding:7px 12px}
-.ccard .tels a:hover{background:var(--red);border-color:var(--red)}
+.ccard .tels a:hover{background:var(--red-solid);border-color:var(--red-solid);color:#fff}
 .ccard .mail{color:var(--band-text);font-size:15px;text-underline-offset:3px}
+
+/* Světlá varianta karty — na stránce Kontakt, kde je pozadí světlé.
+   Bez ní by telefony byly bílé na bílém, tedy neviditelné. */
+.ccard.is-light{background:var(--white);border-color:var(--zinc);color:var(--ink)}
+.ccard.is-light h3{color:var(--ink)}
+.ccard.is-light address{color:var(--ink-soft)}
+.ccard.is-light .tels a{border-color:var(--zinc);color:var(--ink)}
+.ccard.is-light .tels a:hover{background:var(--red-solid);border-color:var(--red-solid);color:#fff}
+.ccard.is-light .mail{color:var(--ink)}
 
 .maps{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
 .maps iframe{width:100%;height:300px;border:1px solid var(--zinc);border-radius:4px;display:block}

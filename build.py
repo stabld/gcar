@@ -908,11 +908,11 @@ def kontakt_body():
     for p in POBOCKY:
         pozn = "<br>" + p["poznamka"] if p["poznamka"] else ""
         cards += """
-    <div class="ccard" style="border-color:var(--zinc);background:var(--white);color:var(--ink)">
-      <h3 style="color:var(--ink)">%s</h3>
-      <address style="color:var(--ink-soft)">%s, %s%s</address>
-      <div class="tels" style="margin-bottom:12px">%s</div>
-      <a class="mail" href="mailto:%s" style="color:var(--ink)">%s</a>
+    <div class="ccard is-light">
+      <h3>%s</h3>
+      <address>%s, %s%s</address>
+      <div class="tels">%s</div>
+      <a class="mail" href="mailto:%s">%s</a>
     </div>""" % (p["nazev"], p["ulice"], p["psc"], pozn,
                  "".join(tel_link(t) for t in p["tel"]), p["mail"], p["mail"])
 
