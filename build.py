@@ -616,7 +616,6 @@ __ROZVOZ__
     <div class="svc">
       <a href="/pujcovna/"><h3>Půjčovna</h3><p>Střešní autoboxy od 80 Kč za den.</p></a>
       <a href="/akce/"><h3>Akce</h3><p>Aktuální akční nabídky v e-shopu.</p></a>
-      <a href="/vyprodej/"><h3>Výprodej</h3><p>Zboží za snížené ceny.</p></a>
       <a href="/o-nas/"><h3>O nás</h3><p>Kdo jsme a kde nás najdete.</p></a>
     </div>
   </div>

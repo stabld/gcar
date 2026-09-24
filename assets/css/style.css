@@ -417,7 +417,8 @@ section{padding:clamp(52px,7vw,90px) 0}
 .brands-note{margin:18px 0 0;font-size:15px;color:var(--steel)}
 
 /* služby */
-.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+/* Počet dlaždic se mění podle obsahu, proto auto-fit a ne pevné čtyři. */
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .svc a{background:var(--white);border:1px solid var(--zinc);border-radius:4px;padding:22px;text-decoration:none;display:block}
 .svc a:hover{border-color:var(--ink)}
 .svc h3{font-size:18px;margin-bottom:7px}
