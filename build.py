@@ -469,7 +469,7 @@ HOME = """<div class="hero">
       <a class="pillar" href="/sortiment/">
         <b>01</b>
         <h2>Autodíly</h2>
-        <p>Náhradní díly na osobní a užitkové vozy, pneumatiky, oleje, chemie, nářadí a vybavení servisů. Prodej na pultě, v e-shopu i rozvozem k vám.</p>
+        <p>Náhradní díly na osobní a užitkové vozy, pneumatiky, oleje, chemie, nářadí a vybavení servisů. Objednáte do 17:00, druhý den to máte u sebe.</p>
         <span class="go">Sortiment a e-shop</span>
       </a>
       <a class="pillar" href="/autoservis/">
@@ -490,7 +490,7 @@ HOME = """<div class="hero">
 
 <div class="strip">
   <div class="wrap">
-    <div class="stat"><b>Vlastní rozvoz</b><span>díly vozíme servisům a obchodům sami, ne přepravcem</span></div>
+    <div class="stat"><b>Objednávka do 17:00</b><span>druhý den máte zboží k dispozici</span></div>
     <div class="stat"><b>2 pobočky</b><span>Kroměříž a Staré Město</span></div>
     <div class="stat"><b>TecDoc</b><span>díl dohledáte podle vozu, VIN i katalogového čísla</span></div>
     <div class="stat"><b>Od roku 2004</b><span>GCAR services, s.r.o.</span></div>
@@ -540,6 +540,38 @@ HOME = """<div class="hero">
   </div>
 </section>
 
+<section class="rozvoz">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Rozvoz do servisů a obchodů</h2>
+        <p class="lede">Nemusíte pro díl jezdit ani čekat na přepravní službu. Objednáte do 17:00 a druhý den máte zboží u sebe.</p>
+      </div>
+    </div>
+
+    <div class="rozvoz-grid">
+      <div class="rozvoz-card">
+        <b>Do 17:00</b>
+        <p>Co objednáte do pěti odpoledne, máte druhý den k dispozici.</p>
+      </div>
+      <div class="rozvoz-card">
+        <b>Kroměříž, okolí do 20 km</b>
+        <p>Rozvážíme směr Holešov, Kojetín a Zdounky.</p>
+      </div>
+      <div class="rozvoz-card">
+        <b>Staré Město, okolí do 30 km</b>
+        <p>Rozvážíme směr Koryčany, Strážnice, Hluk a Uherský Brod.</p>
+      </div>
+      <div class="rozvoz-card">
+        <b>40 Kč s DPH</b>
+        <p>Cena za rozvoz bez ohledu na velikost objednávky.</p>
+      </div>
+    </div>
+
+    <p class="rozvoz-note">Trasy se řídí tím, kde máme zákazníky. Pokud sídlíte kousek za uvedeným okruhem, zavolejte — často se to dá domluvit.</p>
+  </div>
+</section>
+
 <section id="katalogy" class="delivery">
   <div class="wrap">
     <div class="sec-head">
@@ -570,7 +602,7 @@ HOME = """<div class="hero">
   <div class="wrap">
     <div class="sec-head"><div><h2>A ještě</h2></div></div>
     <div class="svc">
-      <a href="/pujcovna/"><h3>Půjčovna</h3><p>Střešní boxy, nosiče a přívěsy na víkend i na dovolenou.</p></a>
+      <a href="/pujcovna/"><h3>Půjčovna</h3><p>Střešní autoboxy od 80 Kč za den.</p></a>
       <a href="/akce/"><h3>Akce</h3><p>Aktuální akční nabídky v e-shopu.</p></a>
       <a href="/vyprodej/"><h3>Výprodej</h3><p>Zboží za snížené ceny.</p></a>
       <a href="/o-nas/"><h3>O nás</h3><p>Kdo jsme a kde nás najdete.</p></a>
@@ -829,17 +861,24 @@ __ESHOPBOX__
 
 PUJCOVNA = """<div class="split">
   <div class="prose">
-    <p>Nemá smysl kupovat střešní box, když ho použijete dvakrát do roka. Provozujeme půjčovnu autodoplňků — na víkend, na dovolenou i na jednu jízdu.</p>
+    <p>Nemá smysl kupovat autobox, když ho použijete dvakrát do roka. Půjčujeme <strong>střešní autoboxy</strong> — na víkend, na dovolenou i na jednu jízdu.</p>
 
-    <h2>Co si připravit, než zavoláte</h2>
+    <h2>Co máme k dispozici</h2>
+    <p>Čtyři boxy: <strong>dva úzké a dva široké</strong>. Všechny jsou zhruba stejně dlouhé, kolem 230 cm. Úzký nechá na střeše víc místa vedle sebe, široký pobere víc nákladu.</p>
+    <p>Auta v půjčovně momentálně nemáme.</p>
+
+    <h2>Kolik to stojí</h2>
     <ul>
-      <li><strong>Značku a model vozu.</strong> Nosiče a příčníky se liší podle typu střechy — hladká střecha, podélníky, hagusy. Podle vozu vybereme, co na něj sedí.</li>
-      <li><strong>Termín.</strong> V létě a o prázdninách bývá vybavení půjčené i týdny dopředu, rezervace se vyplatí.</li>
-      <li><strong>K čemu to potřebujete.</strong> Jiný box na dva lidi na víkend, jiný na rodinu na dva týdny k moři.</li>
+      <li><strong>400 Kč za týden</strong></li>
+      <li><strong>80 Kč za den</strong> při kratším zapůjčení</li>
     </ul>
 
-    <h2>Ceny a podmínky</h2>
-    <p>Dostupnost na konkrétní termín, cenu i podmínky výpůjčky vám řekneme po telefonu — závisí na délce zápůjčky a typu vybavení.</p>
+    <h2>Jak si box půjčit</h2>
+    <ul>
+      <li><strong>Zavolejte a domluvte termín.</strong> Půjčování probíhá na základě telefonické dohody. V létě a o prázdninách bývají boxy zamluvené dopředu.</li>
+      <li><strong>Řekněte nám značku a model vozu.</strong> Podle typu střechy a nosiče poradíme, který box na něj sedne.</li>
+      <li><strong>Při vyzvednutí se podepisuje zápůjční smlouva.</strong></li>
+    </ul>
   </div>
   __ASIDE__
 </div>
@@ -927,13 +966,33 @@ CTYRISTOCTYRI = """<div class="prose" style="text-align:center;margin:0 auto;pad
 
 # ==========================================================================
 # Značky doložené z e-shopu (patička + produktové karty).
-# CHYBI: úplný seznam a souhlas s použitím log — zatím jen text, ne loga.
-ZNACKY = ["CASTROL", "TOTAL", "ELF", "BOLL", "AMTRA", "ATAS",
-          "ENERGY", "KS TOOLS", "ATH HEINL", "THULE"]
+# Druhá položka je název souboru s logem ve složce /assets/img/znacky/.
+# Dokud soubor neexistuje, vypíše se místo loga název — web se nerozbije.
+# Nejlepší je SVG, jinak PNG s průhledným pozadím, výška aspoň 120 px.
+ZNACKY = [
+    ("Castrol", "castrol.svg"),
+    ("Total", "total.svg"),
+    ("Elf", "elf.svg"),
+    ("BOLL", "boll.svg"),
+    ("AMTRA", "amtra.svg"),
+    ("ATAS", "atas.svg"),
+    ("Energy", "energy.svg"),
+    ("KS Tools", "ks-tools.svg"),
+    ("ATH Heinl", "ath-heinl.svg"),
+    ("Thule", "thule.svg"),
+]
 
 
 def znacky_row():
-    return "".join('<span>%s</span>' % z for z in ZNACKY)
+    out = ""
+    for nazev, soubor in ZNACKY:
+        cesta = "/assets/img/znacky/" + soubor
+        if os.path.exists(os.path.join(ROOT, cesta.lstrip("/"))):
+            out += ('<span class="znacka"><img src="%s" alt="%s" loading="lazy"></span>'
+                    % (asset(cesta), nazev))
+        else:
+            out += '<span class="znacka is-text">%s</span>' % nazev
+    return out
 
 
 def chips(items):

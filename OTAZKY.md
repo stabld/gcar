@@ -12,14 +12,14 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 
 | # | Tvrzení | Otázka |
 |---|---|---|
-| A1 | ~~Vlastní rozvoz~~ | **POTVRZENO majitelem** — vozí vlastními auty. Na webu je to teď v horní liště i v pruhu s fakty. |
-| A2 | „Rozvoz na Kroměřížsku a Uherskohradišťsku" | Jaký je skutečný dojezd? Kam všude jezdíte? |
-| A3 | „Objednejte do X hodin a máte to týž den" | Existuje nějaký deadline pro objednávku na stejný den? Jak často rozvoz jezdí? |
+| A1 | ~~Vlastní rozvoz~~ | **VYŘEŠENO 24. 9. 2026** — vlastní rozvoz, objednávka **do 17:00** = zboží **druhý den**. Kroměříž: okruh cca 20 km (Holešov, Kojetín, Zdounky). Staré Město: okruh cca 30 km (Koryčany, Strážnice, Hluk, Uherský Brod). **Cena 40 Kč s DPH.** Trasy jsou "sporadické, dle zákazníků" — na webu formulováno tak, že za okruhem se dá domluvit. Na homepage je z toho samostatná sekce. |
+| A2 | ~~Dojezd~~ | **VYŘEŠENO** — viz A1. |
+| A3 | ~~Deadline~~ | **VYŘEŠENO** — do 17:00 na druhý den (ne týž den, to jsem předpokládal špatně). |
 | A4 | Autoservis | **PRAVDĚPODOBNĚ VYŘEŠENO** — katalogy (ekatalog.cz, firmy.cz) vedou autoservis, pneuservis i montáže LPG/CNG pod stejným IČO **26946840**, tedy pod GCAR services, s.r.o. Nechat potvrdit. |
 | A5 | Autoskla a tažná zařízení | **ČÁSTEČNĚ** — tažná zařízení **montujete**, je to v ceníku servisu (klasická elektroinstalace i check control). **Autoskla zůstávají neověřená** — v ceníku ani v nabídce servisu nejsou. Montujete je? Nebo jen prodáváte? Nebo vůbec? |
 | A6 | „Přezutí a vyvážení pneumatik u nás" | Děláte pneuservis? |
 | A10 | ~~„Najdeme díl podle VIN"~~ | **OVĚŘENO** — e-shop má „VIN + ACI katalog" a vyhledávání podle KÓD / TEXT / VOZIDLO. Můžeme to na webu tvrdit. |
-| A7 | Podmínky půjčovny (kauce, doklad totožnosti, rezervace) | Jak to u vás doopravdy chodí? |
+| A7 | ~~Podmínky půjčovny~~ | **VYŘEŠENO 24. 9. 2026** — půjčují **jen střešní autoboxy**, auta ne. Čtyři kusy: 2 úzké a 2 široké, všechny cca 230 cm. **400 Kč/týden, 80 Kč/den** při kratším zapůjčení. Telefonická dohoda + **zápůjční smlouva**. O kauci a dokladu totožnosti se nezmínil, tak to na webu není. |
 | A8 | Podmínky výprodeje (záruka, trvalá sleva) | Platí u výprodejového zboží standardní záruka? |
 | A9 | „Velkoobchod i prodej koncovým zákazníkům" | Prodáváte i běžným lidem z ulice, nebo jen firmám? |
 
@@ -29,7 +29,7 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 
 | # | Co | Proč |
 |---|---|---|
-| B1 | **Loga dodavatelských značek** | Z e-shopu už víme o **CASTROL, TOTAL, ELF, BOLL, AMTRA, ATAS, ENERGY, KS Tools, ATH Heinl, Thule**. Castrol, Total a Elf mají v patičce e-shopu vlastní sekci, takže jsou asi klíčoví. Které další vedete a od kterých smíte použít logo? |
+| B1 | ~~Loga dodavatelských značek~~ | **SCHVÁLENO majitelem 24. 9. 2026** — loga mohou být všechna. Právní opora: § 10 zákona o ochranných známkách (použití známky k označení výrobku), vyčerpání práv u originálního zboží uvedeného na trh v EU/EHP, stanovisko EUIPO k použití známky na webu při nabídce příslušných výrobků. **Podmínka: logo smí označovat skutečně prodávané zboží, ne sloužit jako dekorace ani naznačovat status „oficiálního prodejce".** Na webu je pruh značek u katalogu zboží, což tomu odpovídá. Soubory log patří do `assets/img/znacky/` — viz README v té složce. |
 | B8 | **TecDoc** | E-shop běží na databázi TecDoc. To je pro mechanika silný signál (kompletní katalog dílů podle vozu). Na prezentačním webu o tom není ani slovo — může tam být? |
 | B9 | **Katalogy ke stažení** | E-shop odkazuje na Mazací plán CASTROL, katalog chemie BOLL, katalog startérů a alternátorů a tažná zařízení. Servisy tyhle PDF používají — patří i na web? **Potřebuju konkrétní URL těch odkazů z patičky e-shopu.** |
 | B10 | **Souhlas s použitím log značek** | Na webu je zatím jen textový výpis značek. Loga bych přidal, ale u některých výrobců je jejich použití vázané na smlouvu s distributorem. Máte to ošetřené? |
@@ -155,6 +155,14 @@ Zóna zůstane stejná, DNSSEC zůstane platný.
 
 ---
 
+## H. Přání do budoucna
+
+| # | Co | Poznámka |
+|---|---|---|
+| H1 | **Kalendář obsazenosti půjčovny** | Majitel to zmínil sám: chtěl by u půjčovny vidět, které termíny jsou volné. Jde to udělat, ale potřebuje to někde držet data — buď jednoduchý sdílený kalendář, nebo malou aplikaci. Není to práce na statický web. Stojí za samostatnou domluvu. |
+
+---
+
 ## G. Co na webu ještě chybí k "hotovo" (stav 16. 9. 2026)
 
 ### Hotovo
@@ -170,8 +178,8 @@ Zóna zůstane stejná, DNSSEC zůstane platný.
 - [ ] **Logo ve vektoru** (SVG) + inverzní varianta od grafika
 - [ ] **Mapy** obou poboček
 - [x] ~~Texty podstránek~~ — napsané, ale jako odborný obsah o oboru (viz C8a). Původní znění z gcar.cz stále nemám.
-- [ ] **Čísla o rozvozu** — dojezd, četnost, deadline pro dodání týž den
-- [ ] **Loga dodavatelských značek** (teď jen textový výpis)
+- [x] ~~Čísla o rozvozu~~ — doplněno
+- [ ] **Soubory log značek** — schváleno, čekáme jen na soubory do `assets/img/znacky/`
 - [ ] **Odkazy na obchodní podmínky a ochranu osobních údajů**
 - [ ] **Sociální sítě** — existují účty?
 
