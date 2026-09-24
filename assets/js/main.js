@@ -95,34 +95,83 @@
   /* ---------- Kontaktní formulář ----------
      Zatím jen klientská validace a odeslání přes mailto jako záloha.
      Až bude endpoint (Formspree / vlastní), přepíše se sem fetch().   */
+  /* ---------- Kontaktní formulář ----------
+     Když má formulář vyplněný `action` (endpoint z Formspree), odešle se
+     na pozadí a člověk zůstane na stránce. Bez endpointu se otevře
+     poštovní klient — záložní režim, ať formulář nikdy nespolkne zprávu. */
   function initForm() {
     var f = document.getElementById('kontaktni-formular');
     if (!f) return;
 
-    f.addEventListener('submit', function (e) {
-      // honeypot proti botům
-      var hp = f.querySelector('[name="_gotcha"]');
-      if (hp && hp.value) { e.preventDefault(); return; }
+    var stav = document.getElementById('form-stav');
+    var btn = f.querySelector('button[type="submit"]');
+    var mail = f.getAttribute('data-mail') || 'gcar@gcar.cz';
 
-      if (!f.getAttribute('action')) {
-        e.preventDefault();
-        var get = function (n) {
-          var el = f.querySelector('[name="' + n + '"]');
-          return el ? el.value : '';
-        };
-        var body = [
-          'Jméno: ' + get('jmeno'),
-          'Firma: ' + get('firma'),
-          'Telefon: ' + get('telefon'),
-          'E-mail: ' + get('email'),
-          'Vozidlo / VIN: ' + get('vozidlo'),
-          '',
-          get('zprava')
-        ].join('\n');
-        window.location.href = 'mailto:gcar@gcar.cz'
-          + '?subject=' + encodeURIComponent('Poptávka z webu')
-          + '&body=' + encodeURIComponent(body);
+    function zprava(text, chyba) {
+      if (!stav) return;
+      stav.textContent = text;
+      stav.classList.toggle('is-chyba', !!chyba);
+      stav.hidden = false;
+    }
+
+    function hodnota(n) {
+      var el = f.querySelector('[name="' + n + '"]');
+      return el ? el.value.trim() : '';
+    }
+
+    function doPostovniho() {
+      var telo = [
+        'Jméno: ' + hodnota('jmeno'),
+        'Firma: ' + hodnota('firma'),
+        'Telefon: ' + hodnota('telefon'),
+        'E-mail: ' + hodnota('email'),
+        'Vozidlo / VIN: ' + hodnota('vozidlo'),
+        '',
+        hodnota('zprava')
+      ].join('\n');
+      window.location.href = 'mailto:' + mail
+        + '?subject=' + encodeURIComponent('Poptávka z webu')
+        + '&body=' + encodeURIComponent(telo);
+    }
+
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // past na roboty — vyplněné skryté pole znamená robota, tiše končíme
+      var hp = f.querySelector('[name="_gotcha"]');
+      if (hp && hp.value) return;
+
+      // povinná pole
+      var chybi = [];
+      if (!hodnota('jmeno')) chybi.push('jméno');
+      if (!hodnota('telefon')) chybi.push('telefon');
+      if (!hodnota('zprava')) chybi.push('zprávu');
+      if (chybi.length) {
+        zprava('Doplňte prosím ' + chybi.join(', ') + '.', true);
+        var prvni = f.querySelector('[required]:invalid') || f.querySelector('[name="jmeno"]');
+        if (prvni) prvni.focus();
+        return;
       }
+
+      var endpoint = f.getAttribute('action');
+      if (!endpoint) { doPostovniho(); return; }
+
+      if (btn) { btn.disabled = true; btn.textContent = 'Odesílám…'; }
+      zprava('Odesílám…', false);
+
+      fetch(endpoint, {
+        method: 'POST',
+        body: new FormData(f),
+        headers: { Accept: 'application/json' }
+      }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        f.reset();
+        zprava('Děkujeme, poptávku máme. Ozveme se v pracovní dny co nejdřív.', false);
+      }).catch(function () {
+        zprava('Odeslání se nepovedlo. Zkuste to prosím znovu, nebo nám zavolejte.', true);
+      }).then(function () {
+        if (btn) { btn.disabled = false; btn.textContent = 'Odeslat'; }
+      });
     });
   }
 

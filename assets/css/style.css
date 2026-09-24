@@ -286,6 +286,31 @@ section{padding:clamp(52px,7vw,90px) 0}
 .cat .parts{margin-top:auto;padding-top:16px;display:flex;flex-wrap:wrap;gap:6px}
 .chip{font-style:normal;font-size:13.5px;border:1px solid var(--zinc);border-radius:99px;padding:3px 11px;color:var(--ink-soft);background:var(--white)}
 
+/* katalogy výrobců */
+.vyrobci{margin:0 0 32px}
+.vyrobci h2{font-size:clamp(22px,2.6vw,28px);margin-bottom:8px}
+.vyrobci-lede{font-size:16px;color:var(--ink-soft);max-width:60ch;margin:0 0 20px}
+.vyrobci-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
+.vyrobce{
+  background:var(--white);padding:20px 22px;text-decoration:none;display:block;
+  position:relative;padding-right:44px;
+}
+.vyrobce:hover{box-shadow:inset 0 0 0 2px var(--red)}
+.vyrobce b{display:block;font-family:var(--display);font-size:17px;margin-bottom:5px}
+.vyrobce span{display:block;font-size:14.5px;color:var(--ink-soft);line-height:1.45}
+/* šipka ven z webu — návštěvník ví, že odchází jinam */
+.vyrobce::after{
+  content:"";position:absolute;right:18px;top:22px;width:11px;height:11px;
+  border:2px solid var(--steel);border-left:0;border-bottom:0;
+  transform:rotate(45deg);opacity:.7;
+}
+.vyrobce:hover::after{border-color:var(--red);opacity:1}
+@media (max-width:760px){.vyrobci-grid{grid-template-columns:1fr}}
+
+/* právní odkazy v patičce */
+.fpravni{display:flex;flex-wrap:wrap;gap:6px 20px;padding-top:20px;font-size:13.5px}
+.fpravni a{text-decoration:none}
+
 /* rozvoz */
 .delivery{background:var(--white);border-top:1px solid var(--zinc);border-bottom:1px solid var(--zinc)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
@@ -294,6 +319,31 @@ section{padding:clamp(52px,7vw,90px) 0}
 .step b{font-family:var(--mono);font-size:13px;color:var(--steel);display:block;margin-bottom:10px}
 .step h3{margin-bottom:8px}
 .step p{font-size:15.5px;color:var(--ink-soft);margin:0}
+
+/* katalogy výrobců */
+.vyrobci{margin:0 0 32px}
+.vyrobci h2{font-size:clamp(22px,2.6vw,28px);margin-bottom:8px}
+.vyrobci-lede{font-size:16px;color:var(--ink-soft);max-width:60ch;margin:0 0 20px}
+.vyrobci-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
+.vyrobce{
+  background:var(--white);padding:20px 22px;text-decoration:none;display:block;
+  position:relative;padding-right:44px;
+}
+.vyrobce:hover{box-shadow:inset 0 0 0 2px var(--red)}
+.vyrobce b{display:block;font-family:var(--display);font-size:17px;margin-bottom:5px}
+.vyrobce span{display:block;font-size:14.5px;color:var(--ink-soft);line-height:1.45}
+/* šipka ven z webu — návštěvník ví, že odchází jinam */
+.vyrobce::after{
+  content:"";position:absolute;right:18px;top:22px;width:11px;height:11px;
+  border:2px solid var(--steel);border-left:0;border-bottom:0;
+  transform:rotate(45deg);opacity:.7;
+}
+.vyrobce:hover::after{border-color:var(--red);opacity:1}
+@media (max-width:760px){.vyrobci-grid{grid-template-columns:1fr}}
+
+/* právní odkazy v patičce */
+.fpravni{display:flex;flex-wrap:wrap;gap:6px 20px;padding-top:20px;font-size:13.5px}
+.fpravni a{text-decoration:none}
 
 /* rozvoz */
 .rozvoz{background:var(--white);border-top:1px solid var(--zinc);border-bottom:1px solid var(--zinc)}
@@ -429,6 +479,12 @@ section{padding:clamp(52px,7vw,90px) 0}
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ink);outline:none;box-shadow:0 0 0 3px rgba(26,36,61,.08)}
 .field .hint{font-size:13.5px;color:var(--steel);margin:6px 0 0}
 .hp{position:absolute;left:-9999px}
+.form-stav{
+  margin:14px 0 0;padding:12px 14px;border-radius:3px;font-size:15px;
+  background:var(--zinc-light);color:var(--ink);
+  border-left:3px solid var(--open);
+}
+.form-stav.is-chyba{border-left-color:var(--red)}
 
 /* ---------- footer ---------- */
 footer{background:var(--band-deep);color:var(--band-muted);font-size:14.5px;padding:44px 0 26px}

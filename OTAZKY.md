@@ -16,7 +16,7 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 | A2 | ~~Dojezd~~ | **VYŘEŠENO** — viz A1. |
 | A3 | ~~Deadline~~ | **VYŘEŠENO** — do 17:00 na druhý den (ne týž den, to jsem předpokládal špatně). |
 | A4 | Autoservis | **PRAVDĚPODOBNĚ VYŘEŠENO** — katalogy (ekatalog.cz, firmy.cz) vedou autoservis, pneuservis i montáže LPG/CNG pod stejným IČO **26946840**, tedy pod GCAR services, s.r.o. Nechat potvrdit. |
-| A5 | Autoskla a tažná zařízení | **ČÁSTEČNĚ** — tažná zařízení **montujete**, je to v ceníku servisu (klasická elektroinstalace i check control). **Autoskla zůstávají neověřená** — v ceníku ani v nabídce servisu nejsou. Montujete je? Nebo jen prodáváte? Nebo vůbec? |
+| A5 | Autoskla a tažná zařízení | **UZAVŘENO** — tažná zařízení **montujete** (v ceníku servisu, klasická elektroinstalace i check control). **Autoskla se neřeší** — majitel si není jistý, na webu tedy nejsou zmíněná vůbec. Kdyby se to vyjasnilo, dá se doplnit. |
 | A6 | „Přezutí a vyvážení pneumatik u nás" | Děláte pneuservis? |
 | A10 | ~~„Najdeme díl podle VIN"~~ | **OVĚŘENO** — e-shop má „VIN + ACI katalog" a vyhledávání podle KÓD / TEXT / VOZIDLO. Můžeme to na webu tvrdit. |
 | A7 | ~~Podmínky půjčovny~~ | **VYŘEŠENO 24. 9. 2026** — půjčují **jen střešní autoboxy**, auta ne. Čtyři kusy: 2 úzké a 2 široké, všechny cca 230 cm. **400 Kč/týden, 80 Kč/den** při kratším zapůjčení. Telefonická dohoda + **zápůjční smlouva**. O kauci a dokladu totožnosti se nezmínil, tak to na webu není. |
@@ -31,7 +31,8 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 |---|---|---|
 | B1 | ~~Loga dodavatelských značek~~ | **SCHVÁLENO majitelem 24. 9. 2026** — loga mohou být všechna. Právní opora: § 10 zákona o ochranných známkách (použití známky k označení výrobku), vyčerpání práv u originálního zboží uvedeného na trh v EU/EHP, stanovisko EUIPO k použití známky na webu při nabídce příslušných výrobků. **Podmínka: logo smí označovat skutečně prodávané zboží, ne sloužit jako dekorace ani naznačovat status „oficiálního prodejce".** Na webu je pruh značek u katalogu zboží, což tomu odpovídá. Soubory log patří do `assets/img/znacky/` — viz README v té složce. |
 | B8 | **TecDoc** | E-shop běží na databázi TecDoc. To je pro mechanika silný signál (kompletní katalog dílů podle vozu). Na prezentačním webu o tom není ani slovo — může tam být? |
-| B9 | **Katalogy ke stažení** | E-shop odkazuje na Mazací plán CASTROL, katalog chemie BOLL, katalog startérů a alternátorů a tažná zařízení. Servisy tyhle PDF používají — patří i na web? **Potřebuju konkrétní URL těch odkazů z patičky e-shopu.** |
+| B9 | ~~Katalogy výrobců~~ | E-shop odkazuje na Mazací plán CASTROL, katalog chemie BOLL, katalog startérů a alternátorů a tažná zařízení. Servisy tyhle PDF používají — patří i na web? **HOTOVO 24. 9. 2026** — Castrol (výběr oleje podle vozu) a BOLL jsou na /sortiment/chemie/, AS-PL (startéry a alternátory) a tažná zařízení na /sortiment/nahradni-dily/. |
+| B11 | **ROZBITÝ ODKAZ V E-SHOPU** | Odkaz „TAŽNÁ ZAŘÍZENÍ" v patičce e-shopu vede na `https://eshop.gcar.cz/eshop.gcar.cz/cs/katalog/univerzalni-dily` — má tam zdvojenou doménu, takže nefunguje. Na novém webu je opravená verze bez toho zdvojení, ale **v e-shopu to zůstává rozbité** a stojí za opravu. |
 | B10 | **Souhlas s použitím log značek** | Na webu je zatím jen textový výpis značek. Loga bych přidal, ale u některých výrobců je jejich použití vázané na smlouvu s distributorem. Máte to ošetřené? |
 | B2 | **Konkrétní čísla o rozvozu** | Viz A1–A3. Tohle je jediná věc, kterou e-shop z internetu nedokáže nabídnout. |
 | B3 | **Vlastní fotky** — sklad, regály, prodejna, lidi za pultem | Web nemá jedinou fotku. Vlastní fotka skladu udělá pro důvěru víc než jakýkoli text. Stocková fotka rozmazaného motoru je horší než žádná. |
@@ -51,7 +52,7 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 | C9 | ~~Dva různé e-maily~~ | **ZODPOVĚZENO 16. 9. 2026** — hlavní je `gcar@gcar.cz`. (`info@gcar.cz` v e-shopu zůstává, na web nedáváme.) |
 | C10 | ~~602 721 994 telefon nebo fax?~~ | **ZODPOVĚZENO** — je to **telefon**. Patička e-shopu ho označuje jako fax chybně; stojí za to ji opravit. |
 | C11 | ~~Adresa~~ | **ZODPOVĚZENO** — správně je **Hulínská 2351/28E**. Na starém gcar.cz je překlep (298E) — opravit i tam, než se web vypne. |
-| C12 | **Právní stránky chybí** | E-shop má Obchodní podmínky, Reklamační řád, Ochranu osobních údajů a Cookies. Nový prezentační web nemá nic. **Pošli mi URL těch stránek z e-shopu** a odkážu na ně z patičky. |
+| C12 | ~~Právní stránky~~ | E-shop má Obchodní podmínky, Reklamační řád, Ochranu osobních údajů a Cookies. Nový prezentační web nemá nic. **HOTOVO 24. 9. 2026** — obchodní podmínky, reklamační řád, ochrana osobních údajů a cookies jsou odkázané z patičky každé stránky. |
 | C13 | ~~Fonty z Google~~ | **VYŘEŠENO** — písma se hostují z `/assets/fonts/`, web už nikam ven nesahá. |
 | C14 | **Newsletter** | E-shop sbírá e-maily na akční nabídky. Má být přihlášení i na webu? |
 
@@ -86,8 +87,9 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 > skutečné nabídky servisu (oleje, brzdy, převodovky, pneumatiky a 3D
 > geometrie, klimatizace a dezinfekce, sezónní prohlídky).
 >
-> **Zbývá jediné neověřené tvrzení: náhradní vozidlo po dobu přestavby na
-> LPG.** Splátky už byly odstraněny — nenabízejí se.
+> **VŠE VYŘEŠENO 24. 9. 2026.** Náhradní vozidlo po dobu přestavby se
+> nepůjčuje — z webu odstraněno. Splátky na montáž LPG taktéž.
+> Na webu už nezůstalo žádné neověřené tvrzení o službách.
 
 Z veřejných katalogů (firmy.cz, ekatalog.cz, zivefirmy.cz) vychází, že pod
 IČO **26946840** běží toho podstatně víc, než co gcar.cz zmiňuje. Ověřit

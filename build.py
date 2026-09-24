@@ -19,6 +19,42 @@ DOMAIN = "https://gcar.cz"
 ESHOP = "https://eshop.gcar.cz/cs"
 ESHOP_SEARCH = "https://eshop.gcar.cz/cs/hledani/5/-1/"  # cestová URL: .../hledani/5/-1/{dotaz}
 SERVIS = "http://autoserviskromeriz.cz"
+
+# Kam chodí poptávky z kontaktního formuláře.
+# Prázdné = formulář otevře poštovního klienta (záložní režim).
+# Po založení formuláře na formspree.io sem vlož jeho adresu,
+# např. "https://formspree.io/f/xayzbwkd", a spusť build.py.
+FORM_ENDPOINT = "https://formspree.io/f/xnpnzzre"
+
+# Právní dokumenty — společné s e-shopem, proto na ně jen odkazujeme.
+PRAVNI = [
+    ("Obchodní podmínky", "https://eshop.gcar.cz/cs/clanek/obchodni-podminky-cz"),
+    ("Reklamační řád", "https://eshop.gcar.cz/cs/clanek/reklamacni-rad-cz"),
+    ("Ochrana osobních údajů", "https://eshop.gcar.cz/cs/pravni-informace/ochrana-osobnich-udaju"),
+    ("Používání cookies", "https://eshop.gcar.cz/cs/pravni-informace/pouzivani-cookies"),
+]
+
+# Katalogy výrobců. Vedou mimo gcar.cz — slouží k dohledání dílu,
+# objednává se pak u nás. Proto jsou označené jako externí.
+KATALOGY_VYROBCU = {
+    "chemie": [
+        ("Castrol — výběr oleje podle vozu",
+         "https://www.castrol.com/cs_cz/czech_republic/home/product-finder.html",
+         "Zadáte značku a model a Castrol ukáže, který olej do vozu patří."),
+        ("BOLL — katalog chemie",
+         "https://www.boll.pl/cz/produkty/",
+         "Kompletní sortiment autochemie BOLL."),
+    ],
+    "nahradni-dily": [
+        ("AS-PL — katalog startérů a alternátorů",
+         "https://as-pl.com/cs/index",
+         "Vyhledávání startérů, alternátorů a jejich dílů podle vozu i čísla."),
+        ("Tažná zařízení",
+         "https://eshop.gcar.cz/cs/katalog/univerzalni-dily",
+         "Nabídka tažných zařízení v našem e-shopu. Montáž zajistíme v servisu."),
+    ],
+}
+FORM_MAIL = "gcar@gcar.cz"
 LPG = "https://www.lpg-kromeriz.cz"
 
 # --------------------------------------------------------------------------
@@ -181,6 +217,9 @@ def footer():
         '\n        <li><a href="/sortiment/%s/">%s</a></li>' % (slug, nazev)
         for slug, nazev, _ in KATEGORIE)
 
+    pravni_html = "".join(
+        '<a href="%s" rel="noopener">%s</a>' % (url, nazev) for nazev, url in PRAVNI)
+
     return """
 <div class="callbar" aria-label="Rychlý kontakt">
   <a class="c-km" href="tel:%s">Zavolat<small>Kroměříž</small></a>
@@ -215,6 +254,7 @@ def footer():
         <h4>Kontakt</h4>%s
       </div>
     </div>
+    <div class="fpravni">%s</div>
     <div class="fbottom">
       <span>%s · IČO %s · DIČ %s</span>
       <span class="sep"><a href="/kontakt/">Kontakt</a></span>
@@ -223,7 +263,8 @@ def footer():
   </div>
 </footer>
 """ % (POBOCKY[0]["tel"][0], POBOCKY[1]["tel"][0], kat_html, ESHOP,
-       pobocky_html, FIRMA["nazev"], FIRMA["ico"], FIRMA["dic"], date.today().year)
+       pobocky_html, pravni_html,
+       FIRMA["nazev"], FIRMA["ico"], FIRMA["dic"], date.today().year)
 
 
 def schema_org():
@@ -645,6 +686,8 @@ KAT_DILY = """<div class="split">
   __ASIDE__
 </div>
 
+__KATALOGY_VYROBCU__
+
 __ESHOPBOX__
 """
 
@@ -707,6 +750,8 @@ KAT_CHEMIE = """<div class="split">
   </div>
   __ASIDE__
 </div>
+
+__KATALOGY_VYROBCU__
 
 __ESHOPBOX__
 """
@@ -781,7 +826,6 @@ LPG_STRANKA = """<div class="split">
       <li>Servis a diagnostika plynových systémů</li>
       <li>Výměny tlakových nádrží</li>
       <li>Seřízení vozů na plyn</li>
-      <li>Náhradní vozidlo na dobu přestavby</li>
     </ul>
 
     <h2>Máte zájem o přestavbu?</h2>
@@ -887,7 +931,7 @@ def kontakt_body():
   </div>
 
   <div>
-    <form class="form" id="kontaktni-formular" novalidate>
+    <form class="form" id="kontaktni-formular" novalidate%s data-mail="%s">
       <h3 style="margin-bottom:14px">Napište nám</h3>
       <div class="row">
         <div class="field">
@@ -919,10 +963,13 @@ def kontakt_body():
       </div>
       <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button class="btn btn-red btn-lg" type="submit" style="width:100%%">Odeslat</button>
+      <p class="form-stav" id="form-stav" role="status" hidden></p>
     </form>
   </div>
 </div>
-""" % (cards, OTEVIRACI_DOBA)
+""" % (cards, OTEVIRACI_DOBA,
+       ' action="%s" method="post"' % FORM_ENDPOINT if FORM_ENDPOINT else "",
+       FORM_MAIL)
 
 
 CTYRISTOCTYRI = """<div class="prose" style="text-align:center;margin:0 auto;padding:60px 0">
@@ -1002,6 +1049,25 @@ def rozvoz_sekce(uvnitr_sekce=False):
         # na podstránce už jsme uvnitř <section><div class="wrap">
         return '<div class="rozvoz is-inline">\n%s\n</div>' % telo
     return '<section class="rozvoz">\n  <div class="wrap">\n%s\n  </div>\n</section>' % telo
+
+
+def katalogy_vyrobcu(klic):
+    """Odkazy na katalogy výrobců u příslušné kategorie sortimentu."""
+    polozky = KATALOGY_VYROBCU.get(klic)
+    if not polozky:
+        return ""
+    sablona = ('\n    <a class="vyrobce" href="%s" rel="noopener">'
+                '\n      <b>%s</b>'
+                '\n      <span>%s</span>'
+                '\n    </a>')
+    radky = "".join(sablona % (url, nazev, popis)
+                    for nazev, url, popis in polozky)
+    return ('<div class="vyrobci">'
+            '\n  <h2>Kde si díl dohledat</h2>'
+            '\n  <p class="vyrobci-lede">Katalogy výrobců, ve kterých najdete přesné '
+            'označení dílu. Objednat ho pak můžete u nás.</p>'
+            '\n  <div class="vyrobci-grid">%s\n  </div>'
+            '\n</div>') % radky
 
 
 def chips(items):
@@ -1092,6 +1158,8 @@ add("404.html", "Stránka nenalezena | GCAR", "Požadovaná stránka nebyla nale
 # ==========================================================================
 def render(page):
     body = page["body"]
+    kat_klic = page["path"].split("/")[1] if page["path"].startswith("sortiment/") else ""
+    body = body.replace("__KATALOGY_VYROBCU__", katalogy_vyrobcu(kat_klic))
     body = body.replace("__ESHOPBOX__", eshop_box(
         "Aktuální nabídku, ceny a skladovou dostupnost najdete v našem e-shopu."))
     body = body.replace("__ROZVOZ_INLINE__", rozvoz_sekce(uvnitr_sekce=True))
