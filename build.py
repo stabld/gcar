@@ -540,37 +540,7 @@ HOME = """<div class="hero">
   </div>
 </section>
 
-<section class="rozvoz">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <h2>Rozvoz do servisů a obchodů</h2>
-        <p class="lede">Nemusíte pro díl jezdit ani čekat na přepravní službu. Objednáte do 17:00 a druhý den máte zboží u sebe.</p>
-      </div>
-    </div>
-
-    <div class="rozvoz-grid">
-      <div class="rozvoz-card">
-        <b>Do 17:00</b>
-        <p>Co objednáte do pěti odpoledne, máte druhý den k dispozici.</p>
-      </div>
-      <div class="rozvoz-card">
-        <b>Kroměříž, okolí do 20 km</b>
-        <p>Rozvážíme směr Holešov, Kojetín a Zdounky.</p>
-      </div>
-      <div class="rozvoz-card">
-        <b>Staré Město, okolí do 30 km</b>
-        <p>Rozvážíme směr Koryčany, Strážnice, Hluk a Uherský Brod.</p>
-      </div>
-      <div class="rozvoz-card">
-        <b>40 Kč s DPH</b>
-        <p>Cena za rozvoz bez ohledu na velikost objednávky.</p>
-      </div>
-    </div>
-
-    <p class="rozvoz-note">Trasy se řídí tím, kde máme zákazníky. Pokud sídlíte kousek za uvedeným okruhem, zavolejte — často se to dá domluvit.</p>
-  </div>
-</section>
+__ROZVOZ__
 
 <section id="katalogy" class="delivery">
   <div class="wrap">
@@ -657,6 +627,8 @@ SORTIMENT = """<div class="prose" style="margin-bottom:36px">
   <a class="cat" href="/sortiment/chemie/"><h3>Chemie a oleje</h3></a>
   <a class="cat" href="/sortiment/ochranne-prostredky/"><h3>Ochranné prostředky</h3></a>
 </div>
+
+__ROZVOZ_INLINE__
 """
 
 # --------------------------------------------------------------------------
@@ -995,6 +967,43 @@ def znacky_row():
     return out
 
 
+def rozvoz_sekce(uvnitr_sekce=False):
+    """Údaje o rozvozu. Používá se na homepage i na stránce Autodíly,
+    proto je to jedno místo — změna ceny nebo času se promítne na obou."""
+    telo = """    <div class="sec-head">
+      <div>
+        <h2>Rozvoz do servisů a obchodů</h2>
+        <p class="lede">Nemusíte pro díl jezdit ani čekat na přepravní službu. Objednáte do 17:00 a druhý den máte zboží u sebe.</p>
+      </div>
+    </div>
+
+    <div class="rozvoz-grid">
+      <div class="rozvoz-card">
+        <b>Do 17:00</b>
+        <p>Co objednáte do pěti odpoledne, máte druhý den k dispozici.</p>
+      </div>
+      <div class="rozvoz-card">
+        <b>Kroměříž, okolí do 20 km</b>
+        <p>Rozvážíme směr Holešov, Kojetín a Zdounky.</p>
+      </div>
+      <div class="rozvoz-card">
+        <b>Staré Město, okolí do 30 km</b>
+        <p>Rozvážíme směr Koryčany, Strážnice, Hluk a Uherský Brod.</p>
+      </div>
+      <div class="rozvoz-card">
+        <b>40 Kč s DPH</b>
+        <p>Cena za rozvoz bez ohledu na velikost objednávky.</p>
+      </div>
+    </div>
+
+    <p class="rozvoz-note">Trasy se řídí tím, kde máme zákazníky. Pokud sídlíte kousek za uvedeným okruhem, zavolejte — často se to dá domluvit.</p>"""
+
+    if uvnitr_sekce:
+        # na podstránce už jsme uvnitř <section><div class="wrap">
+        return '<div class="rozvoz is-inline">\n%s\n</div>' % telo
+    return '<section class="rozvoz">\n  <div class="wrap">\n%s\n  </div>\n</section>' % telo
+
+
 def chips(items):
     return "".join('<i class="chip">%s</i>' % i for i in items)
 
@@ -1085,6 +1094,8 @@ def render(page):
     body = page["body"]
     body = body.replace("__ESHOPBOX__", eshop_box(
         "Aktuální nabídku, ceny a skladovou dostupnost najdete v našem e-shopu."))
+    body = body.replace("__ROZVOZ_INLINE__", rozvoz_sekce(uvnitr_sekce=True))
+    body = body.replace("__ROZVOZ__", rozvoz_sekce())
     body = body.replace("__CHIPS__", chips(DILY_CHIPS))
     body = body.replace("__ZNACKY__", znacky_row())
     body = body.replace("__KATALOGY__", katalogy_grid())

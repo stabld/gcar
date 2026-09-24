@@ -297,6 +297,9 @@ section{padding:clamp(52px,7vw,90px) 0}
 
 /* rozvoz */
 .rozvoz{background:var(--white);border-top:1px solid var(--zinc);border-bottom:1px solid var(--zinc)}
+/* varianta uvnitř podstránky — bez vlastního pozadí a okrajů */
+.rozvoz.is-inline{background:none;border:0;padding:0;margin-top:8px}
+.rozvoz.is-inline .sec-head{margin-bottom:28px}
 .rozvoz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
 .rozvoz-card{background:var(--white);padding:26px 24px}
 .rozvoz-card b{
