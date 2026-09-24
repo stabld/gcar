@@ -48,3 +48,17 @@ Podstránky jsou proto zatím hubené: gcar.cz blokuje automatické stahování
 (`robots.txt`), takže jejich původní texty zatím nemám.
 
 Seznam všeho, co je potřeba doplnit nebo ověřit u majitele, je v **[OTAZKY.md](OTAZKY.md)**.
+
+
+## Poznámka k logu
+
+`assets/img/logo.svg` a `logo-inverse.svg` nejsou originál od grafika —
+vznikly **obtažením** z původního `logo.png` (200 × 65 px). Tvarově sedí
+a na rozdíl od rastru jsou ostré v jakékoli velikosti, ale zuby ozubeného
+kola jsou o chlup zakulacenější než v předloze.
+
+Z téhož obtahu vychází i ikona v záložce a náhledový obrázek pro sdílení.
+
+Až se objeví originální vektor od grafika (.svg, .ai nebo .pdf), stačí
+ho nahradit — názvy souborů zůstanou stejné. `logo.png` zůstává, používá
+se ve strukturovaných datech pro Google, kde se rastr preferuje.

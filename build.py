@@ -169,8 +169,8 @@ def header(active):
 <header>
   <div class="wrap">
     <a class="brand" href="/" aria-label="GCAR — domů">
-      <img class="logo-light" src="/assets/img/logo.png" alt="GCAR" width="200" height="65">
-      <img class="logo-dark" src="/assets/img/logo-inverse.png" alt="" width="200" height="65" aria-hidden="true">
+      <img class="logo-light" src="/assets/img/logo.svg" alt="GCAR" width="200" height="65">
+      <img class="logo-dark" src="/assets/img/logo-inverse.svg" alt="" width="200" height="65" aria-hidden="true">
       <em>náhradní díly</em>
     </a>
     <nav class="main" aria-label="Hlavní navigace">%s
@@ -230,7 +230,7 @@ def footer():
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <img src="/assets/img/logo-inverse.png" alt="GCAR">
+        <img src="/assets/img/logo-inverse.svg" alt="GCAR">
         <p style="margin:0">Dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuce do autoservisů a obchodů.</p>
       </div>
       <div>
