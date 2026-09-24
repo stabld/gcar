@@ -989,30 +989,35 @@ CTYRISTOCTYRI = """<div class="prose" style="text-align:center;margin:0 auto;pad
 # Dokud soubor neexistuje, vypíše se místo loga název — web se nerozbije.
 # Nejlepší je SVG, jinak PNG s průhledným pozadím, výška aspoň 120 px.
 ZNACKY = [
-    ("Castrol", "castrol.svg"),
-    ("Total", "total.svg"),
-    ("Elf", "elf.svg"),
-    ("BOLL", "boll.svg"),
-    ("AMTRA", "amtra.svg"),
-    ("ATAS", "atas.svg"),
-    ("Energy", "energy.svg"),
-    ("KS Tools", "ks-tools.svg"),
-    ("ATH Heinl", "ath-heinl.svg"),
-    ("Thule", "thule.svg"),
+    ("Castrol", "castrol"),
+    ("Total", "total"),
+    ("Elf", "elf"),
+    ("BOLL", "boll"),
+    ("AMTRA", "amtra"),
+    ("ATAS", "atas"),
+    ("Energy", "energy"),
+    ("KS Tools", "ks-tools"),
+    ("ATH Heinl", "ath-heinl"),
+    ("Thule", "thule"),
 ]
 
 
 def znacky_row():
-    out = ""
-    for nazev, soubor in ZNACKY:
-        cesta = "/assets/img/znacky/" + soubor
-        if os.path.exists(os.path.join(ROOT, cesta.lstrip("/"))):
-            out += ('<span class="znacka"><img src="%s" alt="%s" loading="lazy"></span>'
-                    % (asset(cesta), nazev))
-        else:
-            out += '<span class="znacka is-text">%s</span>' % nazev
-    return out
+    """Pruh značek.
 
+    Logo se zobrazí, jakmile soubor leží v /assets/img/znacky/ — NENÍ
+    potřeba nic přegenerovávat. Prohlížeč zkusí .svg, pak .png, a když
+    ani jedno neexistuje, nechá místo něj název značky.
+    """
+    zaloha = ("var p=this.parentNode;"
+              "if(this.src.indexOf('.svg')>-1){"
+              "this.src=this.src.replace('.svg','.png');}"
+              "else{p.className='znacka is-text';p.textContent=this.alt;}")
+    sablona = ('<span class="znacka">'
+               '<img src="/assets/img/znacky/%s.svg" alt="%s" loading="lazy" '
+               'onerror="%s"></span>')
+    return "".join(sablona % (slug, nazev, zaloha)
+                   for nazev, slug in ZNACKY)
 
 def rozvoz_sekce(uvnitr_sekce=False):
     """Údaje o rozvozu. Používá se na homepage i na stránce Autodíly,
