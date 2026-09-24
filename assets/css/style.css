@@ -415,6 +415,15 @@ section{padding:clamp(52px,7vw,90px) 0}
 }
 
 .brands-note{margin:18px 0 0;font-size:15px;color:var(--steel)}
+@media (max-width:760px){
+  /* Mřížka místo flexu — jinak se poslední prvek na řádku roztáhne
+     přes celou šířku a pruh vypadá rozházeně. */
+  .brandrow{display:grid;grid-template-columns:1fr 1fr}
+  .brandrow .znacka{min-height:76px;padding:14px 12px}
+  .brandrow .znacka img{max-height:38px;max-width:100%}
+  /* lichý poslední přes obě sloupce, ať nezůstane díra */
+  .brandrow .znacka:last-child:nth-child(odd){grid-column:span 2}
+}
 
 /* služby */
 /* Počet dlaždic se mění podle obsahu, proto auto-fit a ne pevné čtyři. */
@@ -540,8 +549,23 @@ footer a:hover{color:#fff}
   .callbar{display:flex}
   .util .wrap{min-height:34px;font-size:12.5px;gap:16px;justify-content:space-between}
   .util .sep{display:none}
-  .cats,.goods,.svc{grid-template-columns:1fr}
-  .cat.is-wide{grid-column:span 1}
+
+  /* Na mobilu se sekce netlačí tolik od sebe — na malé obrazovce
+     působí stejný odstup jako na desktopu jako prázdné místo. */
+  section{padding:44px 0}
+  .about{padding:40px 0}
+  .sec-head{margin-bottom:24px}
+
+  /* Dlaždice sortimentu mají většinou jen nadpis. Pevná výška 210 px
+     z nich na mobilu dělala prázdné krabice, proto se smrští na obsah
+     a vejdou se dvě vedle sebe. */
+  .cats{grid-template-columns:1fr 1fr}
+  .cat{min-height:0;padding:16px 18px}
+  .cat h3{font-size:17px;margin-bottom:6px}
+  .cat.is-wide{grid-column:span 2;padding:20px}
+  .cat .tags,.cat .parts{padding-top:10px}
+
+  .goods,.svc{grid-template-columns:1fr}
   .strip .wrap{grid-template-columns:1fr 1fr}
   .finder{flex-direction:column}
   .finder button{padding:16px}
