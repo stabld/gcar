@@ -606,6 +606,7 @@ __ROZVOZ__
       <a class="more" href="__ESHOP__">Prohlédnout katalog</a>
     </div>
     <div class="brandrow">__ZNACKY__</div>
+    <p class="brands-note">A řada dalších. Kompletní nabídku najdete v e-shopu.</p>
   </div>
 </section>
 
@@ -984,7 +985,9 @@ CTYRISTOCTYRI = """<div class="prose" style="text-align:center;margin:0 auto;pad
 
 
 # ==========================================================================
-# Značky doložené z e-shopu (patička + produktové karty).
+# Na webu jsou jen značky, které pozná i laik — pruh s deseti jmény,
+# z nichž půlku nikdo nezná, nedělá dojem, spíš zmatek. Ostatní
+# (BOLL, AMTRA, ATAS, Energy, ATH Heinl) zůstávají v e-shopu.
 # Druhá položka je název souboru s logem ve složce /assets/img/znacky/.
 # Dokud soubor neexistuje, vypíše se místo loga název — web se nerozbije.
 # Nejlepší je SVG, jinak PNG s průhledným pozadím, výška aspoň 120 px.
@@ -992,12 +995,7 @@ ZNACKY = [
     ("Castrol", "castrol"),
     ("Total", "total"),
     ("Elf", "elf"),
-    ("BOLL", "boll"),
-    ("AMTRA", "amtra"),
-    ("ATAS", "atas"),
-    ("Energy", "energy"),
     ("KS Tools", "ks-tools"),
-    ("ATH Heinl", "ath-heinl"),
     ("Thule", "thule"),
 ]
 
@@ -1005,19 +1003,30 @@ ZNACKY = [
 def znacky_row():
     """Pruh značek.
 
-    Logo se zobrazí, jakmile soubor leží v /assets/img/znacky/ — NENÍ
-    potřeba nic přegenerovávat. Prohlížeč zkusí .svg, pak .png, a když
-    ani jedno neexistuje, nechá místo něj název značky.
+    Když soubor existuje při sestavení, odkáže se rovnou na něj.
+    Když ne, prohlížeč zkusí .svg, pak .png a nakonec nechá název —
+    takže stačí logo nahrát do /assets/img/znacky/ a objeví se samo.
     """
     zaloha = ("var p=this.parentNode;"
               "if(this.src.indexOf('.svg')>-1){"
               "this.src=this.src.replace('.svg','.png');}"
               "else{p.className='znacka is-text';p.textContent=this.alt;}")
-    sablona = ('<span class="znacka">'
-               '<img src="/assets/img/znacky/%s.svg" alt="%s" loading="lazy" '
-               'onerror="%s"></span>')
-    return "".join(sablona % (slug, nazev, zaloha)
-                   for nazev, slug in ZNACKY)
+    out = ""
+    for nazev, slug in ZNACKY:
+        cesta = None
+        for pripona in (".svg", ".png"):
+            kandidat = "/assets/img/znacky/" + slug + pripona
+            if os.path.exists(os.path.join(ROOT, kandidat.lstrip("/"))):
+                cesta = asset(kandidat)
+                break
+        if cesta:
+            out += ('<span class="znacka"><img src="%s" alt="%s" '
+                    'loading="lazy"></span>') % (cesta, nazev)
+        else:
+            out += ('<span class="znacka">'
+                    '<img src="/assets/img/znacky/%s.svg" alt="%s" loading="lazy" '
+                    'onerror="%s"></span>') % (slug, nazev, zaloha)
+    return out
 
 def rozvoz_sekce(uvnitr_sekce=False):
     """Údaje o rozvozu. Používá se na homepage i na stránce Autodíly,
