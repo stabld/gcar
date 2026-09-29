@@ -253,11 +253,33 @@
     var zUvodu = document.getElementById('hero-video');
     if (zUvodu) {
       zUvodu.addEventListener('click', function (e) {
-        var sekce = document.getElementById('video');
-        if (!sekce) return;
+        var ramec = document.getElementById('prehravac');
+        if (!ramec) return;
         e.preventDefault();
+
+        var hlavicka = document.querySelector('header');
+        var vyskaHlavicky = hlavicka ? hlavicka.getBoundingClientRect().height : 0;
+        // na mobilu sedí dole napevno lišta s telefony
+        var lista = document.querySelector('.callbar');
+        var vyskaListy = (lista && getComputedStyle(lista).display !== 'none')
+          ? lista.getBoundingClientRect().height : 0;
+
+        var r = ramec.getBoundingClientRect();
+        var volno = window.innerHeight - vyskaHlavicky - vyskaListy;
+        var cil;
+
+        if (r.height <= volno - 24) {
+          // vejde se celé → posadit ho těsně nad spodní okraj,
+          // nad videem tak zbude místo na nadpis
+          cil = window.scrollY + r.bottom - window.innerHeight + vyskaListy + 24;
+        } else {
+          // je vyšší než obrazovka → zarovnat horní hranu pod hlavičku
+          cil = window.scrollY + r.top - vyskaHlavicky - 12;
+        }
+
         var plynule = !window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-        sekce.scrollIntoView({behavior: plynule ? 'smooth' : 'auto', block: 'start'});
+        window.scrollTo({top: Math.max(0, Math.round(cil)),
+                         behavior: plynule ? 'smooth' : 'auto'});
         setTimeout(spustit, plynule ? 450 : 0);
       });
     }
