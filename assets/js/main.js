@@ -232,7 +232,7 @@
     var video = document.getElementById('video-gcar');
     if (!tlacitko || !video) return;
 
-    tlacitko.addEventListener('click', function () {
+    function spustit() {
       // dosadit adresu souboru (do té chvíle je jen v data-src)
       Array.prototype.forEach.call(video.querySelectorAll('source'), function (s) {
         if (!s.src) s.src = s.getAttribute('data-src');
@@ -245,7 +245,22 @@
       tlacitko.classList.add('je-pryc');
       var p = video.play();
       if (p && p.catch) p.catch(function () { /* prohlížeč odmítl, ovládání zůstává */ });
-    });
+    }
+
+    tlacitko.addEventListener('click', spustit);
+
+    // tlačítko v úvodu stránky: sjet k videu a rovnou ho spustit
+    var zUvodu = document.getElementById('hero-video');
+    if (zUvodu) {
+      zUvodu.addEventListener('click', function (e) {
+        var sekce = document.getElementById('video');
+        if (!sekce) return;
+        e.preventDefault();
+        var plynule = !window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+        sekce.scrollIntoView({behavior: plynule ? 'smooth' : 'auto', block: 'start'});
+        setTimeout(spustit, plynule ? 450 : 0);
+      });
+    }
   }
 
   function init() {

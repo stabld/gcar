@@ -495,7 +495,12 @@ HOME = """<div class="hero">
       </form>
       <noscript><p class="finder-note"><a href="__ESHOP__">Přejít do e-shopu a hledat tam</a></p></noscript>
       <p class="finder-note">Hledat můžete podle kódu, textu i vozidla — e-shop má i VIN katalog. Nevíte si rady? <a href="tel:__TEL__">Zavolejte na __TELF__</a>.</p>
-      <p class="hero-cta" style="margin:22px 0 0"><a class="btn btn-ghost" href="/o-nas/">Více o nás</a></p>
+      <p class="hero-cta">
+        <a class="btn btn-line btn-video" href="#video" id="hero-video">
+          <span class="ikona-prehrat" aria-hidden="true"></span>Jak k nám trefíte
+        </a>
+        <a class="btn btn-ghost" href="/o-nas/">Více o nás</a>
+      </p>
     </div>
 
     <div class="branches" id="pobocky">__BRANCHES__
@@ -1068,7 +1073,7 @@ def video_sekce():
     po kliknutí. Do té doby je vidět jen plakát, tedy jeden obrázek.
     Bez toho by si každý návštěvník stáhl 7,8 MB, i kdyby video nespustil.
     """
-    return """<section class="video-sekce">
+    return """<section class="video-sekce" id="video">
   <div class="wrap">
     <div class="sec-head">
       <div>

@@ -33,7 +33,7 @@
      i v nočním režimu — světlejší odstín by kontrast srazil pod normu. */
   --red-solid:#DB343E;
   --red-solid-dark:#B32830;
-  --open:#3FA76F;
+  --open:#25784A;
   --gear-invert:0;        /* ozubené kolo na pozadí hera */
 
   --display:"Archivo","Arial Narrow",Arial,sans-serif;
@@ -317,6 +317,22 @@ section{padding:clamp(52px,7vw,90px) 0}
 .fpravni{display:flex;flex-wrap:wrap;gap:6px 20px;padding-top:20px;font-size:13.5px}
 .fpravni a{text-decoration:none}
 
+/* Skok na kotvu musí počítat s lepící hlavičkou, jinak se nadpis
+   schová pod ni. */
+[id]{scroll-margin-top:92px}
+
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
+.btn-video{gap:11px}
+/* malý trojúhelník — ať je na první pohled jasné, že vede na video */
+.ikona-prehrat{
+  width:0;height:0;flex:0 0 auto;
+  border-left:11px solid var(--red-solid);
+  border-top:7px solid transparent;border-bottom:7px solid transparent;
+}
+.btn-video:hover .ikona-prehrat{border-left-color:#fff}
+/* zvýraznění sekce po skoku z tlačítka */
+.video-sekce:target .prehravac{box-shadow:0 0 0 3px var(--red-solid)}
+
 /* video prohlídka */
 .video-sekce{background:var(--white);border-top:1px solid var(--zinc);border-bottom:1px solid var(--zinc)}
 .prehravac{position:relative;margin:0;border:1px solid var(--zinc);border-radius:4px;overflow:hidden;background:var(--ink);line-height:0}
@@ -406,6 +422,22 @@ section{padding:clamp(52px,7vw,90px) 0}
 /* právní odkazy v patičce */
 .fpravni{display:flex;flex-wrap:wrap;gap:6px 20px;padding-top:20px;font-size:13.5px}
 .fpravni a{text-decoration:none}
+
+/* Skok na kotvu musí počítat s lepící hlavičkou, jinak se nadpis
+   schová pod ni. */
+[id]{scroll-margin-top:92px}
+
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
+.btn-video{gap:11px}
+/* malý trojúhelník — ať je na první pohled jasné, že vede na video */
+.ikona-prehrat{
+  width:0;height:0;flex:0 0 auto;
+  border-left:11px solid var(--red-solid);
+  border-top:7px solid transparent;border-bottom:7px solid transparent;
+}
+.btn-video:hover .ikona-prehrat{border-left-color:#fff}
+/* zvýraznění sekce po skoku z tlačítka */
+.video-sekce:target .prehravac{box-shadow:0 0 0 3px var(--red-solid)}
 
 /* video prohlídka */
 .video-sekce{background:var(--white);border-top:1px solid var(--zinc);border-bottom:1px solid var(--zinc)}
