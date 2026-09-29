@@ -173,19 +173,55 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
   @keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 }
 
-/* mobilní lišta pro volání */
-.callbar{
-  display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
-  background:var(--band);border-top:1px solid var(--band-line);
-  padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:10px;
+/* Plovoucí tlačítko pro volání (jen mobil).
+   Nahradilo pruh přes celou šířku dole — ten zabíral 89 px výšky
+   natrvalo a na nižších displejích schoval tlačítka v úvodu. */
+.volani{
+  display:none;position:fixed;z-index:60;
+  right:16px;bottom:calc(16px + env(safe-area-inset-bottom));
+  flex-direction:column;align-items:flex-end;gap:10px;
+  /* Dokud je vidět úvod, tlačítko se nezobrazuje — jinak by zakrývalo
+     tlačítka pod vyhledáváním. Telefon je v úvodu i tak v textu. */
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .2s,transform .2s,visibility .2s;
 }
-.callbar a{
-  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-decoration:none;font-weight:600;font-size:16px;padding:11px 10px;border-radius:3px;
+.volani.je-videt{opacity:1;visibility:visible;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .volani{transition:none;transform:none}
 }
-.callbar .c-km{background:var(--red-solid);color:#fff}
-.callbar .c-uh{border:1px solid var(--band-line);color:var(--band-text)}
-.callbar small{font-size:11.5px;font-weight:500;opacity:.8;letter-spacing:.02em}
+.volani-btn{
+  width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--red-solid);color:#fff;padding:0;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(18,26,44,.32);
+}
+.volani-btn svg{width:25px;height:25px;display:block}
+.volani-btn .ik-krizek{display:none}
+.volani-btn[aria-expanded="true"] .ik-tel{display:none}
+.volani-btn[aria-expanded="true"] .ik-krizek{display:block}
+.volani-btn:active{background:var(--red-solid-dark)}
+
+.volani-panel{
+  background:var(--band);border:1px solid var(--band-line);border-radius:6px;
+  overflow:hidden;box-shadow:0 10px 30px rgba(18,26,44,.35);min-width:214px;
+}
+.volani-panel a{
+  display:block;padding:13px 18px;text-decoration:none;color:var(--band-text);
+  border-bottom:1px solid var(--band-line);
+}
+.volani-panel a:last-child{border-bottom:0}
+.volani-panel b{display:block;font-size:14px;font-weight:600;margin-bottom:2px}
+.volani-panel span{display:block;font-family:var(--mono);font-size:16px;color:var(--band-soft)}
+.volani-panel a:active{background:var(--red-solid)}
+.volani-panel a:active span{color:#fff}
+
+@media (prefers-reduced-motion:no-preference){
+  .volani-panel{animation:vyjet .18s ease-out both}
+  @keyframes vyjet{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+}
+@media (prefers-reduced-motion:reduce){
+  .volani-btn svg,.volani-btn[aria-expanded="true"] svg{transition:none;transform:none}
+}
 
 /* ---------- hero (homepage) ---------- */
 .hero{background:var(--white);border-bottom:1px solid var(--zinc);overflow:hidden;position:relative}
@@ -290,6 +326,11 @@ nav.main a[aria-current]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
 
 /* Nejužší telefony (320 px) mají ještě méně výšky — tam se popis zkrátí
    na tři řádky, jinak by pilíře přes obrazovku přetekly. */
+@media (max-width:340px){
+  .finder{flex-direction:column}
+  .finder button{padding:15px}
+}
+
 @media (max-width:340px){
   .pillar{padding:11px 14px}
   .pillar b{margin-bottom:2px}
@@ -725,8 +766,9 @@ footer a:hover{color:#fff}
   .burger{display:block}
 }
 @media (max-width:760px){
-  body{padding-bottom:80px}
-  .callbar{display:flex}
+  .volani{display:flex}
+  /* v patičce je dole místo, aby tlačítko nepřekrylo poslední řádek */
+  footer .fbottom{padding-bottom:64px}
   .util .wrap{min-height:34px;font-size:12.5px;gap:16px;justify-content:space-between}
   .util .sep{display:none}
 
@@ -747,8 +789,14 @@ footer a:hover{color:#fff}
 
   .goods,.svc{grid-template-columns:1fr}
   .strip .wrap{grid-template-columns:1fr 1fr}
-  .finder{flex-direction:column}
-  .finder button{padding:16px}
+  /* Pole a tlačítko vedle sebe — na výšku to ušetří skoro 60 px
+     a při 390 px šířky je pole pořád použitelné. */
+  .finder input{padding:15px 14px;font-size:16px}
+  .finder button{padding:0 18px;font-size:15.5px}
+  .hero .wrap{padding-top:30px;padding-bottom:30px}
+  .hero h1{margin-bottom:16px}
+  .hero .lede{margin-bottom:20px}
+  .hero-cta{margin-top:16px}
   .tels a{padding:10px 14px;font-size:15px}
   .sec-head .more{margin-left:0}
   .fbottom{flex-direction:column;align-items:flex-start;gap:8px}
@@ -768,7 +816,7 @@ footer a:hover{color:#fff}
 }
 
 @media print{
-  .util,.burger,.mobmenu,.callbar,.finder,nav.main{display:none !important}
+  .util,.burger,.mobmenu,.volani,.finder,nav.main{display:none !important}
   body{background:var(--white);padding:0}
   header{position:static}
 }

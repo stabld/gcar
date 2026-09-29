@@ -221,9 +221,22 @@ def footer():
         '<a href="%s" rel="noopener">%s</a>' % (url, nazev) for nazev, url in PRAVNI)
 
     return """
-<div class="callbar" aria-label="Rychlý kontakt">
-  <a class="c-km" href="tel:%s">Zavolat<small>Kroměříž</small></a>
-  <a class="c-uh" href="tel:%s">Zavolat<small>Staré Město</small></a>
+<div class="volani" id="volani">
+  <div class="volani-panel" id="volani-panel" hidden>
+    <a href="tel:%s"><b>Kroměříž</b><span>%s</span></a>
+    <a href="tel:%s"><b>Staré Město</b><span>%s</span></a>
+  </div>
+  <button class="volani-btn" id="volani-btn" type="button"
+          aria-expanded="false" aria-controls="volani-panel" aria-label="Zavolat na pobočku">
+    <svg class="ik-tel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z"/>
+    </svg>
+    <svg class="ik-krizek" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+         stroke-linecap="round" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18"/>
+    </svg>
+  </button>
 </div>
 
 <footer>
@@ -262,7 +275,9 @@ def footer():
     </div>
   </div>
 </footer>
-""" % (POBOCKY[0]["tel"][0], POBOCKY[1]["tel"][0], kat_html, ESHOP,
+""" % (POBOCKY[0]["tel"][0], fmt_tel(POBOCKY[0]["tel"][0]),
+       POBOCKY[1]["tel"][0], fmt_tel(POBOCKY[1]["tel"][0]),
+       kat_html, ESHOP,
        pobocky_html, pravni_html,
        FIRMA["nazev"], FIRMA["ico"], FIRMA["dic"], date.today().year)
 

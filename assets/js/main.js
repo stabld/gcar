@@ -259,10 +259,9 @@
 
         var hlavicka = document.querySelector('header');
         var vyskaHlavicky = hlavicka ? hlavicka.getBoundingClientRect().height : 0;
-        // na mobilu sedí dole napevno lišta s telefony
-        var lista = document.querySelector('.callbar');
-        var vyskaListy = (lista && getComputedStyle(lista).display !== 'none')
-          ? lista.getBoundingClientRect().height : 0;
+        // plovoucí tlačítko pro volání překrývá pravý dolní roh
+        var volani = document.querySelector('.volani');
+        var vyskaListy = (volani && getComputedStyle(volani).display !== 'none') ? 24 : 0;
 
         var r = ramec.getBoundingClientRect();
         var volno = window.innerHeight - vyskaHlavicky - vyskaListy;
@@ -285,8 +284,55 @@
     }
   }
 
+  /* ---------- Plovoucí tlačítko pro volání (mobil) ---------- */
+  function initVolani() {
+    var obal = document.getElementById('volani');
+    var btn = document.getElementById('volani-btn');
+    var panel = document.getElementById('volani-panel');
+    if (!obal || !btn || !panel) return;
+
+    function nastav(otevreno) {
+      panel.hidden = !otevreno;
+      btn.setAttribute('aria-expanded', otevreno ? 'true' : 'false');
+      btn.setAttribute('aria-label', otevreno ? 'Zavřít telefonní čísla' : 'Zavolat na pobočku');
+    }
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      nastav(panel.hidden);
+    });
+
+    // klepnutí mimo panel ho zavře
+    document.addEventListener('click', function (e) {
+      if (!panel.hidden && !obal.contains(e.target)) nastav(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !panel.hidden) { nastav(false); btn.focus(); }
+    });
+    // po volbě čísla není důvod nechávat panel otevřený
+    panel.addEventListener('click', function (e) {
+      if (e.target.closest('a')) nastav(false);
+    });
+
+    // Tlačítko se skrývá jen dokud jsou na obrazovce tlačítka v úvodu —
+    // právě ta by překrývalo. Sledovat celou úvodní sekci nešlo, na mobilu
+    // je vysoká přes 900 px a tlačítko by naskočilo až hluboko dole.
+    var hlidane = document.querySelector('.hero-cta');
+    if (hlidane && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (zaznamy) {
+        var prekazi = zaznamy[0].isIntersecting;
+        obal.classList.toggle('je-videt', !prekazi);
+        if (prekazi) nastav(false);
+      }, {threshold: 0}).observe(hlidane);
+    } else {
+      obal.classList.add('je-videt');
+    }
+  }
+
   function init() {
-    initVideo(); initTheme(); initMenu(); initHours(); initForm(); initSearch(); }
+    initVideo(); initVolani(); initTheme();
+    initMenu(); initHours(); initForm(); initSearch();
+  }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
