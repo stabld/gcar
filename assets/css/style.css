@@ -317,6 +317,62 @@ section{padding:clamp(52px,7vw,90px) 0}
 .fpravni{display:flex;flex-wrap:wrap;gap:6px 20px;padding-top:20px;font-size:13.5px}
 .fpravni a{text-decoration:none}
 
+/* video prohlídka */
+.video-sekce{background:var(--white);border-top:1px solid var(--zinc);border-bottom:1px solid var(--zinc)}
+.prehravac{position:relative;margin:0;border:1px solid var(--zinc);border-radius:4px;overflow:hidden;background:var(--ink);line-height:0}
+.prehravac video{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover}
+
+.prehrat{
+  position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;padding:0;
+  display:flex;align-items:center;justify-content:center;gap:18px;
+  background:linear-gradient(180deg,rgba(18,26,44,.12),rgba(18,26,44,.55));
+  font-family:var(--body);color:#fff;transition:background .2s;
+}
+.prehrat:hover{background:linear-gradient(180deg,rgba(18,26,44,.2),rgba(18,26,44,.62))}
+.prehrat.je-pryc{display:none}
+
+/* trojúhelník v kolečku — kreslený, aby nebyl potřeba další obrázek */
+.sipka{
+  width:74px;height:74px;border-radius:50%;background:var(--red-solid);
+  flex:0 0 auto;position:relative;box-shadow:0 6px 24px rgba(0,0,0,.28);
+  transition:transform .2s;
+}
+.prehrat:hover .sipka{transform:scale(1.06)}
+.sipka::after{
+  content:"";position:absolute;left:52%;top:50%;transform:translate(-50%,-50%);
+  border-left:22px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent;
+}
+.prehrat .popis{
+  display:flex;flex-direction:column;align-items:flex-start;text-align:left;
+  font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.01em;
+  text-shadow:0 2px 12px rgba(0,0,0,.4);
+}
+.prehrat .popis small{
+  font-family:var(--body);font-weight:500;font-size:14.5px;opacity:.85;
+  margin-top:4px;letter-spacing:0;
+}
+@media (max-width:620px){
+  .prehrat{flex-direction:column;gap:14px}
+  .prehrat .popis{align-items:center;text-align:center;font-size:18px}
+  .sipka{width:62px;height:62px}
+  .sipka::after{border-left-width:19px;border-top-width:12px;border-bottom-width:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  .sipka,.prehrat:hover .sipka{transition:none;transform:none}
+}
+
+/* fotky z provozu */
+.fotky{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
+.fotka{background:var(--white);margin:0}
+.fotka img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block}
+.fotka figcaption{font-size:14px;color:var(--ink-soft);padding:12px 16px}
+.fotka-sama{
+  margin:24px 0 28px;border:1px solid var(--zinc);border-radius:4px;
+  overflow:hidden;background:var(--white);max-width:none;
+}
+.fotka-sama img{aspect-ratio:16/9}
+@media (max-width:760px){.fotky{grid-template-columns:1fr}}
+
 /* rozvoz */
 .delivery{background:var(--white);border-top:1px solid var(--zinc);border-bottom:1px solid var(--zinc)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
@@ -350,6 +406,62 @@ section{padding:clamp(52px,7vw,90px) 0}
 /* právní odkazy v patičce */
 .fpravni{display:flex;flex-wrap:wrap;gap:6px 20px;padding-top:20px;font-size:13.5px}
 .fpravni a{text-decoration:none}
+
+/* video prohlídka */
+.video-sekce{background:var(--white);border-top:1px solid var(--zinc);border-bottom:1px solid var(--zinc)}
+.prehravac{position:relative;margin:0;border:1px solid var(--zinc);border-radius:4px;overflow:hidden;background:var(--ink);line-height:0}
+.prehravac video{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover}
+
+.prehrat{
+  position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;padding:0;
+  display:flex;align-items:center;justify-content:center;gap:18px;
+  background:linear-gradient(180deg,rgba(18,26,44,.12),rgba(18,26,44,.55));
+  font-family:var(--body);color:#fff;transition:background .2s;
+}
+.prehrat:hover{background:linear-gradient(180deg,rgba(18,26,44,.2),rgba(18,26,44,.62))}
+.prehrat.je-pryc{display:none}
+
+/* trojúhelník v kolečku — kreslený, aby nebyl potřeba další obrázek */
+.sipka{
+  width:74px;height:74px;border-radius:50%;background:var(--red-solid);
+  flex:0 0 auto;position:relative;box-shadow:0 6px 24px rgba(0,0,0,.28);
+  transition:transform .2s;
+}
+.prehrat:hover .sipka{transform:scale(1.06)}
+.sipka::after{
+  content:"";position:absolute;left:52%;top:50%;transform:translate(-50%,-50%);
+  border-left:22px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent;
+}
+.prehrat .popis{
+  display:flex;flex-direction:column;align-items:flex-start;text-align:left;
+  font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.01em;
+  text-shadow:0 2px 12px rgba(0,0,0,.4);
+}
+.prehrat .popis small{
+  font-family:var(--body);font-weight:500;font-size:14.5px;opacity:.85;
+  margin-top:4px;letter-spacing:0;
+}
+@media (max-width:620px){
+  .prehrat{flex-direction:column;gap:14px}
+  .prehrat .popis{align-items:center;text-align:center;font-size:18px}
+  .sipka{width:62px;height:62px}
+  .sipka::after{border-left-width:19px;border-top-width:12px;border-bottom-width:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  .sipka,.prehrat:hover .sipka{transition:none;transform:none}
+}
+
+/* fotky z provozu */
+.fotky{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--zinc);border:1px solid var(--zinc)}
+.fotka{background:var(--white);margin:0}
+.fotka img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block}
+.fotka figcaption{font-size:14px;color:var(--ink-soft);padding:12px 16px}
+.fotka-sama{
+  margin:24px 0 28px;border:1px solid var(--zinc);border-radius:4px;
+  overflow:hidden;background:var(--white);max-width:none;
+}
+.fotka-sama img{aspect-ratio:16/9}
+@media (max-width:760px){.fotky{grid-template-columns:1fr}}
 
 /* rozvoz */
 .rozvoz{background:var(--white);border-top:1px solid var(--zinc);border-bottom:1px solid var(--zinc)}

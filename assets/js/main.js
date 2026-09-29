@@ -224,7 +224,32 @@
     else if (mq.addListener) mq.addListener(follow);
   }
 
-  function init() { initTheme(); initMenu(); initHours(); initForm(); initSearch(); }
+  /* ---------- Video prohlídka ----------
+     Video se stáhne až po kliknutí. Do té doby je na stránce jen plakát,
+     takže návštěvník, který video nespustí, nestahuje 7,8 MB zbytečně. */
+  function initVideo() {
+    var tlacitko = document.getElementById('prehrat');
+    var video = document.getElementById('video-gcar');
+    if (!tlacitko || !video) return;
+
+    tlacitko.addEventListener('click', function () {
+      // dosadit adresu souboru (do té chvíle je jen v data-src)
+      Array.prototype.forEach.call(video.querySelectorAll('source'), function (s) {
+        if (!s.src) s.src = s.getAttribute('data-src');
+      });
+      if (!video.src && !video.querySelector('source[src]')) {
+        video.src = video.getAttribute('data-src');
+      }
+      video.load();
+      video.controls = true;
+      tlacitko.classList.add('je-pryc');
+      var p = video.play();
+      if (p && p.catch) p.catch(function () { /* prohlížeč odmítl, ovládání zůstává */ });
+    });
+  }
+
+  function init() {
+    initVideo(); initTheme(); initMenu(); initHours(); initForm(); initSearch(); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

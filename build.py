@@ -529,6 +529,8 @@ HOME = """<div class="hero">
   </div>
 </section>
 
+__VIDEO__
+
 <div class="strip">
   <div class="wrap">
     <div class="stat"><b>Objednávka do 17:00</b><span>druhý den máte zboží k dispozici</span></div>
@@ -633,6 +635,15 @@ O_NAS = """<div class="split">
     <p>GCAR není jen prodejna dílů. Pod stejnou firmou běží i <a href="/autoservis/">autoservis s pneuservisem</a> a <a href="/lpg/">montáže plynových pohonů</a>. Pro zákazníka to znamená, že díl, opravu i přestavbu na LPG vyřídí na jednom místě a s jedním telefonním číslem.</p>
     <p>Pro servis to znamená ještě něco navíc: nářadí, chemii a vybavení, které prodáváme, denně používáme ve vlastní dílně.</p>
 
+    <h2>Jak to u nás vypadá</h2>
+  </div>
+  <div></div>
+</div>
+
+__FOTKY__
+
+<div class="split">
+  <div class="prose">
     <h2>Kde nás najdete</h2>
     <p>
       <strong>Kroměříž</strong> — Hulínská 2351/28E, 767 01 Kroměříž, areál bývalé masny<br>
@@ -745,6 +756,8 @@ KAT_CHEMIE = """<div class="split">
       <li><strong>Převodový olej</strong> — u manuálních převodovek podle nájezdu, u automatů podle předpisu výrobce.</li>
     </ul>
 
+    __FOTKA_OLEJE__
+
     <h2>Poradíme se specifikací</h2>
     <p>Řekněte nám značku, model, rok výroby a motorizaci — nebo rovnou VIN — a vybereme olej, který do vozu patří. Vedeme i aditiva, maziva, montážní spreje a autokosmetiku.</p>
   </div>
@@ -803,6 +816,8 @@ AUTOSERVIS = """<div class="split">
 
 <div class="split">
   <div class="prose">
+    __FOTKA_DILNA__
+
     <h2>Ceník máme zveřejněný</h2>
     <p>Nemusíte volat, abyste se dozvěděli, kolik co stojí. Kompletní ceník servisních prací — mechanika, pneuservis, klimatizace, provozní kapaliny i tažná zařízení — je na webu servisu. Ceny jsou uvedené s DPH.</p>
     <p>Na provedené práce platí zákonná záruka 6 měsíců.</p>
@@ -1027,6 +1042,56 @@ def znacky_row():
                     'onerror="%s"></span>') % (slug, nazev, zaloha)
     return out
 
+def fotka(soubor, popisek):
+    """Jedna fotka z provozu. Rozměry v HTML, aby stránka při načítání neposkakovala."""
+    return ('<figure class="fotka fotka-sama">'
+            '<img src="/assets/img/foto/%s.jpg" alt="%s" width="1400" height="788" loading="lazy">'
+            '<figcaption>%s</figcaption></figure>') % (soubor, popisek, popisek)
+
+
+def fotky_provoz():
+    """Trojice fotek z pobočky v Kroměříži (snímky z videa)."""
+    polozky = [
+        ("prodejna-zvenku", "Areál pobočky v Kroměříži"),
+        ("prodejna", "Prodejna náhradních dílů"),
+        ("dilna", "Autoservis s vlastní dílnou"),
+    ]
+    return '<div class="fotky">%s</div>' % "".join(
+        '<figure class="fotka">'
+        '<img src="/assets/img/foto/%s.jpg" alt="%s" width="1400" height="788" loading="lazy">'
+        '<figcaption>%s</figcaption></figure>' % (s, p, p) for s, p in polozky)
+
+def video_sekce():
+    """Video prohlídka pobočky.
+
+    Soubor se nestahuje při načtení stránky — do <video> se dosadí až
+    po kliknutí. Do té doby je vidět jen plakát, tedy jeden obrázek.
+    Bez toho by si každý návštěvník stáhl 7,8 MB, i kdyby video nespustil.
+    """
+    return """<section class="video-sekce">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Podívejte se k nám</h2>
+        <p class="lede">Necelá minuta o tom, jak k nám do Kroměříže trefíte a co u nás najdete — prodejnu, sklad i dílnu.</p>
+      </div>
+      <a class="more" href="/kontakt/">Adresa a otevírací doba</a>
+    </div>
+
+    <figure class="prehravac" id="prehravac">
+      <video id="video-gcar" poster="/assets/video/poster.jpg" preload="none"
+             muted playsinline data-src="/assets/video/video-gcar.mp4"
+             aria-label="Video: cesta k pobočce GCAR v Kroměříži a prohlídka provozu">
+        <source data-src="/assets/video/video-gcar.mp4" type="video/mp4">
+      </video>
+      <button class="prehrat" id="prehrat" type="button" aria-controls="video-gcar">
+        <span class="sipka" aria-hidden="true"></span>
+        <span class="popis">Přehrát video<small>50 sekund · bez komentáře</small></span>
+      </button>
+    </figure>
+  </div>
+</section>"""
+
 def rozvoz_sekce(uvnitr_sekce=False):
     """Údaje o rozvozu. Používá se na homepage i na stránce Autodíly,
     proto je to jedno místo — změna ceny nebo času se promítne na obou."""
@@ -1175,6 +1240,10 @@ def render(page):
     body = body.replace("__KATALOGY_VYROBCU__", katalogy_vyrobcu(kat_klic))
     body = body.replace("__ESHOPBOX__", eshop_box(
         "Aktuální nabídku, ceny a skladovou dostupnost najdete v našem e-shopu."))
+    body = body.replace("__VIDEO__", video_sekce())
+    body = body.replace("__FOTKY__", fotky_provoz())
+    body = body.replace("__FOTKA_DILNA__", fotka("dilna", "Dílna autoservisu v Kroměříži"))
+    body = body.replace("__FOTKA_OLEJE__", fotka("oleje", "Část sortimentu olejů a autochemie na prodejně"))
     body = body.replace("__ROZVOZ_INLINE__", rozvoz_sekce(uvnitr_sekce=True))
     body = body.replace("__ROZVOZ__", rozvoz_sekce())
     body = body.replace("__CHIPS__", chips(DILY_CHIPS))

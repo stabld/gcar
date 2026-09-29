@@ -35,7 +35,7 @@ Pokud platí, vrátíme je zpět — a budou to nejsilnější argumenty, které
 | B11 | **ROZBITÝ ODKAZ V E-SHOPU** | Odkaz „TAŽNÁ ZAŘÍZENÍ" v patičce e-shopu vede na `https://eshop.gcar.cz/eshop.gcar.cz/cs/katalog/univerzalni-dily` — má tam zdvojenou doménu, takže nefunguje. Na novém webu je opravená verze bez toho zdvojení, ale **v e-shopu to zůstává rozbité** a stojí za opravu. |
 | B10 | **Souhlas s použitím log značek** | Na webu je zatím jen textový výpis značek. Loga bych přidal, ale u některých výrobců je jejich použití vázané na smlouvu s distributorem. Máte to ošetřené? |
 | B2 | **Konkrétní čísla o rozvozu** | Viz A1–A3. Tohle je jediná věc, kterou e-shop z internetu nedokáže nabídnout. |
-| B3 | **Vlastní fotky** — sklad, regály, prodejna, lidi za pultem | Web nemá jedinou fotku. Vlastní fotka skladu udělá pro důvěru víc než jakýkoli text. Stocková fotka rozmazaného motoru je horší než žádná. |
+| B3 | ~~Vlastní fotky~~ | **ČÁSTEČNĚ VYŘEŠENO 29. 9. 2026** — z videa vytaženy snímky prodejny, dílny a areálu. Vlastní fotka skladu udělá pro důvěru víc než jakýkoli text. Stocková fotka rozmazaného motoru je horší než žádná. |
 | B4 | **Jak dlouho firma existuje, kolik má lidí** | Nic z toho na webu není. |
 | B5 | **Kdo je ten „obchodní partner jedné z největších firem na evropském trhu"** | Když to jde napsat jménem, je to desetkrát silnější než anonymní věta. |
 | B6 | **Hlavní sklad** | E-shop rozlišuje dostupnost KM / Pobočky / **Hlavní sklad**. Kde je hlavní sklad a co to znamená pro dodací dobu? Na webu o něm není ani slovo. |
@@ -176,7 +176,7 @@ Zóna zůstane stejná, DNSSEC zůstane platný.
 - [x] Živý stav otevírací doby
 
 ### Chybí a čeká na podklady
-- [ ] **Fotky** — web nemá jedinou vlastní fotografii
+- [x] ~~Fotky~~ — 5 snímků vytaženo z firemního videa (viz níže). Lepší fotoaparát by pomohl, ale tohle je vlastní a pravdivé.
 - [ ] **Logo ve vektoru** (SVG) + inverzní varianta od grafika
 - [ ] **Mapy** obou poboček
 - [x] ~~Texty podstránek~~ — napsané, ale jako odborný obsah o oboru (viz C8a). Původní znění z gcar.cz stále nemám.
@@ -190,3 +190,43 @@ Zóna zůstane stejná, DNSSEC zůstane platný.
 - [ ] **Google Search Console** — po nasazení zaregistrovat a poslat sitemap.xml
 - [ ] **Firemní profil na Googlu** — vyplněný profil má na to, kolik lidí firmu najde, větší vliv než většina změn na webu
 - [ ] **Kontaktní formulář zatím nikam neodesílá** (otevře poštovního klienta) — potřebuje endpoint
+
+
+---
+
+## I. Video a fotky (29. 9. 2026)
+
+David dodal firemní video `video-gcar.m4v` (1920×1080, 50 s, 14,3 MB).
+
+**Co se s ním stalo**
+- Překódováno na `.mp4` H.264, 1280×720, 7,8 MB. Původní `.m4v` půlka
+  prohlížečů nepřehraje, a adresa na starém webu po přesměrování domény
+  zanikne.
+- Na homepage je sekce „Podívejte se k nám", hned pod třemi pilíři.
+  Video se **stahuje až po kliknutí** — jinak by si každý návštěvník
+  stáhl 7,8 MB, i kdyby ho nepustil.
+- Přehrávač startuje **ztlumený**, ovládání je vidět, takže si zvuk
+  může kdokoli zapnout.
+
+**POZOR — ve videu JE zvuk.** David tvrdil, že ne. Měření ukazuje
+průměrnou hlasitost −15 dB se špičkami na 0 dB a rovnoměrné rozložení
+frekvencí, což odpovídá podkresové hudbě, ne hluku z jízdy.
+Je potřeba si poslechnout a rozhodnout:
+- když je to hudba, kterou firma smí používat → nechat, případně
+  spouštět nahlas
+- když ne → zvukovou stopu odstranit (ušetří ~1 MB)
+
+**Fotky z videa** — vytaženy v 1400 px z předlohy v 1080p:
+
+| soubor | co je na něm | kde je použitý |
+|---|---|---|
+| `prodejna-zvenku.jpg` | areál s cedulí AUTODÍLY / GCAR | /o-nas/ |
+| `prodejna.jpg` | prodejna zevnitř, regály, pult | /o-nas/ |
+| `dilna.jpg` | dílna se zvedáky a vozem | /o-nas/, /autoservis/ |
+| `oleje.jpg` | regály s oleji a chemií | /sortiment/chemie/ |
+| `prijezd.jpg` | příjezd od hlavní silnice | zatím nepoužitý |
+| `poster.jpg` | plakát k videu | sekce s videem |
+
+Jsou to snímky z pohybující se kamery, takže nejsou tak ostré jako
+fotky z fotoaparátu. Pro web ale stačí a hlavně jsou vlastní a pravdivé.
+Až vzniknou pořádné fotky, stačí soubory nahradit — názvy zůstanou.

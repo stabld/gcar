@@ -32,7 +32,7 @@ document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
 <link rel="preload" href="/assets/fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/fonts.css?v=3cab4734">
-<link rel="stylesheet" href="/assets/css/style.css?v=cde8d9a5">
+<link rel="stylesheet" href="/assets/css/style.css?v=8afb0e9b">
 </head>
 <body>
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
@@ -152,6 +152,30 @@ document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
         <span class="go">Přestavba na plyn</span>
       </a>
     </div>
+  </div>
+</section>
+
+<section class="video-sekce">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Podívejte se k nám</h2>
+        <p class="lede">Necelá minuta o tom, jak k nám do Kroměříže trefíte a co u nás najdete — prodejnu, sklad i dílnu.</p>
+      </div>
+      <a class="more" href="/kontakt/">Adresa a otevírací doba</a>
+    </div>
+
+    <figure class="prehravac" id="prehravac">
+      <video id="video-gcar" poster="/assets/video/poster.jpg" preload="none"
+             muted playsinline data-src="/assets/video/video-gcar.mp4"
+             aria-label="Video: cesta k pobočce GCAR v Kroměříži a prohlídka provozu">
+        <source data-src="/assets/video/video-gcar.mp4" type="video/mp4">
+      </video>
+      <button class="prehrat" id="prehrat" type="button" aria-controls="video-gcar">
+        <span class="sipka" aria-hidden="true"></span>
+        <span class="popis">Přehrát video<small>50 sekund · bez komentáře</small></span>
+      </button>
+    </figure>
   </div>
 </section>
 
@@ -379,6 +403,6 @@ document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
   </div>
 </footer>
 
-<script src="/assets/js/main.js?v=5a7d26ee" defer></script>
+<script src="/assets/js/main.js?v=c32357f7" defer></script>
 </body>
 </html>
