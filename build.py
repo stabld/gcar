@@ -54,6 +54,23 @@ KATALOGY_VYROBCU = {
          "Nabídka tažných zařízení v našem e-shopu. Montáž zajistíme v servisu."),
     ],
 }
+def _ic(body):
+    return ('<svg class="ico" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" '
+            'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">%s</svg>') % body
+
+IKONY = {
+    # brzdový kotouč se třmenem
+    "nahradni-dily": _ic('<circle cx="11" cy="12" r="8"/><circle cx="11" cy="12" r="2.5"/><path d="M11 4v3M11 17v3M3 12h3M16 12h3M5.3 6.3l2.1 2.1M14.6 15.6l2.1 2.1M5.3 17.7l2.1-2.1"/><path d="M19 6c1.6 1.6 2.5 3.7 2.5 6s-.9 4.4-2.5 6"/>'),
+    # pneumatika
+    "pneumatiky": _ic('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/><path d="M12 3v4.5M12 16.5V21M3 12h4.5M16.5 12H21"/>'),
+    # klíč
+    "vybaveni-servisu": _ic('<path d="M14.5 4.5a4.5 4.5 0 0 0-4.2 6.1L3.5 17.4V20.5h3.1l1-1.6 1.6-.4.4-1.7 1.6-.4 1.4-1.4a4.5 4.5 0 0 0 5.9-5.6l-2.8 2.8-2.4-.6-.6-2.4 2.8-2.8a4.5 4.5 0 0 0-2-.4z"/>'),
+    # kanystr / kapka oleje
+    "chemie": _ic('<path d="M12 3.5c3 3.8 5.5 6.6 5.5 9.6a5.5 5.5 0 0 1-11 0c0-3 2.5-5.8 5.5-9.6z"/><path d="M9.5 14a2.6 2.6 0 0 0 2.5 2.4"/>'),
+    # rukavice / štít
+    "ochranne-prostredky": _ic('<path d="M12 3l7.5 2.8v5.6c0 4.4-3 7.9-7.5 9.6-4.5-1.7-7.5-5.2-7.5-9.6V5.8z"/><path d="M8.6 12.2l2.3 2.3 4.5-4.7"/>'),
+}
+
 FORM_MAIL = "gcar@gcar.cz"
 LPG = "https://www.lpg-kromeriz.cz"
 
@@ -566,6 +583,7 @@ __VIDEO__
     <div>
       <p>Firma dováží a distribuuje náhradní díly na osobní a užitkové vozy světových značek. Zajišťujeme rozvoz servisům a obchodům. Široký sortiment náhradních dílů od světových výrobců nás řadí k největším prodejcům v regionu. Jsme obchodním partnerem jedné z největších firem na evropském trhu.</p>
       <p style="margin:0"><a class="btn btn-line" href="/o-nas/">Více o nás</a></p>
+      __FOTKA_AREAL__
     </div>
   </div>
 </section>
@@ -584,20 +602,20 @@ __VIDEO__
 
     <div class="cats">
       <a class="cat is-wide" href="/sortiment/nahradni-dily/">
-        <h3>Náhradní díly</h3>
+        __IKONA_nahradni-dily__<h3>Náhradní díly</h3>
         <p>Originální i aftermarketové díly na osobní a užitkové vozy.</p>
       </a>
       <a class="cat" href="/sortiment/pneumatiky/">
-        <h3>Pneumatiky</h3>
+        __IKONA_pneumatiky__<h3>Pneumatiky</h3>
       </a>
       <a class="cat" href="/sortiment/vybaveni-servisu/">
-        <h3>Vybavení servisů</h3>
+        __IKONA_vybaveni-servisu__<h3>Vybavení servisů</h3>
       </a>
       <a class="cat" href="/sortiment/chemie/">
-        <h3>Chemie a oleje</h3>
+        __IKONA_chemie__<h3>Chemie a oleje</h3>
       </a>
       <a class="cat" href="/sortiment/ochranne-prostredky/">
-        <h3>Ochranné prostředky</h3>
+        __IKONA_ochranne-prostredky__<h3>Ochranné prostředky</h3>
       </a>
     </div>
   </div>
@@ -605,7 +623,7 @@ __VIDEO__
 
 __ROZVOZ__
 
-<section id="katalogy" class="delivery">
+<section id="katalogy" class="on-paper">
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -691,13 +709,13 @@ SORTIMENT = """<div class="prose" style="margin-bottom:36px">
 
 <div class="cats" style="margin-bottom:40px">
   <a class="cat is-wide" href="/sortiment/nahradni-dily/">
-    <h3>Náhradní díly</h3>
+    __IKONA_nahradni-dily__<h3>Náhradní díly</h3>
     <p>Originální i aftermarketové díly na osobní a užitkové vozy.</p>
   </a>
-  <a class="cat" href="/sortiment/pneumatiky/"><h3>Pneumatiky</h3></a>
-  <a class="cat" href="/sortiment/vybaveni-servisu/"><h3>Vybavení servisů</h3></a>
-  <a class="cat" href="/sortiment/chemie/"><h3>Chemie a oleje</h3></a>
-  <a class="cat" href="/sortiment/ochranne-prostredky/"><h3>Ochranné prostředky</h3></a>
+  <a class="cat" href="/sortiment/pneumatiky/">__IKONA_pneumatiky__<h3>Pneumatiky</h3></a>
+  <a class="cat" href="/sortiment/vybaveni-servisu/">__IKONA_vybaveni-servisu__<h3>Vybavení servisů</h3></a>
+  <a class="cat" href="/sortiment/chemie/">__IKONA_chemie__<h3>Chemie a oleje</h3></a>
+  <a class="cat" href="/sortiment/ochranne-prostredky/">__IKONA_ochranne-prostredky__<h3>Ochranné prostředky</h3></a>
 </div>
 
 __ROZVOZ_INLINE__
@@ -959,6 +977,8 @@ def kontakt_body():
       <p style="margin:6px 0 0;font-size:15px;color:var(--ink-soft)">%s</p>
     </div>
 
+    <div style="margin-top:28px">%s</div>
+
     <div class="prose" style="margin-top:28px">
       <h2>Fakturační údaje</h2>
       <p>GCAR services, s.r.o.<br>IČO 26946840<br>DIČ CZ26946840</p>
@@ -1003,6 +1023,7 @@ def kontakt_body():
   </div>
 </div>
 """ % (cards, OTEVIRACI_DOBA,
+       fotka("prijezd", "Příjezd k pobočce v Kroměříži"),
        ' action="%s" method="post"' % FORM_ENDPOINT if FORM_ENDPOINT else "",
        FORM_MAIL)
 
@@ -1262,6 +1283,9 @@ def render(page):
         "Aktuální nabídku, ceny a skladovou dostupnost najdete v našem e-shopu."))
     body = body.replace("__VIDEO__", video_sekce())
     body = body.replace("__FOTKY__", fotky_provoz())
+    for _slug, _svg in IKONY.items():
+        body = body.replace("__IKONA_%s__" % _slug, _svg)
+    body = body.replace("__FOTKA_AREAL__", fotka("prodejna-zvenku", "Areál pobočky v Kroměříži"))
     body = body.replace("__FOTKA_DILNA__", fotka("dilna", "Dílna autoservisu v Kroměříži"))
     body = body.replace("__FOTKA_OLEJE__", fotka("oleje", "Část sortimentu olejů a autochemie na prodejně"))
     body = body.replace("__ROZVOZ_INLINE__", rozvoz_sekce(uvnitr_sekce=True))

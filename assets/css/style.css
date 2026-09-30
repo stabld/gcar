@@ -820,3 +820,28 @@ footer a:hover{color:#fff}
   body{background:var(--white);padding:0}
   header{position:static}
 }
+
+
+/* ---------- úpravy rytmu stránky: střídání podkladů, ikony, spojený seznam ---------- */
+.on-paper{background:var(--paper)}
+.about .fotka-sama{margin-top:30px}
+.cat .ico{display:block;width:28px;height:28px;color:var(--red);margin-bottom:14px;flex:none}
+.cat.is-wide .ico{width:32px;height:32px}
+/* "A ještě" — jeden spojený seznam místo tří samostatných karet */
+.svc{gap:0;grid-template-columns:repeat(3,1fr);background:var(--white);border:1px solid var(--zinc);border-radius:4px;overflow:hidden}
+.svc a{border:0;border-radius:0;border-right:1px solid var(--zinc)}
+.svc a:last-child{border-right:0}
+.svc a:hover{background:var(--paper)}
+@media (max-width:760px){
+  .cat .ico{width:24px;height:24px;margin-bottom:10px}
+  .cat.is-wide .ico{width:26px;height:26px}
+  .rozvoz-grid,.katalogy{grid-template-columns:1fr 1fr}
+  .rozvoz-card,.katalog{padding:16px 16px}
+  .rozvoz-card b{font-size:16px}
+  .rozvoz-card p,.katalog p{font-size:14px}
+  .katalog h3{font-size:17px}
+  .svc{grid-template-columns:1fr}
+  .svc a{border-right:0;border-bottom:1px solid var(--zinc);padding:16px 18px}
+  .svc a:last-child{border-bottom:0}
+  .about .fotka-sama{margin-top:22px}
+}
