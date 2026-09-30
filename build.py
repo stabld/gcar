@@ -955,18 +955,38 @@ PUJCOVNA = """<div class="split">
 
 
 # --------------------------------------------------------------------------
+VIDEO_MINI = """
+      <figure class="prehravac is-mini" id="prehravac">
+        <video id="video-gcar" poster="/assets/video/poster.jpg" preload="none"
+               muted playsinline data-src="/assets/video/video-gcar.mp4"
+               aria-label="Video: cesta k pobočce GCAR v Kroměříži a prohlídka provozu">
+          <source data-src="/assets/video/video-gcar.mp4" type="video/mp4">
+        </video>
+        <button class="prehrat" id="prehrat" type="button" aria-controls="video-gcar">
+          <span class="sipka" aria-hidden="true"></span>
+          <span class="popis">Přehrát video<small>50 s · cesta k nám</small></span>
+        </button>
+      </figure>"""
+
+
 def kontakt_body():
     cards = ""
     for p in POBOCKY:
         pozn = "<br>" + p["poznamka"] if p["poznamka"] else ""
-        cards += """
-    <div class="ccard is-light">
-      <h3>%s</h3>
-      <address>%s, %s%s</address>
-      <div class="tels">%s</div>
-      <a class="mail" href="mailto:%s">%s</a>
-    </div>""" % (p["nazev"], p["ulice"], p["psc"], pozn,
-                 "".join(tel_link(t) for t in p["tel"]), p["mail"], p["mail"])
+        info = """
+      <div class="cinfo">
+        <h3>%s</h3>
+        <address>%s, %s%s</address>
+        <div class="tels">%s</div>
+        <a class="mail" href="mailto:%s">%s</a>
+      </div>""" % (p["nazev"], p["ulice"], p["psc"], pozn,
+                   "".join(tel_link(t) for t in p["tel"]), p["mail"], p["mail"])
+        if "Kroměříž" in p["nazev"]:
+            # video k pobočce v Kroměříži — stejné ID jako na homepage, obslouží ho main.js
+            info += VIDEO_MINI
+            cards += '\n    <div class="ccard is-light has-video">%s\n    </div>' % info
+        else:
+            cards += '\n    <div class="ccard is-light">%s\n    </div>' % info
 
     # CHYBI: odkazy na mapy. Až budou, vloží se sem iframe (styl .maps je hotový).
     return """<div class="split">

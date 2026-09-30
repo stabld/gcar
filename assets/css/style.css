@@ -845,3 +845,12 @@ footer a:hover{color:#fff}
   .svc a:last-child{border-bottom:0}
   .about .fotka-sama{margin-top:22px}
 }
+
+/* video v kartě pobočky na Kontaktu */
+.ccard.has-video{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+.ccard.has-video .cinfo{min-width:0}
+.prehravac.is-mini .sipka{width:52px;height:52px}
+.prehravac.is-mini .sipka::after{border-left-width:16px;border-top-width:10px;border-bottom-width:10px}
+.prehravac.is-mini .prehrat{flex-direction:column;gap:10px}
+.prehravac.is-mini .popis{align-items:center;text-align:center;font-size:15px}
+@media (max-width:620px){.ccard.has-video{grid-template-columns:1fr}}
