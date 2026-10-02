@@ -1054,8 +1054,6 @@ def kontakt_body():
       <p style="margin:6px 0 0;font-size:15px;color:var(--ink-soft)">%s</p>
     </div>
 
-    <div style="margin-top:28px">%s</div>
-
     <div class="prose" style="margin-top:28px">
       <h2>Fakturační údaje</h2>
       <p>GCAR services, s.r.o.<br>IČO 26946840<br>DIČ CZ26946840<br>Bankovní účet: 35-4227050297/0100 (KB Kroměříž)<br>Datová schránka: qfkpmws</p>
@@ -1064,7 +1062,6 @@ def kontakt_body():
 
 </div>
 """ % (cards, OTEVIRACI_DOBA,
-       fotka("prijezd", "Příjezd k pobočce v Kroměříži"),
        )
 
 
