@@ -484,7 +484,7 @@ KATALOGY = [
      "https://eshop.gcar.cz/cs/katalog/univerzalni-dily"),
     ("Vybavení autoservisu", "Samostatný katalog technologií pro autoservisy.",
      "https://narzedzia.moto-profil.pl"),
-    ("Moto", "Díly, příslušenství, oblečení a vybavení pro motorky.",
+    ("Moto díly (ACI katalog)", "Díly, příslušenství a oblečení pro motorky. Po otevření zvolte nahoře Motodíly.",
      "https://eshop.gcar.cz/cs/katalog/aci-embedded"),
 ]
 
