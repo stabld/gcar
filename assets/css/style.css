@@ -908,3 +908,5 @@ footer a:hover{color:#fff}
 
 /* odstup pod fotkami provozu */
 .fotky{margin-bottom:clamp(40px,5vw,64px)}
+
+.rozvoz-note{text-wrap:balance}

@@ -1185,12 +1185,12 @@ def rozvoz_sekce(uvnitr_sekce=False):
         <p>Poslední objednávka je do 16:45, zboží je druhý den připravené.</p>
       </div>
       <div class="rozvoz-card">
-        <b>Kroměříž – Staré Město a okolí do 30 km</b>
-        <p>Díly rozvážíme vlastními vozy servisům a obchodům.</p>
+        <b>Okolí Kroměříže a Uherského Hradiště do 30 km</b>
+        <p>Do 30 km od obou poboček rozvážíme díly vlastními vozy servisům a obchodům.</p>
       </div>
     </div>
 
-    <p class="rozvoz-note">Trasy se řídí tím, kde máme zákazníky. Pokud sídlíte kousek za uvedeným okruhem, zavolejte — často se to dá domluvit.</p>"""
+    <p class="rozvoz-note">Sídlíte kousek za uvedeným okruhem? Zavolejte, často se to dá domluvit.</p>"""
 
     if uvnitr_sekce:
         # na podstránce už jsme uvnitř <section><div class="wrap">
