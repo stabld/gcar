@@ -389,8 +389,10 @@ document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
 <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="%s">
 <link rel="stylesheet" href="%s">
+<script>try{if(!sessionStorage.getItem('gcar-nac'))document.documentElement.className+=' nac-on'}catch(e){}</script>
 </head>
 <body>
+<div id="nacitani" aria-hidden="true"><div class="nac-logo"><i class="nac-gear"></i><i class="nac-g"></i></div></div>
 %s
 <main id="obsah">
 %s

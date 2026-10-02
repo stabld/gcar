@@ -340,3 +340,19 @@
     init();
   }
 })();
+
+/* úvodní načítání — jednou za návštěvu, nejméně 0,7 s, pak se zasune */
+(function () {
+  var n = document.getElementById('nacitani');
+  if (!n) return;
+  function hide() {
+    var cekej = Math.max(0, 700 - performance.now());
+    setTimeout(function () {
+      n.classList.add('hotovo');
+      try { sessionStorage.setItem('gcar-nac', '1'); } catch (e) {}
+      setTimeout(function () { n.remove(); }, 450);
+    }, cekej);
+  }
+  if (document.readyState === 'complete') hide();
+  else window.addEventListener('load', hide);
+})();
