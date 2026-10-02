@@ -484,6 +484,8 @@ KATALOGY = [
      "https://eshop.gcar.cz/cs/katalog/univerzalni-dily"),
     ("Vybavení autoservisu", "Samostatný katalog technologií pro autoservisy.",
      "https://narzedzia.moto-profil.pl"),
+    ("Moto", "Díly, příslušenství, oblečení a vybavení pro motorky.",
+     "https://eshop.gcar.cz/cs/katalog/aci-embedded"),
 ]
 
 
@@ -553,19 +555,16 @@ HOME = """<div class="hero">
   <div class="wrap">
     <div class="pillar-grid">
       <a class="pillar" href="/sortiment/">
-        <b>01</b>
         <h2>Autodíly</h2>
-        <p>Náhradní díly na osobní a užitkové vozy i na moto, pneumatiky, oleje, chemie, nářadí a vybavení servisů. Objednáte do 16:45, druhý den to máte u sebe.</p>
+        <p>Náhradní díly na osobní a užitkové vozy i na motorky, pneumatiky, oleje, chemie, nářadí a vybavení servisů. Objednáte do 16:45, druhý den to máte u sebe.</p>
         <span class="go">Sortiment a e-shop</span>
       </a>
       <a class="pillar" href="https://www.autoserviskromeriz.cz" target="_blank" rel="noopener">
-        <b>02</b>
         <h2>Autoservis</h2>
         <p>Oleje, brzdy, převodovky, pneumatiky a 3D geometrie, klimatizace, karosářské a elektrikářské práce. Ceník máme zveřejněný.</p>
         <span class="go">Co v servisu uděláme</span>
       </a>
       <a class="pillar" href="https://www.lpg-kromeriz.cz" target="_blank" rel="noopener">
-        <b>03</b>
         <h2>LPG</h2>
         <p>Montáže a přestavby na plynový pohon, pravidelné revize, servis a diagnostika, výměny nádrží.</p>
         <span class="go">Přestavba na plyn</span>
