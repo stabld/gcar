@@ -560,8 +560,8 @@ HOME = """<div class="hero">
         <span class="go">Sortiment a e-shop</span>
       </a>
       <a class="pillar" href="https://www.autoserviskromeriz.cz" target="_blank" rel="noopener">
-        <h2>Autoservis</h2>
-        <p>Oleje, brzdy, převodovky, pneumatiky a 3D geometrie, klimatizace, karosářské a elektrikářské práce. Ceník máme zveřejněný.</p>
+        <h2>Autoservis Kroměříž</h2>
+        <p>Autoservis a pneuservis: oleje, brzdy, převodovky, pneumatiky a 3D geometrie, klimatizace, karosářské a elektrikářské práce. Ceník máme zveřejněný.</p>
         <span class="go">Co v servisu uděláme</span>
       </a>
       <a class="pillar" href="https://www.lpg-kromeriz.cz" target="_blank" rel="noopener">
@@ -1230,8 +1230,8 @@ def add(path, title, desc, body, active, head=None):
 
 
 add("index.html",
-    "GCAR — prodej náhradních dílů | Kroměříž, Staré Město",
-    "Dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuce do autoservisů a obchodů. Pobočky Kroměříž a Staré Město.",
+    "GCAR Kroměříž — náhradní díly, autoservis a LPG | Staré Město",
+    "Prodej náhradních dílů na osobní a dodávkové vozy do 3,5 t, pneumatik a autodoplňků. Autoservis a LPG v Kroměříži, rozvoz do servisů a obchodů. Pobočky Kroměříž a Staré Město.",
     HOME, "index")
 
 add("o-nas/index.html",
