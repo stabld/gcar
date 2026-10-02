@@ -455,7 +455,7 @@ def aside_pomoc():
   <h3>Zeptejte se nás</h3>
   <p>Nevíte si rady s výběrem, nebo hledáte konkrétní díl? Zavolejte nám.</p>
   <a class="btn btn-red" href="tel:%s">Zavolat %s</a>
-  <a class="btn btn-ghost" href="/kontakt/">Napsat poptávku</a>
+  <a class="btn btn-ghost" href="/kontakt/">Kontakty poboček</a>
 </aside>""" % (POBOCKY[0]["tel"][0], fmt_tel(POBOCKY[0]["tel"][0]))
 
 
@@ -591,7 +591,6 @@ __VIDEO__
     <div>
       <p>Firma dováží a distribuuje náhradní díly na osobní a užitkové vozy světových značek. Zajišťujeme rozvoz servisům a obchodům. Široký sortiment náhradních dílů od světových výrobců nás řadí k největším prodejcům v regionu. Jsme obchodním partnerem jedné z největších firem na evropském trhu.</p>
       <p style="margin:0"><a class="btn btn-line" href="/o-nas/">Více o nás</a></p>
-      __FOTKA_AREAL__
     </div>
   </div>
 </section>
@@ -980,31 +979,30 @@ __ESHOPBOX__
 
 PUJCOVNA = """<div class="split">
   <div class="prose">
-    <p>Nejlevnější a nejlepší autobox je ten, který si vůbec nekoupíte. Půjčujeme <strong>střešní autoboxy</strong> — na víkend, na dovolenou i na jednu jízdu.</p>
+    <p>Nejlevnější a nejlepší autobox je ten, který si vůbec nekoupíte. Půjčujeme střešní autoboxy, střešní nosiče a nosič na kola na tažné zařízení.</p>
 
     <h2>Nabízíme</h2>
-    <p>Čtyři boxy: <strong>dva úzké a dva široké</strong>. Všechny jsou zhruba stejně dlouhé, kolem 230 cm. Úzký nechá na střeše víc místa vedle sebe, široký pobere víc nákladu.</p>
-    <p>Auta v půjčovně momentálně nemáme.</p>
+    <ul>
+      <li><strong>Střešní autoboxy</strong> — čtyři kusy, dva úzké a dva široké, všechny kolem 230 cm dlouhé. Úzký nechá na střeše víc místa vedle sebe, široký pobere víc nákladu.</li>
+      <li><strong>Střešní nosiče</strong> — některé typy, na které se boxy upevňují.</li>
+      <li><strong>Nosič na kola</strong> — na tažné zařízení.</li>
+    </ul>
 
     <h2>Za kolik</h2>
-    <ul>
-      <li><strong>400 Kč za týden</strong></li>
-      <li><strong>80 Kč za den</strong> při kratším zapůjčení</li>
-    </ul>
+    <table class="ceny">
+      <thead><tr><th></th><th>Za týden</th><th>Za den</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Střešní autobox</th><td>400 Kč</td><td>80 Kč</td></tr>
+        <tr><th scope="row">Střešní nosič</th><td>200 Kč</td><td>30 Kč</td></tr>
+        <tr><th scope="row">Nosič na kola na tažné zařízení</th><td>750 Kč</td><td>150 Kč</td></tr>
+      </tbody>
+    </table>
+    <p class="ceny-pozn">Cena za den platí při kratším zapůjčení.</p>
 
-    <h2>Střešní nosiče a nosič na kola</h2>
-    <p>Půjčujeme i některé typy <strong>střešních nosičů</strong>, na které se boxy upevňují, a <strong>nosič na kola na tažné zařízení</strong>. Zavolejte a domluvte si termín.</p>
+    <h2>Jak si půjčit</h2>
     <ul>
-      <li><strong>200 Kč za týden</strong> — střešní nosič</li>
-      <li><strong>30 Kč za den</strong> — střešní nosič při kratším zapůjčení</li>
-      <li><strong>750 Kč za týden</strong> — nosič na kola na tažné zařízení</li>
-      <li><strong>150 Kč za den</strong> — nosič na kola na tažné zařízení při kratším zapůjčení</li>
-    </ul>
-
-    <h2>Jak si box půjčit</h2>
-    <ul>
-      <li><strong>Zavolejte a domluvte termín.</strong> Půjčování probíhá na základě telefonické dohody. V létě a o prázdninách bývají boxy zamluvené dopředu.</li>
-      <li><strong>Řekněte nám značku a model vozu.</strong> Podle typu střechy a nosiče poradíme, který box na něj sedne.</li>
+      <li><strong>Zavolejte a domluvte si termín.</strong> Půjčování probíhá na základě telefonické dohody. V létě a o prázdninách bývají boxy zamluvené dopředu.</li>
+      <li><strong>Řekněte nám značku a model vozu.</strong> Podle typu střechy a nosiče poradíme, co na něj sedne.</li>
       <li><strong>Při vyzvednutí se podepisuje zápůjční smlouva.</strong></li>
     </ul>
   </div>
@@ -1192,7 +1190,7 @@ def rozvoz_sekce(uvnitr_sekce=False):
       </div>
       <div class="rozvoz-card">
         <b>Kroměříž – Staré Město a okolí do 30 km</b>
-        <p>Rozvážíme směr Holešov, Kojetín, Zdounky, Koryčany, Strážnice, Hluk a Uherský Brod.</p>
+        <p>Díly rozvážíme vlastními vozy servisům a obchodům.</p>
       </div>
     </div>
 
