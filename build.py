@@ -630,6 +630,7 @@ __ROZVOZ__
       <a class="more" href="__ESHOP__">Do e-shopu</a>
     </div>
     <div class="katalogy">__KATALOGY__</div>
+    <p class="katalogy-navod"><a class="more" href="/sortiment/vybaveni-servisu/#jak-objednat">Návod: jak objednat z katalogu Vybavení autoservisu</a></p>
   </div>
 </section>
 

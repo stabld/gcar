@@ -1007,3 +1007,5 @@ footer a:hover{color:#fff}
   .navod-kroky li,.navod-kroky li:nth-child(even){grid-template-columns:1fr;gap:14px;padding:16px}
   .navod-kroky li:nth-child(even) .navod-text{order:0}
 }
+
+.katalogy-navod{margin:20px 0 0}
