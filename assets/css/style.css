@@ -987,3 +987,23 @@ footer a:hover{color:#fff}
   .about .btn{display:none}
   .about p{font-size:16px;margin:0}
 }
+
+/* návod k objednání */
+.navod{margin-top:56px}
+.navod h2{margin:0 0 12px}
+.navod-uvod{max-width:62ch;color:var(--ink-soft);margin:0 0 28px}
+.navod-kroky{list-style:none;margin:0;padding:0;counter-reset:krok;display:grid;gap:20px}
+.navod-kroky li{counter-increment:krok;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px;align-items:center;background:var(--white);border:1px solid var(--line,#e3e5ea);padding:24px}
+.navod-kroky li:nth-child(even){grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.navod-kroky li:nth-child(even) .navod-text{order:2}
+.navod-text h3{margin:0 0 8px;font-size:20px}
+.navod-text h3::before{content:counter(krok);display:inline-grid;place-items:center;width:30px;height:30px;margin-right:10px;border-radius:50%;background:var(--red,#d62839);color:#fff;font-size:16px;vertical-align:2px}
+.navod-text p{margin:0;color:var(--ink-soft)}
+.navod-kroky img{width:100%;height:auto;display:block;border:1px solid var(--line,#e3e5ea)}
+.navod .kod{font-family:var(--mono);background:rgba(0,0,0,.06);padding:1px 6px}
+.navod-pozn{margin-top:20px;font-weight:600}
+@media(max-width:800px){
+  .navod{margin-top:40px}
+  .navod-kroky li,.navod-kroky li:nth-child(even){grid-template-columns:1fr;gap:14px;padding:16px}
+  .navod-kroky li:nth-child(even) .navod-text{order:0}
+}

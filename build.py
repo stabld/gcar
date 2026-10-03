@@ -556,10 +556,10 @@ HOME = """<div class="hero">
 <section class="pillars">
   <div class="wrap">
     <div class="pillar-grid">
-      <a class="pillar" href="/sortiment/">
+      <a class="pillar" href="https://eshop.gcar.cz/cs/katalog/tecdoc/osobni" target="_blank" rel="noopener">
         <h2>Autodíly</h2>
         <p>Díly na osobní a užitkové vozy i motorky, pneumatiky, oleje a nářadí. Objednávka do 16:45, zboží druhý den.</p>
-        <span class="go">Sortiment a e-shop</span>
+        <span class="go">Do e-shopu</span>
       </a>
       <a class="pillar" href="https://www.autoserviskromeriz.cz" target="_blank" rel="noopener">
         <h2>Autoservis Kroměříž</h2>
@@ -806,6 +806,38 @@ KAT_VYBAVENI = """<div class="split">
   </div>
   __ASIDE__
 </div>
+<section class="navod" id="jak-objednat">
+  <h2>Jak objednat z katalogu vybavení</h2>
+  <p class="navod-uvod">Katalog vybavení servisu je samostatný katalog s tisíci položkami. Ceny a dostupnost ale vždy najdete u nás v e-shopu — stačí si z katalogu převzít kód dílu.</p>
+  <ol class="navod-kroky">
+    <li>
+      <div class="navod-text"><h3>Otevřete katalog</h3>
+      <p>Na úvodní stránce v části „Katalogy v e-shopu" klikněte na dlaždici <strong>Vybavení autoservisu</strong>. Otevře se katalog technologií a nářadí. Vyberte kategorii (například Obsluha karosérií → Nýtovačky).</p></div>
+      <img src="/assets/img/navod/krok-1.jpg" alt="Dlaždice Vybavení autoservisu v sekci Katalogy v e-shopu" loading="lazy" width="1000" height="320">
+    </li>
+    <li>
+      <div class="navod-text"><h3>Vyberte produkt</h3>
+      <p>V kategorii najděte potřebný výrobek a klikněte na něj. Pod každým je název, značka výrobce a v hranatých závorkách kód.</p></div>
+      <img src="/assets/img/navod/krok-2.jpg" alt="Seznam produktů v kategorii Nýtovačky" loading="lazy" width="1000" height="583">
+    </li>
+    <li>
+      <div class="navod-text"><h3>Zkopírujte kód</h3>
+      <p>V detailu produktu najdete v tabulce řádek <strong>Index</strong>. To je kód dílu, například <span class="kod">150.9650</span>. Označte ho a zkopírujte.</p></div>
+      <img src="/assets/img/navod/krok-3.jpg" alt="Detail produktu s označeným kódem v řádku Index" loading="lazy" width="1000" height="454">
+    </li>
+    <li>
+      <div class="navod-text"><h3>Vložte ho do hledání v e-shopu</h3>
+      <p>Otevřete <a href="https://eshop.gcar.cz/cs">eshop.gcar.cz</a>, vložte kód do vyhledávacího pole a ponechte zvolenou možnost <strong>KÓD</strong> pod polem. Potvrďte lupou nebo klávesou Enter.</p></div>
+      <img src="/assets/img/navod/krok-4.jpg" alt="Vyhledávací pole e-shopu s kódem 150.9650" loading="lazy" width="1000" height="156">
+    </li>
+    <li>
+      <div class="navod-text"><h3>Najděte díl s cenou u nás</h3>
+      <p>E-shop zobrazí stejný výrobek pod naším kódem (u KS Tools je to <span class="kod">KST 1509650</span>) s aktuální cenou bez i s DPH a skladovou dostupností. Dáte ho do košíku, nebo nám zavoláte na <a href="tel:+420602721994">602 721 994</a> — rádi objednáme a poradíme.</p></div>
+      <img src="/assets/img/navod/krok-5.jpg" alt="Nalezený díl v e-shopu GCAR s cenou a tlačítkem do košíku" loading="lazy" width="1000" height="311">
+    </li>
+  </ol>
+  <p class="navod-pozn">Díl nenajdete nebo není skladem? Zavolejte nám, objednáme ho z katalogu pro vás.</p>
+</section>
 
 __ESHOPBOX__
 """
