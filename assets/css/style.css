@@ -928,3 +928,62 @@ footer a:hover{color:#fff}
 .nac-g{background:var(--red);-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cpath fill='none' stroke='%23000' stroke-width='13' d='M141.2 98.8 A30 30 0 1 0 150 120 L124 120'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cpath fill='none' stroke='%23000' stroke-width='13' d='M141.2 98.8 A30 30 0 1 0 150 120 L124 120'/%3E%3C/svg%3E")}
 @keyframes nacSpin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.nac-on #nacitani{display:none}}
+
+.dily-seznam{margin-bottom:48px}
+
+
+/* ===== zkrácení na telefonu ===== */
+.historie summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.historie summary::-webkit-details-marker{display:none}
+.historie summary h2{margin:0}
+.historie summary::after{content:"";width:11px;height:11px;border-right:2px solid var(--red);border-bottom:2px solid var(--red);transform:rotate(45deg);margin-right:6px;transition:transform .2s;flex:none}
+.historie[open] summary::after{transform:rotate(-135deg)}
+.historie[open] summary{margin-bottom:24px}
+.historie h2{margin-bottom:0}
+@media (min-width:761px){.historie summary{pointer-events:none}.historie summary::after{display:none}}
+
+@media (max-width:760px){
+  /* hlavička stránek bez drobečků a podtitulku */
+  .page-head{padding:22px 0 24px}
+  .page-head .crumbs{display:none}
+  .page-head h1{font-size:30px;margin-bottom:8px}
+  .page-head .lede{font-size:15.5px;margin:0}
+
+  /* kontaktní box s tlačítky — dole plave telefon */
+  .aside-card{display:none}
+
+  /* fotky provozu: jeden pruh, listuje se do strany */
+  .fotky{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;background:none;border:0;margin-bottom:28px;-webkit-overflow-scrolling:touch}
+  .fotky .fotka{flex:0 0 82%;scroll-snap-align:start;border:1px solid var(--zinc)}
+
+  /* úvodní stránka */
+  section{padding:30px 0}
+  .sec-head{margin-bottom:16px}
+  .sec-head .lede{font-size:15.5px}
+  .rozvoz-grid.is-2,.katalogy{grid-template-columns:1fr 1fr}
+  .rozvoz-card{padding:14px}
+  .rozvoz-card b{font-size:16px}
+  .katalog{padding:14px}
+  .katalog p{display:none}
+  .katalog h3{margin:0;font-size:16px}
+  .rozvoz-note{margin-top:14px;font-size:14px}
+  .brandrow .znacka{flex:1 1 30%;min-height:60px;padding:10px 8px}
+  .brandrow .znacka img{max-height:30px}
+  .svc{grid-template-columns:1fr 1fr 1fr}
+  .svc a{padding:14px 10px;text-align:center}
+  .svc p{display:none}
+  .svc h3{margin:0;font-size:15px}
+  .video-sekce .lede{display:none}
+
+  /* patička: odkazy jsou v menu, nechávám kontakt */
+  .fgrid > div:nth-child(2),.fgrid > div:nth-child(3){display:none}
+  .fgrid{gap:14px;padding-bottom:18px}
+  footer{padding-top:30px}
+}
+
+@media (max-width:760px){
+  .about{padding:26px 0}
+  .about .wrap{gap:10px}
+  .about .btn{display:none}
+  .about p{font-size:16px;margin:0}
+}

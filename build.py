@@ -264,7 +264,7 @@ def footer():
     <div class="fgrid">
       <div>
         <img src="/assets/img/logo-inverse.svg" alt="GCAR">
-        <p style="margin:0">Dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuce do autoservisů a obchodů.</p>
+        <p style="margin:0">Náhradní díly, autoservis a LPG. Kroměříž a Staré Město.</p>
       </div>
       <div>
         <h4>Sortiment</h4>
@@ -531,14 +531,14 @@ HOME = """<div class="hero">
   <div class="wrap">
     <div>
       <h1>Všechno kolem auta na jednom místě</h1>
-      <p class="lede"><strong>Prodej náhradních dílů na osobní a dodávkové vozy do 3,5 t, včetně pneumatik, autoskel a autodoplňků.</strong> K tomu autoservis s pneuservisem a montáže LPG. Díly dovážíme a distribuujeme, servisům a obchodům je rozvážíme vlastními vozy.</p>
+      <p class="lede"><strong>Prodej náhradních dílů na osobní a dodávkové vozy do 3,5 t, včetně pneumatik, autoskel a autodoplňků.</strong> Autoservis, LPG a rozvoz vlastními vozy.</p>
 
       <form class="finder" id="hledani" data-base="__SEARCH__" role="search">
         <input name="q" type="search" placeholder="Hledat díl, značku nebo katalogové číslo" aria-label="Hledat v e-shopu" required>
         <button type="submit">Hledat</button>
       </form>
       <noscript><p class="finder-note"><a href="__ESHOP__">Přejít do e-shopu a hledat tam</a></p></noscript>
-      <p class="finder-note">Hledat můžete podle kódu, textu i vozidla — e-shop má i VIN katalog. Nevíte si rady? <a href="tel:__TEL__">Zavolejte na __TELF__</a>.</p>
+      <p class="finder-note">Nevíte si rady? <a href="tel:__TEL__">Zavolejte na __TELF__</a>.</p>
       <p class="hero-cta">
         <a class="btn btn-line btn-video" href="#video" id="hero-video">
           <span class="ikona-prehrat" aria-hidden="true"></span>Jak k nám trefíte
@@ -558,17 +558,17 @@ HOME = """<div class="hero">
     <div class="pillar-grid">
       <a class="pillar" href="/sortiment/">
         <h2>Autodíly</h2>
-        <p>Náhradní díly na osobní a užitkové vozy i na motorky, pneumatiky, oleje, chemie, nářadí a vybavení servisů. Objednáte do 16:45, druhý den to máte u sebe.</p>
+        <p>Díly na osobní a užitkové vozy i motorky, pneumatiky, oleje a nářadí. Objednávka do 16:45, zboží druhý den.</p>
         <span class="go">Sortiment a e-shop</span>
       </a>
       <a class="pillar" href="https://www.autoserviskromeriz.cz" target="_blank" rel="noopener">
         <h2>Autoservis Kroměříž</h2>
-        <p>Autoservis a pneuservis: oleje, brzdy, převodovky, pneumatiky a 3D geometrie, klimatizace, karosářské a elektrikářské práce. Ceník máme zveřejněný.</p>
+        <p>Servis a pneuservis, brzdy, převodovky, geometrie, klimatizace. Ceník je zveřejněný.</p>
         <span class="go">Co v servisu uděláme</span>
       </a>
       <a class="pillar" href="https://www.lpg-kromeriz.cz" target="_blank" rel="noopener">
         <h2>LPG</h2>
-        <p>Montáže a přestavby na plynový pohon, pravidelné revize, servis a diagnostika, výměny nádrží.</p>
+        <p>Montáže a přestavby na LPG, revize a servis.</p>
         <span class="go">Přestavba na plyn</span>
       </a>
     </div>
@@ -577,20 +577,12 @@ HOME = """<div class="hero">
 
 __VIDEO__
 
-<div class="strip">
-  <div class="wrap">
-    <div class="stat"><b>Objednávka do 16:45</b><span>druhý den máte zboží k dispozici</span></div>
-    <div class="stat"><b>2 pobočky</b><span>Kroměříž a Staré Město</span></div>
-    <div class="stat"><b>TecDoc</b><span>díl dohledáte podle vozu, VIN i katalogového čísla</span></div>
-    <div class="stat"><b>Od roku 1997</b><span>GCAR services, s.r.o.</span></div>
-  </div>
-</div>
 
 <section class="about" id="o-nas">
   <div class="wrap">
     <div><h2>Kdo jsme</h2></div>
     <div>
-      <p>Firma dováží a distribuuje náhradní díly na osobní a užitkové vozy světových značek. Zajišťujeme rozvoz servisům a obchodům. Široký sortiment náhradních dílů od světových výrobců nás řadí k největším prodejcům v regionu. Jsme obchodním partnerem jedné z největších firem na evropském trhu.</p>
+      <p>Od roku 1997 dovážíme a distribuujeme náhradní díly na osobní a užitkové vozy světových značek. Patříme k největším prodejcům v regionu.</p>
       <p style="margin:0"><a class="btn btn-line" href="/o-nas/">Více o nás</a></p>
     </div>
   </div>
@@ -601,12 +593,9 @@ __VIDEO__
     <div class="sec-head">
       <div>
         <h2>Co nabízíme</h2>
-        <p class="lede">Kompletní sortiment náhradních dílů na osobní vozy.</p>
       </div>
       <a class="more" href="/sortiment/">Celý sortiment</a>
     </div>
-
-    <div class="chips" style="margin-bottom:34px">__CHIPS__</div>
 
     <div class="cats">
       <a class="cat is-wide" href="/sortiment/nahradni-dily/">
@@ -636,7 +625,7 @@ __ROZVOZ__
     <div class="sec-head">
       <div>
         <h2>Katalogy v e-shopu</h2>
-        <p class="lede">Ceny, skladová dostupnost i fotky jsou vždy v e-shopu — tam se to aktualizuje průběžně.</p>
+        <p class="lede">Ceny a dostupnost jsou vždy v e-shopu.</p>
       </div>
       <a class="more" href="__ESHOP__">Do e-shopu</a>
     </div>
@@ -649,12 +638,10 @@ __ROZVOZ__
     <div class="sec-head">
       <div>
         <h2>Značky, které u nás najdete</h2>
-        <p class="lede">Katalog dílů v e-shopu běží na databázi TecDoc — díl dohledáte podle vozu, VIN nebo katalogového čísla.</p>
       </div>
-      <a class="more" href="__ESHOP__">Prohlédnout katalog</a>
     </div>
     <div class="brandrow">__ZNACKY__</div>
-    <p class="brands-note">A řada dalších. Kompletní nabídku najdete v e-shopu.</p>
+    <p class="brands-note">A řada dalších — v e-shopu.</p>
   </div>
 </section>
 
@@ -668,20 +655,15 @@ __ROZVOZ__
     </div>
   </div>
 </section>
-
-__KONTAKT__
 """
 
 # --------------------------------------------------------------------------
 O_NAS = """<div class="split">
   <div class="prose">
-    <p>Firma dováží a distribuuje náhradní díly na osobní a užitkové vozy světových značek. Zajišťujeme rozvoz servisům a obchodům. Široký sortiment náhradních dílů od světových výrobců nás řadí k největším prodejcům v regionu a jsme obchodním partnerem jedné z největších firem na evropském trhu.</p>
+    <p>Od roku 1997 dovážíme a distribuujeme náhradní díly na osobní a užitkové vozy světových značek a rozvážíme je servisům a obchodům. Patříme k největším prodejcům v regionu.</p>
 
     <h2>Všechno kolem auta pod jednou firmou</h2>
-    <p>GCAR není jen prodejna dílů. Pod stejnou firmou běží i <a href="https://www.autoserviskromeriz.cz" target="_blank" rel="noopener">autoservis s pneuservisem</a> a <a href="https://www.lpg-kromeriz.cz" target="_blank" rel="noopener">montáže plynových pohonů</a>. Pro zákazníka to znamená, že díl, opravu i přestavbu na LPG vyřídí na jednom místě a s jedním telefonním číslem.</p>
-    <p>Pro servis to znamená ještě něco navíc: nářadí, chemii a vybavení, které prodáváme, denně používáme ve vlastní dílně.</p>
-
-    <h2>Jak to u nás vypadá</h2>
+    <p>Pod stejnou firmou běží i <a href="https://www.autoserviskromeriz.cz" target="_blank" rel="noopener">autoservis s pneuservisem</a> a <a href="https://www.lpg-kromeriz.cz" target="_blank" rel="noopener">montáže LPG</a>. Díl, opravu i přestavbu vyřídíte na jednom místě a s jedním telefonním číslem.</p>
   </div>
   <div></div>
 </div>
@@ -695,7 +677,7 @@ __FOTKY__
       <strong>Kroměříž</strong> — Hulínská 2351/28E, 767 01 Kroměříž, areál bývalé masny<br>
       <strong>Staré Město</strong> — Brněnská 1395, 686 03 Staré Město
     </p>
-    <p>Otevřeno máme v pracovní dny 8:00–17:00 a v sobotu 9:00–10:00. Podrobné kontakty na obě pobočky jsou na <a href="/kontakt/">stránce Kontakt</a>.</p>
+    <p>Po–Pá 8:00–17:00, So 9:00–10:00. <a href="/kontakt/">Telefony a e-maily</a>.</p>
 
     <h2>Fakturační údaje</h2>
     <p>
@@ -709,8 +691,8 @@ __FOTKY__
   __ASIDE__
 </div>
 
-<div class="historie">
-  <h2>Historie naší firmy</h2>
+<details class="historie" id="historie" open>
+  <summary><h2>Historie naší firmy</h2></summary>
   <ol>
     <li><span class="rok">1997</span><div><h3>Založení</h3><p>Firma byla založena roku 1997. Začínalo se v garáži v centru historické Kroměříže.</p></div></li>
     <li><span class="rok">2000</span><div><h3>První stěhování</h3><p>V roce 2000 se firma přestěhovala do větších prostor v témže domě.</p></div></li>
@@ -723,7 +705,7 @@ __FOTKY__
     <li><span class="rok">2013</span><div><h3>Nová identita</h3><p>V lednu 2013 představila společnost GCAR services, s.r.o. nové logo společnosti.</p></div></li>
     <li><span class="rok">2016</span><div><h3>Stěhování prodejny ve Starém Městě</h3><p>Dne 28. listopadu 2016 se pobočka ve Starém Městě přestěhovala do vlastního objektu na rušném průtahu Starým Městem, na ulici Brněnská. Moderní stavba s vlastním parkováním ve dvoře z ulice U Školky zajišťuje pohodlí pro naše klienty.</p></div></li>
   </ol>
-</div>
+</details>
 """
 
 # --------------------------------------------------------------------------
@@ -1152,9 +1134,8 @@ def video_sekce():
     <div class="sec-head">
       <div>
         <h2>Podívejte se k nám</h2>
-        <p class="lede">Necelá minuta o tom, jak k nám do Kroměříže trefíte a co u nás najdete — prodejnu, sklad i dílnu.</p>
+        <p class="lede">Jak k nám do Kroměříže trefíte a co u nás najdete.</p>
       </div>
-      <a class="more" href="/kontakt/">Adresa a otevírací doba</a>
     </div>
 
     <figure class="prehravac" id="prehravac">
@@ -1177,22 +1158,22 @@ def rozvoz_sekce(uvnitr_sekce=False):
     telo = """    <div class="sec-head">
       <div>
         <h2>Rozvoz do servisů a obchodů</h2>
-        <p class="lede">Nemusíte pro díl jezdit ani čekat na přepravní službu. Objednejte do 16:45 a druhý den máte zboží připravené. Můžete si ho vyzvednout, nebo vám ho dovezeme.</p>
+        <p class="lede">Objednejte do 16:45 a druhý den máte zboží připravené. Můžete si ho vyzvednout, nebo vám ho dovezeme.</p>
       </div>
     </div>
 
     <div class="rozvoz-grid is-2">
       <div class="rozvoz-card">
         <b>Do 16:45</b>
-        <p>Poslední objednávka je do 16:45, zboží je druhý den připravené.</p>
+        <p>Poslední objednávka, zboží druhý den.</p>
       </div>
       <div class="rozvoz-card">
-        <b>Okolí Kroměříže a Uherského Hradiště do 30 km</b>
-        <p>Do 30 km od obou poboček rozvážíme díly vlastními vozy servisům a obchodům.</p>
+        <b>Do 30 km</b>
+        <p>Od Kroměříže i Uherského Hradiště.</p>
       </div>
     </div>
 
-    <p class="rozvoz-note">Sídlíte kousek za uvedeným okruhem? Zavolejte, často se to dá domluvit.</p>"""
+    <p class="rozvoz-note">Sídlíte kousek za okruhem? Zavolejte, často se to dá domluvit.</p>"""
 
     if uvnitr_sekce:
         # na podstránce už jsme uvnitř <section><div class="wrap">
@@ -1241,7 +1222,7 @@ add("o-nas/index.html",
     "GCAR services, s.r.o. — dovoz a distribuce náhradních dílů pro osobní a užitkové vozy. Pobočky v Kroměříži a ve Starém Městě.",
     O_NAS, "o-nas",
     page_head("O nás",
-              "Dovoz náhradních dílů pro osobní a užitkové vozy světových značek a jejich distribuce do autoservisů a obchodů.",
+              "GCAR services, s.r.o. — Kroměříž a Staré Město.",
               [(None, "O nás")]))
 
 add("sortiment/index.html",

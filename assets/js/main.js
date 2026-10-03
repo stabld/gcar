@@ -356,3 +356,9 @@
   if (document.readyState === 'complete') hide();
   else window.addEventListener('load', hide);
 })();
+
+/* historie firmy: na telefonu zavřená */
+(function () {
+  var h = document.getElementById('historie');
+  if (h && window.matchMedia('(max-width:760px)').matches) h.removeAttribute('open');
+})();
